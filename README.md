@@ -17,3 +17,7 @@
 - Membuat direktori template dalam folder views, menambahkan file _header.php_ dan _footer.php_ kedalam folder template.
 - Mengubah struktur html file _header.php_ dan _footer.php_, menyesuaikan dengan pembagian elemen html dan fungsinya.
 - Membuat file _sideNavbar.php_ dan _topNavbar.php_ dalam folder _view/template_
+
+### 30/04/2020
+- Menambahkan file _home.php_ dalam folder admin.
+- Menambahkan komentar di setiap file baru dan yang telah dimodifikasi untuk memudahkan development.
