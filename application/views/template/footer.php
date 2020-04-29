@@ -1,3 +1,4 @@
+<!-- File ini berfungsi sebagai tampilan footer dan penutup tag body dan html dalam seluruh halaman baik guru maupun admin -->
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">

@@ -23,6 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+/**
+ * [PERINGATAN]
+ * BASE URL HARAP DISESUAIKAN DENGAN PENATAAN FOLDER MASING MASING DEVELOPER
+ * HARAP PERHATIKAN PENATAAN FOLDER DAN PENAMAAN FILE AGAR BASE URL BEKERJA
+ */
 $config['base_url'] = 'http://localhost/Git/SiNgujiSmapa-Web/';
 
 /*

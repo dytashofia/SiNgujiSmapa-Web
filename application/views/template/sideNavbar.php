@@ -1,3 +1,4 @@
+<!-- File ini berfungsi sebagai tampila Sidebar / Side Navbar / Bar bagian samping dalam semua tampilan halaman baik guru maupun admin -->
     <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">

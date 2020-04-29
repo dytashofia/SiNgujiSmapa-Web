@@ -1,3 +1,4 @@
+<!-- File ini berfungsi sebagai header dari semua file php yang ada dalam template SBAdmin -->
 <!DOCTYPE html>
 <html lang="en">
     <head>

@@ -1,3 +1,4 @@
+<!-- File ini berfungsi sebagai pembuka tag body dan tampilan navbar atas dalam seluruh file yang akan digunakan baik oleh guru maupun admin -->
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="index.html">SI NGUJI SMAPA</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
