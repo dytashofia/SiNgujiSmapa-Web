@@ -21,7 +21,7 @@
 ### 30/04/2020
 - Menambahkan file _home.php_ dalam folder view/admin.
 - Menambahkan komentar di setiap file baru dan yang telah dimodifikasi untuk memudahkan development.
-- Menambahkan folder guru dalam views sebagai wadah view guru.
+- Menambahkan folder guru dalam folder views sebagai wadah file view guru.
 - Menambahkan file _home.php_ dalam folder view/guru.
 - Menambahkan route baru untuk guru dalam _routes.php_
 - Menambahkan view yang akan ditampilkan oleh fungsi _index_ dalam controller _admin_.
