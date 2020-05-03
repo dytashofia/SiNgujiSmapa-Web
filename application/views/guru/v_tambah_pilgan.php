@@ -22,6 +22,12 @@
                 <input type="text" name="id_paket">
                 </div>
             </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text">ID jenis soal </span>
+                <input type="text" name="id_jenis_soal">
+                </div>
+            </div>
 
         <div class="form-group">
             <label>Pertanyaan</label>

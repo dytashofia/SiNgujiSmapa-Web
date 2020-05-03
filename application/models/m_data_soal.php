@@ -15,7 +15,7 @@ class M_data_soal extends CI_Model{
   
   //function untuk menginputkan data soal
   function input_data($data,$table){
-		$this->db->insert($table,$data);
+		$this->db->insert($table,$data);                      
 	}
   //function untuk menghapus data soal
   function hapus_data($where,$table){

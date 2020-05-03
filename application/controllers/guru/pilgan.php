@@ -43,6 +43,7 @@ class Pilgan extends CI_Controller{
 	function tambah_aksi(){
 		$id_soal = $this->input->post('id_soal');//function melakukan post dari name field yang di inputkan
 		$id_paket = $this->input->post('id_paket');//function melakukan post dari name field yang di inputkan
+		$id_jenis_soal = $this->input->post('id_jenis_soal');
 		$pertanyaan = $this->input->post('pertanyaan');//function melakukan post dari name field yang di inputkan
 		$opsi_a = $this->input->post('opsi_a');
 		$opsi_b = $this->input->post('opsi_b');
@@ -55,6 +56,7 @@ class Pilgan extends CI_Controller{
 		$data = array(
 			'id_soal' => $id_soal,
 			'id_paket' => $id_paket,
+			'id_jenis_soal' => $id_jenis_soal,
 			'pertanyaan' => $pertanyaan,
 			'opsi_a' => $opsi_a,
 			'opsi_b' => $opsi_b,
@@ -62,10 +64,10 @@ class Pilgan extends CI_Controller{
 			'opsi_d' => $opsi_d,
 			'opsi_e' => $opsi_e,
 			'kunci_jawaban' => $kunci_jawaban,
-			'pembahasan' => $pembahasan,
+			'pembahasan' => $pembahasan
 		);
 		$this->m_data_soal->input_data($data,'tb_soal');//dikirimkan ke model m_data_soal yang ditangkap oleh function input_data
-		redirect('guru/pilgan/index');//apabila ekseskusi selesai akan di arahkan ke halaman crud/index (crud pesanggem)
+		redirect('guru/pilgan/index');
 	}
 //function update adalah function yang dipanggil saat kita klik simpan pada halam edit data pesanggem dan 
 //function ini yang mengupdate hasil edit data baru yang ditambahakan pada tabel pesanggem

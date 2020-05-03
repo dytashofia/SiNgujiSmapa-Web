@@ -48,7 +48,6 @@
                     <thead>
                         <tr>
                             <th class="text-center">No</th>
-                            <th class="text-center"></th>
                             <th class="">Id Soal</th>
                             <th class="">Id Paket</th>
                             <th class="">Pertanyaan</th>
@@ -65,7 +64,7 @@
                                 <tr>
                                     <td class="text-center"><?php echo $no++; ?></td>
                                     <td><?php echo $u->id_soal ?></td>
-                                    td
+                                    <td><?php echo $u->id_paket ?></td>
                                     <td><?php echo $u->pertanyaan ?></td>
 									<td><?php echo $u->kunci_jawaban?></td>
                                     <td><?php echo $u->pembahasan ?></td>
