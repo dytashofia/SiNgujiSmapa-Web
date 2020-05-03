@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login guru</title>
+	<title>login Admin</title>
 </head>
 <style>
 	body{
@@ -105,17 +106,17 @@ color: #ffffff;
 <img src="gambar/lp3.png" width="650px" height="450px">
 	<section class="caption">
 			<p class="cap_title">WELCOME TO <br> SINGUJI SMAPA</p>
-			<p class="cap_desc">Utuk masuk ke panel guru, silahkan login <br> terlebih dahulu!</p>
+			<p class="cap_desc">Untuk masuk ke panel admin , silahkan login <br> terlebih dahulu!</p>
 		</section>
 	
 	<!-- aksi form ini diarah ke fungsi aksi_login yang terdapat di controler login -->
 
 	<div class="kotak_login">
-	<form action="<?php echo base_url('login/login/aksi_login'); ?>" method="post">		
+	<form action="<?php echo base_url('login/loginadm/aksi_login'); ?>" method="post">		
 
 		<div class="row">
             <div class="col-12 col-md-6 text-center mt-5 mx-auto p-4">
-                <h1 class="h2">Login Guru</h1>
+                <h1 class="h2">Login admin</h1>
   
             </div>
         </div>
