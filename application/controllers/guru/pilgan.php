@@ -18,9 +18,10 @@ class Pilgan extends CI_Controller{
         $this->load->view('template/footer');
 	}
 
+	// function untuk menampilkan seluruh paket soal yang ada di dalam database
 	public function tampilPaket()
 	{
-		$data['result_paket_soal'] = $this->m_data_soal->tampil_paket_soal()->result();
+		$data['result_paket_soal'] = $this->m_data_soal->tampil_paket_soal()->result(); // function untuk mengambil semua data paket soal dari database
 		$this->load->view('template/header');
 		$this->load->view('template/topNavbar');
 		$this->load->view('template/sideNavbar');
