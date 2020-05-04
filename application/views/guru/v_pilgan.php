@@ -39,6 +39,11 @@
                                             Soal Pilihan Ganda
                                         </div>
                                         <div class="card-body">
+                                            <div class="row mb-4">
+                                                <div class="col-sm-12 col-md-4">
+                                                    <a href="<?= base_url('guru/pilgan/tambah');?>" class="btn btn-outline-success">Tambah Soal</a>
+                                                </div>
+                                            </div>
                                             <div class="table-responsive">
                                                 <table class="table table-bordered w-100 display">
                                                     <thead>
