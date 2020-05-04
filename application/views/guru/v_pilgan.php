@@ -66,6 +66,7 @@
                                                                 <td><?= $soal->pembahasan;?></td>
                                                             </tr>
                                                         <?php
+                                                            $noUrut++;
                                                             endforeach;
                                                         ?>
                                                     </tbody>
