@@ -73,6 +73,7 @@
                                                 </td>
                                             </tr>
                                         <?php
+                                            $noUrut++;
                                             endforeach;
                                         ?>
                                     </tbody>

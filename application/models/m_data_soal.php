@@ -68,5 +68,6 @@ class M_data_soal extends CI_Model{
     return $query;
   }
 
+
 }
  

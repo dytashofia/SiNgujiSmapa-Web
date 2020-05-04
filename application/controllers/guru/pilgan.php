@@ -4,12 +4,13 @@ class Pilgan extends CI_Controller{
 
 	function __construct(){
 		parent::__construct();		
-		$this->load->model(array('m_data_soal'));//controller memangguil database dari model m_data_soal 
+		$this->load->model(array('m_data_soal','m_data_soalEssay'));//controller memangguil database dari model m_data_soal 
 				$this->load->helper('url');// menggunakan helper url 
 	}
 // function index yang menampilkan crud pesanggem dan berhubungang dengan function tampil data di model m_data_soal
 	function index(){
-		$data['tb_soal'] = $this->m_data_soal->tampil_data()->result();// pada function index dibuat variabel $data yang menampilkan data tabel user vyang diambil dari model m_data_soal
+		$data['tb_soal_pilgan'] = $this->m_data_soal->tampil_data()->result();// pada function index dibuat variabel $data yang menampilkan data tabel user vyang diambil dari model m_data_soal
+		$data['tb_soal_essay'] = $this->m_data_soalEssay->tampil_soalEssay()->result();// pada function index dibuat variabel $data yang menampilkan data tabel soal yang daimbil dari model m_data_soalEssay
 		$this->load->view('template/header');
         $this->load->view('template/topNavbar');
         $this->load->view('template/sideNavbar');

@@ -44,12 +44,25 @@
                                                     <thead>
                                                         <tr>
                                                             <td>No</td>
-                                                            <td>Pembuat</td>
-                                                            <td></td>
+                                                            <td>Pertanyaan</td>
+                                                            <td>Kunci Jawaban</td>
+                                                            <td>Pembahasan</td>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-
+                                                        <?php
+                                                            $noUrut = 1;
+                                                            foreach($tb_soal_pilgan as $soal) :
+                                                        ?>
+                                                            <tr>
+                                                                <td><?= $noUrut;?></td>
+                                                                <td><?= $soal->pertanyaan;?></td>
+                                                                <td><?= $soal->kunci_jawaban;?></td>
+                                                                <td><?= $soal->pembahasan;?></td>
+                                                            </tr>
+                                                        <?php
+                                                            endforeach;
+                                                        ?>
                                                     </tbody>
                                                 </table>
                                             </div>
