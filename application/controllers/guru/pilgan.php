@@ -17,7 +17,7 @@ class Pilgan extends CI_Controller{
         $this->load->view('template/footer');
 	}
 
-	function paketSoal()
+	public function tampilPaket()
 	{
 		$data['result_paket_soal'] = $this->m_data_soal->tampil_paket_soal()->result();
 		$this->load->view('template/header');
