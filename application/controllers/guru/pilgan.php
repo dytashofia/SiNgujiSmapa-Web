@@ -16,6 +16,17 @@ class Pilgan extends CI_Controller{
 		$this->load->view('guru/v_pilgan',$data);// view them_crud adalah template yang didalamnya terdapat v_masuk (view yang di dalamnya terdapat tabel pesanggem) 
         $this->load->view('template/footer');
 	}
+
+	function paketSoal()
+	{
+		$data['result_paket_soal'] = $this->m_data_soal->tampil_paket_soal()->result();
+		$this->load->view('template/header');
+		$this->load->view('template/topNavbar');
+		$this->load->view('template/sideNavbar');
+		$this->load->view('guru/v_paketsoal',$data);
+		$this->load->view('template/footer');
+	}
+
 //function hapus adalah function yang dipanggil saat kita klik aksi hapus di tabel admin
     function hapus($id_soal){
 		//function hapus menangkap NIK dari pengiriman NIK yang ditampilkan di view masuk
@@ -32,10 +43,55 @@ class Pilgan extends CI_Controller{
 	}
 //function tambh adalah function yang dipanggil saat kita klik aksi tambah data di tabel admin untuk masuk ke halamn tambah data admin atau v_input_admin
 	function tambah(){
+
+		// Membuat fungsi untuk melakukan penambahkan ID soal secara otomatis
+		// Mendapatkan jumlah soal yang ada dalam database
+		$jumlahSoal = $this->m_data_soal->tampil_data()->num_rows();
+		// Jika jumlah soal lebih dari 0	
+		if($jumlahSoal > 0)
+		{
+			// Mengambil id soal sebelumnya
+			$soalTerakhir = $this->m_data_soal->tampil_soal_akhir()->result();
+			// Melakukan perulangan untuk mendapatkan isi dari variabel soalTerakhir
+			foreach($soalTerakhir as $row)
+			{
+				// Melakukan pemisahan huruf dengan angka pada id soal sebelumnya
+				$rawIdSoal = substr($row->id_soal,2);
+				// Melakukan konversi id soal yang baru saja dipisahkan dari huruf menjadi integer
+				$intIdSoal = intval($rawIdSoal);
+
+				// Menghitung panjang angka dari id soal yang sudah dijadikan integer
+				if(strlen($intIdSoal) == 1)
+				{
+					// Jika panjangnya hanya 1 digit ( berarti antara 1 - 9)
+					$idSoal = "SL00".($intIdSoal + 1);
+				}else if(strlen($intIdSoal) == 2)
+				{	
+					// Jika panjangnya hanya 2 digit ( berarti 10 - 99 )
+					$idSoal = "SL0".($intIdSoal + 1);
+				}else if(strlen($intIdSoal) == 3)
+				{
+					// Jika panjangnya hanya 3 digit ( berarti 100 - 999 )
+					$idSoal = "SL".($intIdSoal + 1);
+				}
+
+
+			}
+		}else
+		{
+			// Jika jumlah soal tidak sama dengan 0
+			// maka buat id soal baru
+			$idSoal = "SL001";
+		}
+	
+		$data = array(
+			'idSoal' => $idSoal
+		);
+
 		$this->load->view('template/header');
         $this->load->view('template/topNavbar');
         $this->load->view('template/sideNavbar');
-		$this->load->view('guru/v_tambah_pilgan');// apabila fuction tambah yang dieksekusi maka akan menampilkan view v_input untuk mengimputkan data
+		$this->load->view('guru/v_tambah_pilgan',$data);// apabila fuction tambah yang dieksekusi maka akan menampilkan view v_input untuk mengimputkan data
 		$this->load->view('template/footer');
 	}
 //function tambah aksi adalah function yang dipanggil saat kita klik tambah pada halam tambah data pesanggem dan 
@@ -66,6 +122,8 @@ class Pilgan extends CI_Controller{
 			'kunci_jawaban' => $kunci_jawaban,
 			'pembahasan' => $pembahasan
 		);
+
+
 		$this->m_data_soal->input_data($data,'tb_soal');//dikirimkan ke model m_data_soal yang ditangkap oleh function input_data
 		redirect('guru/pilgan/index');
 	}
