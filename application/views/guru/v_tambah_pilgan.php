@@ -1,86 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- File ini berfungsi sebagai tampilan input soal pilihan ganda -->
 <div id="layoutSidenav_content">
     <main>
-    <form>
         <div class="container-fluid">
-        <h1>
-            <i class="fa fa-table"></i>Tambah Soal Pilihan Ganda
-        </h1>
-        <div class="block full">
-        <form action="<?php echo base_url().'guru/pilgan/tambah_aksi';?>" method="post">
-        <div class="card-body p-4">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                <span class="input-group-text">ID SOAL </span>
-                <input type="text" name="id_soal">
+            <h1 class="mb-4">
+                <i class="fa fa-table mr-2"></i>Tambah Soal Pilihan Ganda
+            </h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active"><a href="">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="">Paket Soal</a></li>
+                <li class="breadcrumb-item active">Input Soal Pilihan Ganda</li>
+            </ol>
+            <div class="row mt-2">
+                <div class="col-12">
+                    <form action="<?= base_url('guru/pilgan/tambah_aksi');?>" method="post">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        ID SOAL
+                                    </div>
+                                </div>
+                                <input type="text" name="id_soal" id="id_soal" class="form-control" value="<?= $idSoal;?>" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        ID PAKET
+                                    </div>
+                                </div>
+                                <input type="text" name="id_paket" id="id_paket" class="form-control" value="PKT001" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        ID JENIS
+                                    </div>
+                                </div>
+                                <input type="text" name="id_jenis_soal" id="id_jenis_soal" class="form-control" value="JNS001" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="textarea-pertanyaan"> Pertanyaan </label>
+                            <textarea name="pertanyaan" id="textarea-ckeditor textarea-pertanyaan" class="form-control ckeditor"></textarea>
+                            <p class="form-text text-muted"> Form ini wajib diisi. </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="opsi_a"> Pilihan A </label>
+                            <textarea name="opsi_a" id="textarea-ckeditor opsi_a" class="form-control ckeditor"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="opsi_b"> Pilihan B </label>
+                            <textarea name="opsi_b" id="textarea-ckeditor opsi_b" class="form-control ckeditor"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="opsi_c"> Pilihan C </label>
+                            <textarea name="opsi_c" id="textarea-ckeditor opsi_c" class="form-control ckeditor"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="opsi_d"> Pilihan D </label>
+                            <textarea name="opsi_d" id="textarea-ckeditor opsi_d" class="form-control ckeditor"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="opsi_e"> Pilihan E </label>
+                            <textarea name="opsi_e" id="textarea-ckeditor opsi_e" class="form-control ckeditor"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="kunci_jawaban"> Kunci Jawaban </label>
+                            <select name="kunci_jawaban" id="kunci_jawaban" class="custom-select">
+                                <option value="B">Pilihan A</option>
+                                <option value="C">Pilihan B</option>
+                                <option value="D">Pilihan C</option>
+                                <option value="A">Pilihan D</option>
+                                <option value="E">Pilihan E</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="pembahasan"> Pembahasan </label>
+                            <textarea name="pembahasan" id="textarea-ckeditor pembahasan" class="form-control ckeditor"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2">
+                                <a href="" class="btn btn-outline-secondary w-100"> Kembali </a>
+                            </div>
+                            <div class="col-sm-12 col-md-2">
+                                <button type="submit" class="btn btn-outline-primary w-100">Simpan</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                <span class="input-group-text">ID paket </span>
-                <input type="text" name="id_paket">
-                </div>
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                <span class="input-group-text">ID jenis soal </span>
-                <input type="text" name="id_jenis_soal">
-                </div>
-            </div>
-
-        <div class="form-group">
-            <label>Pertanyaan</label>
-            <div>
-            <textarea id="textarea-ckeditor" name="pertanyaan"  class="ckeditor"></textarea></div>
-        </div>
-        <div class="form-group">
-            <label>Pilihan A</label>
-            <div>
-            <textarea id="textarea-ckeditor" rows="2" name="opsi_a"  class="ckeditor"></textarea></div>
-        </div>
-        <div class="form-group">
-            <label>Pilihan B</label>
-            <div>
-            <textarea id="textarea-ckeditor" rows="2" name="opsi_b"  class="ckeditor"></textarea></div>
-        </div>
-        <div class="form-group">
-            <label>Pilihan C</label>
-            <div>
-            <textarea id="textarea-ckeditor" rows="2" name="opsi_c"  class="ckeditor"></textarea></div>
-        </div>
-        <div class="form-group">
-            <label>Pilihan D</label>
-            <div>
-            <textarea id="textarea-ckeditor" rows="2" name="opsi_d"  class="ckeditor"></textarea></div>
-        </div>
-        <div class="form-group">
-            <label>Pilihan E</label>
-            <div>
-            <textarea id="textarea-ckeditor" rows="2" name="opsi_e"  class="ckeditor"></textarea></div>
-        </div>
-        <div class="form-group">
-            <label>Kunci Jawaban</label>
-            <div>
-                <select name="kunci_jawaban" class="form-control">
-                    <option value="a">pilihan A</option>
-                    <option value="b">Pilihan B</option>
-                    <option value="c">Pilihan C</option>
-                    <option value="d">Pilihan D</option>
-                    <option value="e">Pilihan E</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Pembahasan</label>
-            <div>
-            <textarea id="textarea-ckeditor" rows="2" name="pembahasan"  class="ckeditor"></textarea></div>
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-warning ml-2"><?php echo anchor('guru/pilgan/index/','Kembali');?></button>
-        <input type="submit" value="Tambah" class="btn btn-primary font-m-med">
-        </div>
             
-</div>
-<script src="<?php echo base_url();?>/js/helpers/ckeditor/ckeditor.js"></script>
-</form>
+        </div>
+    </main>
