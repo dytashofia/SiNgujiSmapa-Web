@@ -49,18 +49,26 @@
                                                 <td><?= $paket->tgl_pembuatan;?></td>
                                                 <td>
                                                     <div class="row">
-                                                        <div class="col-auto">
-                                                            <a href="" class="btn btn-success">
+                                                        <div class="col-sm-12 col-md-2 mr-3">
+                                                            <a href="<?= base_url('pilgan/');?>" class="btn btn-success">
                                                                 <i class="fas fa-eye"></i>
                                                             </a>
                                                         </div>
-                                                        <div class="col-auto">
+                                                        <div class="col-sm-12 col-md-2 mr-3">
                                                             <a href="" class="btn btn-primary">
                                                                 <i class="fas fa-pen"></i>
                                                             </a>
                                                         </div>
-                                                        <div class="col-auto"></div>
-                                                        <div class="col-auto"></div>
+                                                        <div class="col-sm-12 col-md-2 mr-3">
+                                                            <a href="" class="btn btn-secondary">
+                                                                <i class="far fa-stop-circle"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-12 col-md-2 mr-3">
+                                                            <a href="" class="btn btn-danger">
+                                                                <i class="fas fa-trash-alt"></i>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>
