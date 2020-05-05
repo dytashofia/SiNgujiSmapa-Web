@@ -66,3 +66,4 @@ $route['guru'] = 'guru/guru';
 $route['loginGuru']= 'login/login';
 $route['loginAdmin'] = 'login/loginadm';
 $route['pilgan'] = 'guru/pilgan';
+$route['essay'] = 'guru/C_soalEssay';
