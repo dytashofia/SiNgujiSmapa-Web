@@ -39,9 +39,15 @@ class Pilgan extends CI_Controller{
 //function edit adalah function yang dipanggil saat kita klik aksi edit di tabel pesanggem untuk masuk ke halamn edit data pesanggem atau v_editn
     function edit($id_soal){
 		//function edit menangkap NIK dari pengiriman NIKyang ditampilkan di v_masuk
-        $where = array('id_soal' => $id_soal);// kemudian diubah menjadi array
-        $data['tb_soal'] = $this->m_data_soal->edit_data($where,'tb_soal')->result();//dan barulah kita kirim data array edit tersebut pada m_data_soal dan ditangkap oleh function edit_data 
-        $this->load->view('v_edit_pilgan',$data);// kemudian setelah eksekusi ditrampilkan view v_edit untuk mengubah data
+        $where = array('id_soal'=> $id_soal);// kemudian diubah menjadi array
+        $data['tb_soal_pilgan'] = $this->m_data_soal->edit_data($where,'tb_soal')->result();//dan barulah kita kirim data array edit tersebut pada m_data_soal dan ditangkap oleh function edit_data 
+		
+		$this->load->view('template/header');
+		$this->load->view('template/topNavbar');
+		$this->load->view('template/sideNavbar');
+		$this->load->view('guru/v_edit_pilgan',$data);// kemudian setelah eksekusi ditrampilkan view v_edit untuk mengubah data
+		$this->load->view('template/footer');
+		
 	}
 //function tambh adalah function yang dipanggil saat kita klik aksi tambah data di tabel admin untuk masuk ke halamn tambah data admin atau v_input_admin
 	function tambah(){
@@ -134,12 +140,21 @@ class Pilgan extends CI_Controller{
 	function update(){
 		$id_soal = $this->input->post('id_soal');//function melakukan post dari name field yang di inputkan
 		$pertanyaan = $this->input->post('pertanyaan');//function melakukan post dari name field yang di inputkan
-		$kunci_jawaban = $this->input->post('kunci_jawaban');//function melakukan post dari name field yang di inputkan
+		$opsi_a = $this->input->post('opsi_a');
+		$opsi_b = $this->input->post('opsi_b');
+		$opsi_c = $this->input->post('opsi_c');
+		$opsi_d = $this->input->post('opsi_d');
+		$opsi_e = $this->input->post('opsi_e');
 		$pembahasan = $this->input->post('pembahasan');//function melakukan post dari name field yang di inputkan
+		$kunci_jawaban = $this->input->post('kunci_jawaban');//function melakukan post dari name field yang di inputkan
 		
 		$data = array(
-
 			'pertanyaan' => $pertanyaan,
+			'opsi_a' => $opsi_a,
+			'opsi_b' => $opsi_b,
+			'opsi_c' => $opsi_c,
+			'opsi_d' => $opsi_d,
+			'opsi_e' => $opsi_e,
 			'kunci_jawaban' => $kunci_jawaban,
 			'pembahasan' => $pembahasan,
 			//kemudian menjadikan data tersebut dalam bentuk array
@@ -153,6 +168,6 @@ class Pilgan extends CI_Controller{
 		);
 	
 		$this->m_data_soal->update_data($where,$data,'tb_soal');//SELANJUTNYA KITA KIRIMKAN KE M_DATA UPDATED DATA UNTUK MENGNGUBAH DATABASE  
-		redirect('guru/v_pilgan/index');// setelah itu langsung diarah kan ke function index yang menampilkan v_tampil
+		redirect('guru/pilgan/index');// setelah itu langsung diarah kan ke function index yang menampilkan v_tampil
 	}
 }
