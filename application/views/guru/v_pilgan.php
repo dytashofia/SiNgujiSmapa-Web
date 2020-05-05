@@ -81,17 +81,36 @@
                                             Soal Essay
                                         </div>
                                         <div class="card-body">
+                                            <div class="row mb-4">
+                                                <div class="col-sm-12 col-md-4">
+                                                    <a href="<?= base_url('guru/C_soalEssay/tambah_soalEssay');?>" class="btn btn-outline-success">Tambah Soal</a>
+                                                </div>
+                                            </div>
                                             <div class="table-responsive">
                                                 <table class="table table-bordered w-100 display">
                                                     <thead>
                                                         <tr>
                                                             <td>No</td>
-                                                            <td>Pembuat</td>
-                                                            <td></td>
+                                                            <td>Pertanyaan</td>
+                                                            <td>Kunci Jawaban</td>
+                                                            <td>Pembahasan</td>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-
+                                                         <?php
+                                                            $noUrut = 1;
+                                                            foreach($tb_soal_essay as $soal_essay) :
+                                                        ?>
+                                                            <tr>
+                                                                <td><?= $noUrut;?></td>
+                                                                <td><?= $soal_essay->pertanyaan;?></td>
+                                                                <td><?= $soal_essay->kunci_jawaban;?></td>
+                                                                <td><?= $soal_essay->pembahasan;?></td>
+                                                            </tr>
+                                                        <?php
+                                                            $noUrut++;
+                                                            endforeach;
+                                                        ?>    
                                                     </tbody>
                                                 </table>
                                             </div>
