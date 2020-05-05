@@ -41,7 +41,7 @@
                                     ID JENIS
                                 </div>
                             </div>
-                            <input type="text" name="id_jenis_soal" id="id_jenis_soal" class="form-control" value="JNS001" readonly>
+                            <input type="text" name="id_jenis_soal" id="id_jenis_soal" class="form-control" value="JNS002" readonly>
                         </div>
                     </div>
                     <div class="form-group">
