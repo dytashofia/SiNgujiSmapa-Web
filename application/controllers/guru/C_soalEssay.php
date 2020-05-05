@@ -31,6 +31,7 @@
 
         function paketSoal()
         {
+            //mengambil data dari model dengan function tampil_paket_soal
             $data['result_paket_soal'] = $this->m_data_soalEssay->tampil_paket_soal()->result();
             $this->load->view('template/header');
             $this->load->view('template/topNavbar');
@@ -40,35 +41,38 @@
         }
 
         public function tambah_soalEssay() {
-          $jumlahSoal = $this->m_data_soalEssay->tampil_soalEssay()->num_rows();  
 
-          if($jumlahSoal > 0) 
-          {
-              $soalTerakhir = $this->m_data_soalEssay->tampil_soal_akhir()->result();
-              foreach($soalTerakhir as $row)
-              {
-                  $rawIdSoal = substr($row->id_soal,2);
-                  $intIdSoal = intval($rawIdSoal);
+            // berfugsi untuk membuat fungsi melakukan penambahan ID soal secara otomatis
+		    // $jumlahSoal berfungsi untuk mendapatkan jumlah soal yang ada dalam database
+            $jumlahSoal = $this->m_data_soalEssay->tampil_soalEssay()->num_rows();  
 
-                  if(strlen($intIdSoal) == 1)
-                  {
-                      $idSoal = "SL0".($intIdSoal + 1);
-                  } else if(strlen($intIdSoal) == 2)
-                  {
-                      $idSoal = "SL0".($idSoal + 1);
-                  }else if(strlen($intIdSoal) == 3)
-                  {
-                      $idSoal = "SL".($intIdSoal + 1);
-                  }
-              }
-          } else
-          {
-              $idSoal = "SL001";
-          }
+            if($jumlahSoal > 0) 
+            {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+                $soalTerakhir = $this->m_data_soalEssay->tampil_soal_akhir()->result();
+                foreach($soalTerakhir as $row)
+                {
+                    $rawIdSoal = substr($row->id_soal,2);
+                    $intIdSoal = intval($rawIdSoal);
 
-          $data = array(
-              'idSoal' => $idSoal
-          );
+                    if(strlen($intIdSoal) == 1)
+                    {
+                        $idSoal = "SL0".($intIdSoal + 1);
+                    } else if(strlen($intIdSoal) == 2)
+                    {
+                        $idSoal = "SL0".($idSoal + 1);
+                    }else if(strlen($intIdSoal) == 3)
+                    {
+                        $idSoal = "SL".($intIdSoal + 1);
+                    }
+                }
+            } else
+            {
+                $idSoal = "SL001";
+            }
+
+            $data = array(
+                'idSoal' => $idSoal
+            );
 
             $this->load->view('template/header');
             $this->load->view('template/topNavbar');

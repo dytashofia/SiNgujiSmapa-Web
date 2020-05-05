@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <div id="layoutSidenav_content">
-    <main>
+<main>
     <form>
         <div class="container-fluid">
         <h1>
@@ -13,71 +13,73 @@
                 <li class="breadcrumb-item active">Input Soal Essay</li>
         </ol>
         <div class="block full">
-        <form action="<?php echo base_url('guru/C_soalEssay/tambah_aksi');?>" method="post">
-        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        ID SOAL
+            <form action="<?php echo base_url('guru/C_soalEssay/tambah_aksi');?>" method="post">
+                <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            ID SOAL
+                                        </div>
                                     </div>
-                                </div>
-                                <input type="text" name="id_soal" id="id_soal" class="form-control" value="<?= $idSoal;?>" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        ID PAKET
-                                    </div>
-                                </div>
-                                <input type="text" name="id_paket" id="id_paket" class="form-control" value="PKT001" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        ID JENIS
-                                    </div>
-                                </div>
-                                <input type="text" name="id_jenis_soal" id="id_jenis_soal" class="form-control" value="JNS001" readonly>
-                            </div>
-                        </div>
-            
-
-                        <div class="form-group">
-                                <label><h3>Soal</h3></label>
-                                <div>
-                                <textarea id="textarea-ckeditor" name="soal"  class="ckeditor"></textarea>
-                                </div>
-                        </div>    
-                        <br>
-                        <div class="form-group">
-                                <label><h3>Kunci Jawaban</h3></label>
-                                <div>
-                                <textarea id="textarea-ckeditor" name="soal"  class="ckeditor"></textarea></div>
+                                    <input type="text" name="id_soal" id="id_soal" class="form-control" value="<?= $idSoal;?>" readonly>
                                 </div>
                             </div>
-                        <br>        
                             <div class="form-group">
-                                <label><h3>Pembahasan</h3></label>
-                                <div>
-                                <textarea id="textarea-ckeditor" rows="2" name="pembahasan"  class="ckeditor"></textarea></div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            ID PAKET
+                                        </div>
+                                    </div>
+                                    <input type="text" name="id_paket" id="id_paket" class="form-control" value="" readonly>
+                                </div>
                             </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            ID JENIS
+                                        </div>
+                                    </div>
+                                    <input type="text" name="id_jenis_soal" id="id_jenis_soal" class="form-control" value="" readonly>
+                                </div>
+                            </div>
+                
+
+                            <div class="form-group">
+                                    <label><h3>Soal</h3></label>
+                                    <div>
+                                    <textarea id="textarea-ckeditor" name="soal"  class="ckeditor"></textarea>
+                                    </div>
+                            </div>    
                             <br>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-2">
-                                    <a href="" class="btn btn-outline-secondary w-100"> Kembali </a>
-                                </div>
-                                <div class="col-sm-12 col-md-2">
-                                    <button type="submit" class="btn btn-outline-primary w-100">Simpan</button>
-                                </div>
+                            <div class="form-group">
+                                    <label><h3>Kunci Jawaban</h3></label>
+                                    <div>
+                                    <textarea id="textarea-ckeditor" name="soal"  class="ckeditor"></textarea></div>
+                                    </div>
                             </div>
-    </main>
+                            <br>        
+                            <div class="form-group">
+                                    <label><h3>Pembahasan</h3></label>
+                                    <div>
+                                    <textarea id="textarea-ckeditor" rows="2" name="pembahasan"  class="ckeditor"></textarea></div>
+                            </div>
+                                <br>
+                            <div class="row">
+                                    <div class="col-sm-12 col-md-2">
+                                        <a href="<?php echo base_url('guru/C_soalEssay/index');?>" class="btn btn-outline-secondary w-100"> Kembali </a>
+                                    </div>
+                                    <div class="col-sm-12 col-md-2">
+                                        <button type="submit" class="btn btn-outline-primary w-100">Simpan</button>
+                                    </div>
+                </div>
+            </form>    
+    </form>   
+</main>
 
 
-
-<script src="<?php echo base_url('assets/ckeditor/ckeditor.js')?>"></script>        
+<!-- 
+<script src="<?php echo base_url('assets/ckeditor/ckeditor.js')?>"></script>         -->
 
 </html>
