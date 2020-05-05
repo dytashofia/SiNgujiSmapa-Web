@@ -7,7 +7,7 @@
             </h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active"><a href="">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="">Paket Soal</a></li>
+                <li class="breadcrumb-item"><a href="<?= base_url('guru/pilgan/tampilPaket');?>">Paket Soal</a></li>
                 <li class="breadcrumb-item active">Input Soal Pilihan Ganda</li>
             </ol>
             <div class="row mt-2">
@@ -84,7 +84,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-md-2">
-                                <a href="" class="btn btn-outline-secondary w-100"> Kembali </a>
+                                <a href="<?= base_url('guru/pilgan');?>" class="btn btn-outline-secondary w-100"> Kembali </a>
                             </div>
                             <div class="col-sm-12 col-md-2">
                                 <button type="submit" class="btn btn-outline-primary w-100">Simpan</button>

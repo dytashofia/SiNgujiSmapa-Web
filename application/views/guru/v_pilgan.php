@@ -9,7 +9,7 @@
                     <a href="<?= base_url('pilgan/');?>">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="<?= base_url('pilgan/tampilPaket');?>">Paket Soal</a>
+                    <a href="<?= base_url('guru/pilgan/tampilPaket');?>">Paket Soal</a>
                 </li>
                 <li class="breadcrumb-item active">Tambah Soal</li>
             </ol>
@@ -52,6 +52,7 @@
                                                             <td>Pertanyaan</td>
                                                             <td>Kunci Jawaban</td>
                                                             <td>Pembahasan</td>
+                                                            <th>Aksi</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -64,6 +65,20 @@
                                                                 <td><?= $soal->pertanyaan;?></td>
                                                                 <td><?= $soal->kunci_jawaban;?></td>
                                                                 <td><?= $soal->pembahasan;?></td>
+                                                                <td>
+                                                                <div class="row">
+                                                                    <div class="col-sm-12 col-md-2 mr-3">
+                                                                        <a href="<?= base_url('guru/pilgan/edit/'.$soal->id_soal);?>" class="btn btn-primary">
+                                                                            <i class="fas fa-pen"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="col-sm-12 col-md-2 mr-3">
+                                                                        <a href="<?= base_url('guru/pilgan/hapus/'.$soal->id_soal);?>"" class="btn btn-danger">
+                                                                            <i class="fas fa-trash-alt"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                </td>
                                                             </tr>
                                                         <?php
                                                             $noUrut++;
