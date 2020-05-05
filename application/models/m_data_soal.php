@@ -10,6 +10,7 @@ class M_data_soal extends CI_Model{
   }
   //fuction untuk menampilkan tabel soal
   public function tampil_data(){
+    $this->db->where('id_jenis_soal','JNS001');
     return $this->db->get('tb_soal');
   }
 
