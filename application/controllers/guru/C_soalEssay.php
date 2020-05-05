@@ -60,7 +60,7 @@
 
                     if(strlen($intIdSoal) == 1)
                     {
-                        $idSoal = "SL0".($intIdSoal + 1);
+                        $idSoal = "SL00".($intIdSoal + 1);
                     } else if(strlen($intIdSoal) == 2)
                     {
                         $idSoal = "SL0".($idSoal + 1);
