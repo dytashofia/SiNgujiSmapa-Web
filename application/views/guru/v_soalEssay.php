@@ -50,7 +50,6 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th class="text-center">No</th>
                                         <th class="text-center">Id Soal</th>
                                         <th class="text-center">Id Paket</th>
                                         <th class="text-center">Id Jenis Soal</th>
@@ -64,17 +63,17 @@
                                 <tbody>
                                     <?php 
                                         $no = 1;
-                                        foreach ($tb_soal as $essay) { ?>
+                                        foreach ($tb_soal_essay as $essay) { ?>
                                             <tr>
                                                 <td><?=$essay->id_soal?></td>
                                                 <td><?=$essay->id_paket?></td>
-                                                <td><?=$essay->jenis_soal?></td>
+                                                <td><?=$essay->id_jenis_soal?></td>
                                                 <td><?=$essay->pertanyaan?></td>
                                                 <td><?=$essay->kunci_jawaban?></td>
                                                 <td><?=$essay->pembahasan?></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-success"><i class="fa fa-edit"><?php echo anchor('guru/pilgan/edit/'.$u->id_soal,'Edit');?></i></button>
-                                                    <button type="button" class="btn btn-danger"><i class="fa fa-trash"><?php echo anchor('guru/pilgan/hapus/'.$u->id_soal,'Hapus');?></i></button>
+                                                    <button type="button" class="btn btn-success"><i class="fa fa-edit"><?php echo anchor('guru/C_soalEssay/edit/'.$u->id_soal,'Edit');?></i></button>
+                                                    <button type="button" class="btn btn-danger"><i class="fa fa-trash"><?php echo anchor('guru/C_soalEssay/hapus/'.$u->id_soal,'Hapus');?></i></button>
                                                 <td>
                                             </tr>
 

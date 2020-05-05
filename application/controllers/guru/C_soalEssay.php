@@ -21,7 +21,7 @@
             // halaman custom yang digunakan
             // footer
 
-            $data['tb_soal'] = $this->m_data_soalEssay->tampil_soalEssay()->result();
+            $data['tb_soal_essay'] = $this->m_data_soalEssay->tampil_soalEssay()->result();
             $this->load->view('template/header');
             $this->load->view('template/topNavbar');
             $this->load->view('template/sideNavbar');
@@ -102,7 +102,7 @@
 			'pembahasan' => $pembahasan,
 		    );
             $this->m_data_soalEssay->tambah_soalEssay($data,'tb_soal');
-            redirect('guru/C_soalEssay/index');
+            redirect('guru/pilgan/index');
         }
 
         public function edit_soalEssay($id_soal) {
@@ -115,13 +115,13 @@
             $this->load->view('guru/v_edit_soalEssay',$data);
             $this->load->view('template/footer');
 
-            redirect('guru/C_soalEssay->index');
+            //redirect('guru/C_soalEssay/index');
         }
 
         public function hapus_soalEssay($id_soal) {
             $where = array('id_soal' => $id_soal);
             $this->m_data_soalEssay->hapus_soalEssay($where,'tb_soal');
-            redirect('guru/C_soalEssay/index');
+            redirect('guru/pilgan/index');
         }
 
         public function update_soalEssay() {
@@ -141,7 +141,7 @@
             );
 
             $this->m_data_soalEssay->update_soalEssay($where,$data, 'tb_soal');
-            redirect('guru/v_soalEssay/index');
+            redirect('guru/C_soalEssay/index');
         }
 
     }

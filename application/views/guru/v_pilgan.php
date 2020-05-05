@@ -73,7 +73,7 @@
                                                                         </a>
                                                                     </div>
                                                                     <div class="col-sm-12 col-md-2 mr-3">
-                                                                        <a href="<?= base_url('guru/pilgan/hapus/'.$soal->id_soal);?>"" class="btn btn-danger">
+                                                                        <a href="<?= base_url('guru/pilgan/hapus/'.$soal->id_soal);?>" class="btn btn-danger">
                                                                             <i class="fas fa-trash-alt"></i>
                                                                         </a>
                                                                     </div>
@@ -109,6 +109,7 @@
                                                             <td>Pertanyaan</td>
                                                             <td>Kunci Jawaban</td>
                                                             <td>Pembahasan</td>
+                                                            <td>Aksi</td>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -121,6 +122,20 @@
                                                                 <td><?= $soal_essay->pertanyaan;?></td>
                                                                 <td><?= $soal_essay->kunci_jawaban;?></td>
                                                                 <td><?= $soal_essay->pembahasan;?></td>
+                                                                <td>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12 col-md-2 mr-3">
+                                                                            <a href="<?= base_url('guru/C_soalEssay/edit_soalEssay/'.$soal_essay->id_soal);?>" class="btn btn-primary">
+                                                                                <i class="fas fa-pen"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="col-sm-12 col-md-2 mr-3">
+                                                                            <a href="<?= base_url('guru/C_soalEssay/hapus_soalEssay/'.$soal_essay->id_soal);?>" class="btn btn-danger">
+                                                                                <i class="fas fa-trash-alt"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
                                                             </tr>
                                                         <?php
                                                             $noUrut++;
