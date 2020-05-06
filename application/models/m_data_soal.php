@@ -69,6 +69,68 @@ class M_data_soal extends CI_Model{
     return $query;
   }
 
+  // function untuk mengambil data paket soal terakhir dari database
+  function tampil_paket_soal_akhir()
+  {
+    $this->db->order_by('id_paket','DESC');
+    return $this->db->get('tb_paket_soal',1);
+  }
+
+  // function untuk mengambil data mata pelajar dari database
+  function tampil_mapel()
+  {
+     return $this->db->get('tb_mapel');
+  }
+
+  // function untuk melakukan insert kedalam tabel paket_soal
+  function tambah_paket($data, $table)
+  {
+      $this->db->insert($table,$data);
+  }
+
+  // function untuk menampilkan data paket soal tertentu berdasarkan id paket soal
+  function tampil_paket_where($where,$table)
+  {
+    $fields = array(
+    "tb_paket_soal.id_paket",
+    "tb_paket_soal.nama_paket",
+    "tb_paket_soal.NIP",
+    "tb_guru.nama_guru",
+    "tb_paket_soal.id_mapel",
+    "tb_mapel.mata_pelajaran",
+    "tb_paket_soal.id_jurusan",
+    "tb_jurusan.jurusan",
+    "tb_paket_soal.tgl_pembuatan"
+    );
+
+    $this->db->select($fields);
+    $this->db->from($table);
+    $this->db->join('tb_guru','tb_paket_soal.NIP = tb_guru.NIP');
+    $this->db->join('tb_mapel','tb_paket_soal.id_mapel = tb_mapel.id_mapel');
+    $this->db->join('tb_jurusan','tb_paket_soal.id_jurusan = tb_jurusan.id_jurusan');
+    $this->db->where($where);
+    return $this->db->get();
+  }
+
+  // function untuk menampilkan hanya data paket soal tertentu berdasarkan id paket soal
+  function tampil_paket_where_only($where,$table)
+  {
+    return $this->db->get_where($table,$where);
+  }
+
+  // function untuk mengupdate data paket soal berdasarkan id paket
+  function update_paket_soal($where,$data,$table)
+  {
+    $this->db->where($where);
+    $this->db->update($table,$data);
+  }
+
+  // function untuk menghapus data paket soal
+  function delete_paket_soal($where,$table)
+  {
+    $this->db->delete($table,$where);
+  }
+
 
 }
  

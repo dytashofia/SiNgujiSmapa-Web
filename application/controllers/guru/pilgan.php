@@ -29,6 +29,176 @@ class Pilgan extends CI_Controller{
 		$this->load->view('template/footer');
 	}
 
+	// function untuk menampilkan tampilan tambah paket soal 
+	public function tambahPaket()
+	{
+		// Membuat fungsi untuk melakukan penambahan id paket soal secara otomatis
+		// Mendapatkan jumlah paket soal yang ada di database
+		$jumlahPaketSoal = $this->m_data_soal->tampil_paket_soal()->num_rows();
+		// Jika jumlah paket soal lebih dari 0
+		if($jumlahPaketSoal > 0)
+		{
+			// Mengambil id soal sebelumnya
+			$lastId = $this->m_data_soal->tampil_paket_soal_akhir()->result();
+			// Melakukan perulangan untuk mengambil data
+			foreach($lastId as $row)
+			{
+				// Melakukan pemisahan huruf dengan angka pada id paket
+				$rawIdPaket = substr($row->id_paket,3);
+				// Melakukan konversi nilai pemisahan huruf dengan angka pada id paket menjadi integer
+				$idPaketInt = intval($rawIdPaket);
+
+				// Menghitung panjang id yang sudah menjadi integer
+				if(strlen($idPaketInt) == 1)
+				{
+					// jika panjang id hanya 1 angka
+					$idPaket = "PKT00".($idPaketInt + 1);
+				}else if(strlen($idPaketInt) == 2)
+				{
+					// jika panjang id hanya 2 angka
+					$idPaket = "PKT0".($idPaketInt + 1);
+				}else if(strlen($idPaketInt) == 3)
+				{
+					// jika panjang id hanya 3 angka
+					$idPaket = "PKT".($idPaketInt + 1);
+				}
+
+			}
+		}else
+		{
+			// Jika jumlah paket soal kurang dari sama dengan 0
+			$idPaket = "PKT001";
+		}
+
+		// Mengambil data mata pelajaran menggunakan model
+		$mapel = $this->m_data_soal->tampil_mapel()->result();
+
+		$data = array(
+			"id_paket_soal" => $idPaket,
+			'mapel' => $mapel
+		);
+		$this->load->view('template/header');
+		$this->load->view('template/topNavbar');
+		$this->load->view('template/sideNavbar');
+		$this->load->view('guru/v_tambah_paketSoal',$data);
+		$this->load->view('template/footer');
+	}
+
+	// function untuk melakukan tambah paket soal kedalam database
+	function aksiTambahPaket()
+	{
+		// Menyimpan data yang dikirimkan user melalui form kedalam variabel
+		$idPaket = $this->input->post("id_paket");
+		$idJurusan = $this->input->post("id_jurusan");
+		$idMapel = $this->input->post("id_mapel");
+		$namaPaket = $this->input->post("nama_paket");
+		$nip = $this->input->post("nip");
+		
+		$data = array(
+			'id_paket' => $idPaket,
+			'NIP' => $nip,
+			'nama_paket' => $namaPaket,
+			'id_jurusan' => $idJurusan,
+			'id_mapel' => $idMapel,
+			'tgl_pembuatan' => date("d/m/Y")
+		);
+
+		$this->m_data_soal->tambah_paket($data, "tb_paket_soal");
+		redirect('/guru/pilgan/tampilPaket');
+
+	}
+
+	// function untuk menampilkan detail data paket
+	function tampilDetailPaket()
+	{
+		// Mendapatkan Id Paket Soal dari URL
+		$idPaket = $this->uri->segment(4);
+		// Membuat array untuk digunakan sebagai select
+		$where = array(
+			'tb_paket_soal.id_paket' => $idPaket
+		);
+		// Mendapatkan data paket soal tertentu melalui model
+		$result = $this->m_data_soal->tampil_paket_where($where,'tb_paket_soal')->result();
+		// Menyimpan hasil dari model kedalam array
+		$data = array(
+			'data_paket' => $result
+		);
+		// Menampilkan view dengan data dari model
+		$this->load->view('template/header');
+		$this->load->view('template/topNavbar');
+		$this->load->view('template/sideNavbar');
+		$this->load->view('guru/v_detailPaket',$data);
+		$this->load->view('template/footer');
+
+	}
+
+	// function untuk menampilkan view mengedit paket soal
+	function editPaket()
+	{
+		// Mendapatkan Id Paket Soal dari URL
+		$idPaket = $this->uri->segment(4);
+		// Membuat array untuk digunakan sebagai media select
+		$where = array(
+			'id_paket' => $idPaket
+		);
+		// Mendapatkan data paket soal tertentu melalui modal
+		$result = $this->m_data_soal->tampil_paket_where_only($where,"tb_paket_soal")->result();
+		// Mendapatkan data mata pelajaran melalui modal
+		$resultMapel = $this->m_data_soal->tampil_mapel()->result();
+		// Menyimpan hasil dari model kedalam array
+		$data = array(
+			'data_paket' => $result,
+			'data_mapel' => $resultMapel
+		);
+		// Menampilkan view dengan data dari model
+		$this->load->view('template/header');
+		$this->load->view('template/topNavbar');
+		$this->load->view('template/sideNavbar');
+		$this->load->view('guru/v_editPaket.php',$data);
+		$this->load->view('template/footer');
+	}
+
+	// function untuk mengubah data paket soal
+	function aksiEditPaket()
+	{
+		// Menyimpan input dari user kedalam variabel
+		$id_paket = $this->input->post('id_paket');
+		$id_jurusan = $this->input->post('id_jurusan');
+		$id_mapel = $this->input->post('id_mapel');
+		$NIP = $this->input->post('NIP');
+		$nama_paket = $this->input->post('nama_paket');
+
+		// Menyimpan semua variabel kedalam array
+		$data = array(
+			'id_paket' => $id_paket,
+			'NIP' => $NIP,
+			'nama_paket' => $nama_paket,
+			'id_jurusan' => $id_jurusan,
+			'id_mapel' => $id_mapel
+		);
+		// Menyimpan data sebagai unique key yang digunakan untuk mengupdate
+		$where = array(
+			'id_paket' => $id_paket
+		);
+		$this->m_data_soal->update_paket_soal($where,$data,'tb_paket_soal');
+		redirect('guru/pilgan/tampilPaket');
+	}
+
+	// function untuk menghapus paket soal
+	function hapusPaket()
+	{
+		// Mendapatkan id paket soal yang akan dihapus
+		$id_paket = $this->uri->segment(4);
+		// Menyimpan id paket soal kedalam array
+		$where = array(
+			'id_paket' => $id_paket
+		);
+
+		$this->m_data_soal->delete_paket_soal($where,'tb_paket_soal');
+		redirect('guru/pilgan/tampilPaket');
+
+	}
+
 //function hapus adalah function yang dipanggil saat kita klik aksi hapus di tabel admin
     function hapus($id_soal){
 		//function hapus menangkap NIK dari pengiriman NIK yang ditampilkan di view masuk
@@ -171,3 +341,4 @@ class Pilgan extends CI_Controller{
 		redirect('guru/pilgan/index');// setelah itu langsung diarah kan ke function index yang menampilkan v_tampil
 	}
 }
+
