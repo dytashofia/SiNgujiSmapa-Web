@@ -171,3 +171,4 @@ class Pilgan extends CI_Controller{
 		redirect('guru/pilgan/index');// setelah itu langsung diarah kan ke function index yang menampilkan v_tampil
 	}
 }
+
