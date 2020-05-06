@@ -11,7 +11,7 @@
             </ol>
             <div class="row my-2">
                 <div class="col-sm-12 col-md-4">
-                    <a href="<?= base_url('/pilgan/');?>" class="btn btn-outline-success p-2">Tambah Paket Soal</a>
+                    <a href="<?= base_url('guru/pilgan/tambahPaket');?>" class="btn btn-outline-success p-2">Tambah Paket Soal</a>
                 </div>
             </div>
             <div class="row my-2">
@@ -23,16 +23,16 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered w-100" id="dataTable">
+                                <table class="table table-bordered" id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Paket Soal</th>
-                                            <th>Mata Pelajaran</th>
-                                            <th>Jurusan</th>
-                                            <th>Pembuat</th>
-                                            <th>Tanggal Pembuatan</th>
-                                            <th>Aksi</th>
+                                            <th class="text-center">No</th>
+                                            <th class="text-center">Paket Soal</th>
+                                            <th class="text-center">Mata Pelajaran</th>
+                                            <th class="text-center">Jurusan</th>
+                                            <th class="text-center" colspan="2">Pembuat</th>
+                                            <th class="text-center">Tanggal Pembuatan</th>
+                                            <th class="text-center" colspan="3">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -41,33 +41,28 @@
                                             foreach($result_paket_soal as $paket) :
                                         ?>
                                             <tr>
-                                                <td><?= $noUrut;?></td>
-                                                <td><?= $paket->nama_paket;?></td>
-                                                <td><?= $paket->mata_pelajaran;?></td>
-                                                <td><?= $paket->jurusan;?></td>
-                                                <td><?= $paket->nama_guru;?></td>
-                                                <td><?= $paket->tgl_pembuatan;?></td>
-                                                <td>
+                                                <td class="text-center"><?= $noUrut;?></td>
+                                                <td class="text-center"><?= $paket->nama_paket;?></td>
+                                                <td class="text-center"><?= $paket->mata_pelajaran;?></td>
+                                                <td class="text-center"><?= $paket->jurusan;?></td>
+                                                <td colspan="2"><?= $paket->nama_guru;?></td>
+                                                <td class="text-center"><?= $paket->tgl_pembuatan;?></td>
+                                                <td colspan="3">
                                                     <div class="row">
-                                                        <div class="col-sm-12 col-md-2 mr-3">
-                                                            <a href="<?= base_url('pilgan/');?>" class="btn btn-success">
+                                                        <div class="col-sm-12 col-md-2 mx-2">
+                                                            <a href="<?= base_url('/guru/pilgan/tampilDetailPaket/'.$paket->id_paket);?>" class="btn btn-success btn-sm">
                                                                 <i class="fas fa-eye"></i>
                                                             </a>
                                                         </div>
-                                                        <div class="col-sm-12 col-md-2 mr-3">
-                                                            <a href="" class="btn btn-primary">
+                                                        <div class="col-sm-12 col-md-2 mx-2">
+                                                            <a href="<?= base_url('/guru/pilgan/editPaket/'.$paket->id_paket);?>" class="btn btn-primary btn-sm">
                                                                 <i class="fas fa-pen"></i>
                                                             </a>
                                                         </div>
-                                                        <div class="col-sm-12 col-md-2 mr-3">
-                                                            <a href="" class="btn btn-secondary">
-                                                                <i class="far fa-stop-circle"></i>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-12 col-md-2 mr-3">
-                                                            <a href="" class="btn btn-danger">
+                                                        <div class="col-sm-12 col-md-2 mx-2">
+                                                            <button type="button" data-toggle="modal" data-target="#deletePaketModal<?=$paket->id_paket;?>" class="btn btn-danger btn-sm">
                                                                 <i class="fas fa-trash-alt"></i>
-                                                            </a>
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -85,3 +80,29 @@
             </div>            
         </div>
     </main>
+    <?php
+        foreach($result_paket_soal as $row) :    
+    ?>
+        <!-- Modal -->
+        <div class="modal fade" id="deletePaketModal<?= $row->id_paket?>" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="deletePaketModalTitle">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deletePaketModalTitle">Hapus Paket Soal</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 class="text-justify">Apakah anda yakin akan menghapus paket soal <em><strong><?= $row->nama_paket;?></strong></em></h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline-secondary" type="button" data-dismiss="modal"> Batal </button>
+                        <a href="<?= base_url('guru/pilgan/hapusPaket/'.$row->id_paket);?>" role="button" class="btn btn-success"> Ya </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php
+        endforeach;
+    ?>

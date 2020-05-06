@@ -25,7 +25,7 @@
         <script src="<?php echo base_url();?>/js/helpers/ckeditor/ckeditor.js"></script>
         <script>
             $(document).ready(function() {
-            $('table.display').DataTable();
+                $('table.display').DataTable();
             } );
         </script>
     </body>

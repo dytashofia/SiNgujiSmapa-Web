@@ -7,7 +7,8 @@
      }
 
     public function tampil_soalEssay(){
-            return $this->db->get('tb_soal');
+      $this->db->where('id_jenis_soal','JNS002');
+      return $this->db->get('tb_soal');
         }
 
     public function tampil_soal_akhir()

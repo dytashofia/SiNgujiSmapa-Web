@@ -112,7 +112,7 @@
             $this->load->view('template/header');
             $this->load->view('template/topNavbar');
             $this->load->view('template/sideNavbar');
-            $this->load->view('guru/v_edit_soalEssay',$data);
+            $this->load->view('guru/v_edit_soalEssay', $data);
             $this->load->view('template/footer');
 
             //redirect('guru/C_soalEssay/index');
@@ -124,7 +124,7 @@
             redirect('guru/pilgan/index');
         }
 
-        public function update_soalEssay() {
+        public function update_soalEssay($id_soal) {
             $id_soal = $this->input->post('id_soal');
             $pertanyaan = $this->input->post('pertanyaan');
             $kunci_jawaban = $this->input->post('kunci_jawaban');
