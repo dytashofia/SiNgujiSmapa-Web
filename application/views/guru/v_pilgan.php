@@ -176,6 +176,11 @@
                                             Soal Mengurutkan
                                         </div>
                                         <div class="card-body">
+                                            <div class="row mb-4">
+                                                <div class="col-sm-12 col-md-4">
+                                                    <a href="<?= base_url('guru/pilgan/tambah_sorting');?>" class="btn btn-outline-success">Tambah Soal</a>
+                                                </div>
+                                            </div>
                                             <div class="table-responsive">
                                                 <table class="table table-bordered w-100 display">
                                                     <thead>
@@ -194,18 +199,18 @@
                                                         ?>
                                                             <tr>
                                                                 <td><?= $noUrut;?></td>
-                                                                <td><?= $soal_essay->pertanyaan;?></td>
-                                                                <td><?= $soal_essay->kunci_jawaban;?></td>
-                                                                <td><?= $soal_essay->pembahasan;?></td>
+                                                                <td><?= $soal_sorting->pertanyaan;?></td>
+                                                                <td><?= $soal_sorting->kunci_jawaban;?></td>
+                                                                <td><?= $soal_sorting->pembahasan;?></td>
                                                                 <td>
                                                                     <div class="row">
                                                                         <div class="col-sm-12 col-md-2 mr-3">
-                                                                            <a href="<?= base_url('guru/C_soalEssay/edit_soalEssay/'.$soal_essay->id_soal);?>" class="btn btn-primary">
+                                                                            <a href="<?= base_url('guru/pilgan/edit_sorting/'.$soal_sorting->id_soal);?>" class="btn btn-primary">
                                                                                 <i class="fas fa-pen"></i>
                                                                             </a>
                                                                         </div>
                                                                         <div class="col-sm-12 col-md-2 mr-3">
-                                                                            <a href="<?= base_url('guru/C_soalEssay/hapus_soalEssay/'.$soal_essay->id_soal);?>" class="btn btn-danger">
+                                                                            <a href="<?= base_url('guru/pilgan/hapus_sorting/'.$soal_sorting->id_soal);?>" class="btn btn-danger">
                                                                                 <i class="fas fa-trash-alt"></i>
                                                                             </a>
                                                                         </div>

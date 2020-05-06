@@ -3,7 +3,7 @@
     <main>
         <div class="container-fluid">
             <h1 class="mb-4">
-                <i class="fa fa-table mr-2"></i>Tambah Soal Pilihan Ganda
+                <i class="fa fa-table mr-2"></i>Edit Soal Pilihan Ganda
             </h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active"><a href="<?= base_url('guru/home');?>">Dashboard</a></li>
