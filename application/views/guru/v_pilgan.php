@@ -163,7 +163,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-
+                                                            
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -181,17 +181,48 @@
                                                     <thead>
                                                         <tr>
                                                             <td>No</td>
-                                                            <td></td>
+                                                            <td>Pertanyaan</td>
+                                                            <td>Kunci Jawaban</td>
+                                                            <td>Pembahasan</td>
+                                                            <td>Aksi</td>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-
+                                                    <?php
+                                                            $noUrut = 1;
+                                                            foreach($tb_soal_sorting as $soal_sorting) :
+                                                        ?>
+                                                            <tr>
+                                                                <td><?= $noUrut;?></td>
+                                                                <td><?= $soal_essay->pertanyaan;?></td>
+                                                                <td><?= $soal_essay->kunci_jawaban;?></td>
+                                                                <td><?= $soal_essay->pembahasan;?></td>
+                                                                <td>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12 col-md-2 mr-3">
+                                                                            <a href="<?= base_url('guru/C_soalEssay/edit_soalEssay/'.$soal_essay->id_soal);?>" class="btn btn-primary">
+                                                                                <i class="fas fa-pen"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="col-sm-12 col-md-2 mr-3">
+                                                                            <a href="<?= base_url('guru/C_soalEssay/hapus_soalEssay/'.$soal_essay->id_soal);?>" class="btn btn-danger">
+                                                                                <i class="fas fa-trash-alt"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        <?php
+                                                            $noUrut++;
+                                                            endforeach;
+                                                        ?>    
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <
                             </div>
                         </div>
                     </div>

@@ -14,6 +14,11 @@ class M_data_soal extends CI_Model{
     return $this->db->get('tb_soal');
   }
 
+  public function tampil_data_sorting(){
+    $this->db->where('id_jenis_soal','JNS004');
+    return $this->db->get('tb_soal');
+  }
+
   // function untuk menampilkan data terakhir di tabel soal
   public function tampil_soal_akhir()
   {
@@ -68,8 +73,6 @@ class M_data_soal extends CI_Model{
     $query = $this->db->get();
     return $query;
   }
-<<<<<<< HEAD
-=======
 
   // function untuk mengambil data paket soal terakhir dari database
   function tampil_paket_soal_akhir()
@@ -196,6 +199,5 @@ class M_data_soal extends CI_Model{
   }
 
 
->>>>>>> d219597fe36e5b2a8d04bb64b0ba55ad54a001a1
 }
  

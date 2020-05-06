@@ -11,6 +11,7 @@ class Pilgan extends CI_Controller{
 	function index(){
 		$data['tb_soal_pilgan'] = $this->m_data_soal->tampil_data()->result();// pada function index dibuat variabel $data yang menampilkan data tabel user vyang diambil dari model m_data_soal
 		$data['tb_soal_essay'] = $this->m_data_soalEssay->tampil_soalEssay()->result();// pada function index dibuat variabel $data yang menampilkan data tabel soal yang daimbil dari model m_data_soalEssay
+		$data['tb_soal_sorting'] = $this->m_data_soal->tampil_data_sorting()->result();
 		$this->load->view('template/header');
         $this->load->view('template/topNavbar');
         $this->load->view('template/sideNavbar');
