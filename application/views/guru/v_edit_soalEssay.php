@@ -11,7 +11,7 @@
                 <li class="breadcrumb-item active">Edit Soal Essay</li>
             </ol>
             <div class="block full">
-                <form action="<?php echo base_url('guru/C_soalEssay/update_soalEssay');?>" method="post">
+                <form action="<?php= base_url('guru/C_soalEssay/update_soalEssay');?>" method="post">
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -19,7 +19,7 @@
                                     ID SOAL
                                 </div>
                             </div>
-                            <input type="text" name="id_soal" id="id_soal" class="form-control" value="$<?= $soal->$id_soal; ?>" readonly>
+                            <input type="text" name="id_soal" id="id_soal" class="form-control" value="<?= $soal->$id_soal ?>" readonly>
                         </div>
                     </div>  
                     <div class="form-group">
