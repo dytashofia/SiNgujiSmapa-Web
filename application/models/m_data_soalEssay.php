@@ -9,7 +9,12 @@
     public function tampil_soalEssay(){
       $this->db->where('id_jenis_soal','JNS002');
       return $this->db->get('tb_soal');
-        }
+    }
+
+    public function tampil_BenarSalah() {
+      $this->db->where('id_jenis_soal', 'JNS003');
+      return $this->db->get('tb_soal');
+    }
 
     public function tampil_soal_akhir()
       {
