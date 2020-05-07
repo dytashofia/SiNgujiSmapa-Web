@@ -176,7 +176,7 @@
                                                         ?> 
                                                             <tr>
                                                                 <td><?= $noUrut;?></td>
-                                                                <td><?= $benarSalah->$pertanyaan ?></td> 
+                                                                <td><?= $benarSalah->pertanyaan ?></td> 
                                                                 <td><?= $benarSalah->kunci_jawaban ?></td> 
                                                                 <td><?= $benarSalah->pembahasan ?></td>
                                                                 <td>

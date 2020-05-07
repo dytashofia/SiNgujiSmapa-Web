@@ -336,7 +336,7 @@ class Pilgan extends CI_Controller{
 			//kemudian menjadikan data tersebut dalam bentuk array
 			// kemudian menjadikaanya array data yang ditambahakan untuk ditangkap oleh model
 			//yang dijadikan array khusus data yang bisa di edit 
-			
+	
 		);
 	
 		$where = array(
