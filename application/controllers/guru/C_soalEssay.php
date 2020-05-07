@@ -107,7 +107,7 @@
 
         public function edit_soalEssay($id_soal) {
             $where = array('id_soal' => $id_soal);
-            $data['tb_soal'] = $this->m_data_soalEssay->edit_soalEssay($where,'tb_soal')->result();
+            $data['tb_soal_essay'] = $this->m_data_soalEssay->edit_soalEssay($where,'tb_soal')->result();
 
             $this->load->view('template/header');
             $this->load->view('template/topNavbar');

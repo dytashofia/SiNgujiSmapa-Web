@@ -11,6 +11,7 @@
                 <li class="breadcrumb-item active">Edit Soal Essay</li>
             </ol>
             <div class="block full">
+           <?php foreach($tb_soal_essay as $soal_essay){?>
                 <form action="<?php= base_url('guru/C_soalEssay/update_soalEssay');?>" method="post">
                     <div class="form-group">
                         <div class="input-group">
@@ -19,7 +20,7 @@
                                     ID SOAL
                                 </div>
                             </div>
-                            <input type="text" name="id_soal" id="id_soal" class="form-control" value="<?= $soal->$id_soal ?>" readonly>
+                            <input type="text" name="id_soal" id="id_soal" class="form-control" value="<?php print_r $soal_essay->id_soal; ?>" readonly>
                         </div>
                     </div>  
                     <div class="form-group">
@@ -29,7 +30,7 @@
                                     ID PAKET
                                 </div>
                             </div>
-                            <input type="text" name="id_paket" id="id_paket" class="form-control" value="PKT001" readonly>
+                            <input type="text" name="id_paket" id="id_paket" class="form-control" value="<?= $soal_essay->id_paket; ?>" readonly>
                         </div>
                     </div>
                     <div class="form-group">
@@ -72,6 +73,7 @@
                     </div>
                 </form>    
             </div>
+            <?php }; ?>
         </div>       
     </main>
 </div>
