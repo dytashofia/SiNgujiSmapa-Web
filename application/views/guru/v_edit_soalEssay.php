@@ -12,7 +12,7 @@
             </ol>
             <div class="block full">
            <?php foreach($tb_soal_essay as $soal_essay){?>
-                <form action="<?php echo base_url('guru/C_soalEssay/update_soalEssay');?>" method="post">
+                <form action="<?php echo base_url('guru/pilgan/update_soalEssay');?>" method="post">
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend">

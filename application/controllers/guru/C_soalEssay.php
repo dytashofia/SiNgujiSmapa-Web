@@ -206,7 +206,8 @@
 			'pertanyaan' => $pertanyaan,
 			'kunci_jawaban' => $kunci_jawaban,
 			'pembahasan' => $pembahasan,
-		    );
+            );
+            
             $this->m_data_soalEssay->tambah_soalEssay($data,'tb_soal');
             redirect('guru/pilgan/index');
     }   
@@ -225,8 +226,7 @@
     public function hapus_benarSalah($id_soal) {
         $where = array('id_soal' => $id_soal);
         $this->m_data_soalEssay->hapus_soalEssay($where,'tb_soal');
-        redirect('guru/pilgan/index');
-        
+        redirect('guru/pilgan/index');  
     }
 
     public function update_benarSalah() {

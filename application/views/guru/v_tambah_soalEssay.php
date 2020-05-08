@@ -13,7 +13,7 @@
             </ol>
 
             <div class="block full">
-                <form action="<?php echo base_url('guru/C_soalEssay/tambah_aksi');?>" method="post">
+                <form action="<?php echo base_url('guru/pilgan/tambah_aksiEssay');?>" method="post">
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend">
