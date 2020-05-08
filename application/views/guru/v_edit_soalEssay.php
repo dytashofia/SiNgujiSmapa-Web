@@ -12,7 +12,7 @@
             </ol>
             <div class="block full">
            <?php foreach($tb_soal_essay as $soal_essay){?>
-                <form action="<?php= base_url('guru/C_soalEssay/update_soalEssay');?>" method="post">
+                <form action="<?php echo base_url('guru/C_soalEssay/update_soalEssay');?>" method="post">
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -20,7 +20,7 @@
                                     ID SOAL
                                 </div>
                             </div>
-                            <input type="text" name="id_soal" id="id_soal" class="form-control" value="<?php $soal_essay->id_soal; ?>" readonly>
+                            <input type="text" name="id_soal" id="id_soal" class="form-control" value="<?php echo $soal_essay->id_soal; ?>" readonly>
                         </div>
                     </div>  
                     <div class="form-group">

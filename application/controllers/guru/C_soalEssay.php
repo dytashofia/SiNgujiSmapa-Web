@@ -230,7 +230,7 @@
     }
 
     public function update_benarSalah() {
-        $id_soal = $this->input->post('id_soal');
+            $id_soal = $this->input->post('id_soal');
             $pertanyaan = $this->input->post('pertanyaan');
             $kunci_jawaban = $this->input->post('kunci_jawaban');
             $pembahasan = $this->input->post('pembahasan');
