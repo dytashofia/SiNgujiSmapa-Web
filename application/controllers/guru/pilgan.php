@@ -98,18 +98,37 @@ class Pilgan extends CI_Controller{
 		$namaPaket = $this->input->post("nama_paket");
 		$nip = $this->input->post("nip");
 		
-		$data = array(
-			'id_paket' => $idPaket,
-			'NIP' => $nip,
-			'nama_paket' => $namaPaket,
-			'id_jurusan' => $idJurusan,
-			'id_mapel' => $idMapel,
-			'tgl_pembuatan' => date("d/m/Y")
-		);
+		// Membuat validasi form
+		$this->form_validation->set_rules('id_paket','ID Paket','trim|required|strip_tags');
+		$this->form_validation->set_rules('id_jurusan','ID Jurusan','trim|required|strip_tags');
+		$this->form_validation->set_rules('id_mapel','ID Mapel','trim|required|strip_tags');
+		$this->form_validation->set_rules('nama_paket','Nama Paket Soal','trim|required|strip_tags');
 
-		$this->m_data_soal->tambah_paket($data, "tb_paket_soal");
-		redirect('/guru/pilgan/tampilPaket');
+		// Membuat pesan validasi error
+		$this->form_validation->set_message('required','Kolom %s tidak boleh kosong.');
+		$this->form_validation->set_message('trim','Kolom %s berisi karakter yang dilarang.');
+		$this->form_validation->set_message('strip_tags','Kolom %s berisi karakter yang dilarang.');
 
+		// Menjalankan form
+		// Apabila hasil validasi form menunjukkan ada sesuatu yang salah
+		if($this->form_validation->run() == false)
+		{
+			$this->tambahPaket();
+		}else
+		{
+			// Apabila hasil validasi form menunjukkan tidak ada yang salah
+			$data = array(
+				'id_paket' => $idPaket,
+				'NIP' => $nip,
+				'nama_paket' => $namaPaket,
+				'id_jurusan' => $idJurusan,
+				'id_mapel' => $idMapel,
+				'tgl_pembuatan' => date("d/m/Y")
+			);
+
+			$this->m_data_soal->tambah_paket($data, "tb_paket_soal");
+			redirect('/guru/pilgan/tampilPaket');
+		}
 	}
 
 	// function untuk menampilkan detail data paket
