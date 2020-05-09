@@ -156,10 +156,10 @@ class Pilgan extends CI_Controller{
 	}
 
 	// function untuk menampilkan view mengedit paket soal
-	function editPaket()
+	function editPaket($idPaketUri)
 	{
 		// Mendapatkan Id Paket Soal dari URL
-		$idPaket = $this->uri->segment(4);
+		$idPaket = $idPaketUri;
 		// Membuat array untuk digunakan sebagai media select
 		$where = array(
 			'id_paket' => $idPaket
@@ -191,27 +191,49 @@ class Pilgan extends CI_Controller{
 		$NIP = $this->input->post('NIP');
 		$nama_paket = $this->input->post('nama_paket');
 
-		// Menyimpan semua variabel kedalam array
-		$data = array(
-			'id_paket' => $id_paket,
-			'NIP' => $NIP,
-			'nama_paket' => $nama_paket,
-			'id_jurusan' => $id_jurusan,
-			'id_mapel' => $id_mapel
-		);
-		// Menyimpan data sebagai unique key yang digunakan untuk mengupdate
-		$where = array(
-			'id_paket' => $id_paket
-		);
-		$this->m_data_soal->update_paket_soal($where,$data,'tb_paket_soal');
-		redirect('guru/pilgan/tampilPaket');
+		// Membuat validasi form
+		$this->form_validation->set_rules('id_paket','ID Paket','required|trim|strip_tags');
+		$this->form_validation->set_rules('id_jurusan','ID Jurusan','required|trim|strip_tags');
+		$this->form_validation->set_rules('id_mapel','ID Mapel','required|trim|strip_tags');
+		$this->form_validation->set_rules('nama_paket','Nama Paket Soal','required|trim|strip_tags');
+
+		// Membuat pesan error untuk validasi form
+		$this->form_validation->set_message('required','Kolom %s tidak boleh kosong.');
+		$this->form_validation->set_message('trim','Kolom %s berisi karakter yang dilarang.');
+		$this->form_validation->set_message('strip_tags','Kolom %s berisi karakter yang dilarang.');
+
+		// Menjalankan validasi form
+		// apabila ditemukan sebuah kesalahan dalam menjalankan validasi form
+		if($this->form_validation->run() == false)
+		{
+			$this->editPaket($id_paket);
+		}else
+		{
+			// Apabila tidak ditemukan sebuah kesalahan dalam menjalankan validasi form
+			// Menyimpan semua variabel kedalam array
+			$data = array(
+				'id_paket' => $id_paket,
+				'NIP' => $NIP,
+				'nama_paket' => $nama_paket,
+				'id_jurusan' => $id_jurusan,
+				'id_mapel' => $id_mapel
+			);
+			// Menyimpan data sebagai unique key yang digunakan untuk mengupdate
+			$where = array(
+				'id_paket' => $id_paket
+			);
+			$this->m_data_soal->update_paket_soal($where,$data,'tb_paket_soal');
+			redirect('guru/pilgan/tampilPaket');
+		}
+
+		
 	}
 
 	// function untuk menghapus paket soal
-	function hapusPaket()
+	function hapusPaket($idPaketUri)
 	{
 		// Mendapatkan id paket soal yang akan dihapus
-		$id_paket = $this->uri->segment(4);
+		$id_paket = $idPaketUri;
 		// Menyimpan id paket soal kedalam array
 		$where = array(
 			'id_paket' => $id_paket
