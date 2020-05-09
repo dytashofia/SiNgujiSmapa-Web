@@ -60,10 +60,12 @@
                                                 endforeach;
                                            ?>
                                         </select>
+                                        <?= form_error('id_mapel','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                                     </div>
                                     <div class="form-group">
                                         <label for="nama_paket"> Nama Paket </label>
                                         <input type="text" name="nama_paket" id="nama_paket" class="form-control" value="<?= $row->nama_paket;?>">
+                                        <?= form_error('nama_paket','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                                     </div>
                                     <input type="hidden" name="NIP" id="NIP" value="<?= $row->NIP;?>">
                                     <div class="form-group">
