@@ -50,10 +50,12 @@
                                             endforeach;
                                         ?>
                                     </select>
+                                    <?= form_error('id_mapel','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                                 </div>
                                 <div class="form-group">
                                     <label for="nama_paket"> Nama Paket </label>
-                                    <input type="text" name="nama_paket" id="nama_paket" class="form-control" placeholder="Masukkan nama pake soal...">
+                                    <input type="text" name="nama_paket" id="nama_paket" class="form-control" valie="<?= set_value('nama_paket');?>" placeholder="Masukkan nama pake soal...">
+                                    <?= form_error('nama_paket','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                                 </div>
                                 <input type="hidden" name="nip" value="<?= $_SESSION['nip'];?>">
                                 <div class="form-group">
