@@ -552,22 +552,30 @@ class Pilgan extends CI_Controller{
             //dilakukan untuk melakukan pengulangan untuk mendapatkan soal terakhir
 			foreach($soalTerakhir as $row) 
 			{
-                $rawIdSoal = substr($row->id_soal,2);
+				// Melakukan pemisahan huruf dengan angka pada id paket
+				$rawIdSoal = substr($row->id_soal,2);
+				// Melakukan konversi id soal yang baru saja dipisahkan dari huruf menjadi integer
                 $intIdSoal = intval($rawIdSoal);
 
+				// Menghitung panjang angka dari id soal yang sudah dijadikan integer
                 if(strlen($intIdSoal) == 1)
                 {
-                    $idSoal = "SL00".($intIdSoal + 1);
+					// Jika panjangnya hanya 1 digit ( berarti antara 1 - 9)
+					$idSoal = "SL00".($intIdSoal + 1);
                 }   else if(strlen($intIdSoal) == 2)
                 {
+					// Jika panjangnya hanya 2 digit ( berarti 10 - 99 )
                     $idSoal = "SL0".($idSoal + 1);
                 }	else if(strlen($intIdSoal) == 3)
                 {
+					// Jika panjangnya hanya 3 digit ( berarti 100 - 999 )
                     $idSoal = "SL".($intIdSoal + 1);
                 }
             }
             } else
             {
+				// Jika jumlah soal tidak sama dengan 0
+				// maka buat id soal baru
                 $idSoal = "SL001";
             }
 
@@ -578,28 +586,29 @@ class Pilgan extends CI_Controller{
             $this->load->view('template/header');
             $this->load->view('template/topNavbar');
             $this->load->view('template/sideNavbar');
-            $this->load->view('guru/v_tambah_soalEssay',$data);
+            $this->load->view('guru/v_tambah_soalEssay',$data); // maka setelah kondisi diatas di lakukan/eksekusi, ditampilkan view v_tambah_soalEssay untuk menambah data
             $this->load->view('template/footer');
 	}
 	
-	public function tambah_aksiEssay() {
-            $id_soal = $this->input->post('id_soal');
-            $id_paket = $this->input->post('id_paket');
-            $id_jenis_soal = $this->input->post('id_jenis_soal');
-            $pertanyaan = $this->input->post('pertanyaan');
-            $kunci_jawaban = $this->input->post('kunci_jawaban');
-            $pembahasan = $this->input->post('pembahasan');
+	public function tambah_aksiEssay() { //fungsi untuk aksi dari tambah data
+            $id_soal = $this->input->post('id_soal'); //untuk post field namr yang dimasukkan berupa id_soal
+            $id_paket = $this->input->post('id_paket'); //untuk post field namr yang dimasukkan berupa id_paket
+            $id_jenis_soal = $this->input->post('id_jenis_soal'); //untuk post field namr yang dimasukkan berupa id_jenis_soal
+            $pertanyaan = $this->input->post('pertanyaan'); //untuk post field namr yang dimasukkan berupa pertanyaan
+            $kunci_jawaban = $this->input->post('kunci_jawaban'); //untuk post field namr yang dimasukkan berupa kunci_jawaban
+            $pembahasan = $this->input->post('pembahasan'); //untuk post field namr yang dimasukkan berupa pembahasan
             
-            $data = array(
-			'id_soal' => $id_soal,
+			//kemudian field yang dimasukkan disimpan dalam bentuk array berupa variable data
+			$data = array(
+			'id_soal' => $id_soal, 
 			'id_paket' => $id_paket,
 			'id_jenis_soal' => $id_jenis_soal,
 			'pertanyaan' => $pertanyaan,
 			'kunci_jawaban' => $kunci_jawaban,
 			'pembahasan' => $pembahasan,
 		    );
-            $this->m_data_soalEssay->tambah_soalEssay($data,'tb_soal');
-            redirect('guru/pilgan/index');
+            $this->m_data_soalEssay->tambah_soalEssay($data,'tb_soal'); //kemudian data tesebut di kirim ke models tambah soal untuk menambah data ke tabel soal 
+            redirect('guru/pilgan/index'); //setelah itu langsung dialihkan ke view yang dipanggil oleh function index
 	}
 	
 	public function edit_soalEssay($id_soal) {
@@ -652,17 +661,24 @@ class Pilgan extends CI_Controller{
                 //dilakukan untuk melakukan pengulangan untuk mendapatkan soal terakhir
                 foreach($soalTerakhir as $row)
                 {
-                    $rawIdSoal = substr($row->id_soal,2);
-                    $intIdSoal = intval($rawIdSoal);
+					// Melakukan pemisahan huruf dengan angka pada id paket
+					$rawIdSoal = substr($row->id_soal,2);
 
+					// Melakukan konversi id soal yang baru saja dipisahkan dari huruf menjadi integer
+                    $intIdSoal = intval($rawIdSoal);
+				
+					// Menghitung panjang angka dari id soal yang sudah dijadikan integer
                     if(strlen($intIdSoal) == 1)
                     {
+						// Jika panjangnya hanya 1 digit ( berarti antara 1 - 9)
                         $idSoal = "SL00".($intIdSoal + 1);
                     } else if(strlen($intIdSoal) == 2)
                     {
+						// Jika panjangnya hanya 2 digit ( berarti 10 - 99 )
                         $idSoal = "SL0".($idSoal + 1);
                     }else if(strlen($intIdSoal) == 3)
                     {
+						// Jika panjangnya hanya 3 digit ( berarti 100 - 999 )
                         $idSoal = "SL".($intIdSoal + 1);
                     }
                 }
@@ -671,6 +687,8 @@ class Pilgan extends CI_Controller{
                 $idSoal = "SL001";
             }
 
+			// Jika jumlah soal tidak sama dengan 0
+			// maka buat id soal baru
             $data = array(
                 'idSoal' => $idSoal
             );

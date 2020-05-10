@@ -14,7 +14,7 @@
 
             <div class="block full">
             <?php foreach($tb_soal_benarSalah as $benar_salah) { ?>
-                <form action="<?php echo base_url('guru/C_soalEssay/update_benarSalah');?>" method="post">
+                <form action="<?php echo base_url('guru/pilgan/update_benarSalah');?>" method="post">
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend">
