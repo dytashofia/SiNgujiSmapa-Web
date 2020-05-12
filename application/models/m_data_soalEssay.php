@@ -29,6 +29,7 @@
         $this->db->insert($table,$data);                   
     }
 
+    //function untuk hapus soal essay dan beanr salah
     function hapus_soalEssay($where,$table){
       $this->db->where($where);
       $this->db->delete($table);

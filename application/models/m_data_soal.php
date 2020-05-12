@@ -14,9 +14,22 @@ class M_data_soal extends CI_Model{
     return $this->db->get('tb_soal');
   }
 
+  //function untuk menampilkan data soal essay
+  public function tampil_soalEssay(){
+      $this->db->where('id_jenis_soal','JNS002');
+      return $this->db->get('tb_soal');
+  }
+
+  //function untuk menampilkan data soal sorting
   public function tampil_data_sorting(){
     $this->db->where('id_jenis_soal','JNS004');
     return $this->db->get('tb_soal');
+  }
+
+  //function untuk menampilkan data soal benar salah
+  public function tampil_BenarSalah() {
+      $this->db->where('id_jenis_soal', 'JNS003');
+      return $this->db->get('tb_soal');
   }
 
   // function untuk menampilkan data terakhir di tabel soal
@@ -31,21 +44,47 @@ class M_data_soal extends CI_Model{
   //function untuk menginputkan data soal
   function input_data($data,$table){
 		$this->db->insert($table,$data);                      
-	}
+  }
+  
+  //function untuk input data soal essay dan benar salah
+  public function tambah_soalEssay($data,$table) {
+        $this->db->insert($table,$data);                   
+  }
+
   //function untuk menghapus data soal
   function hapus_data($where,$table){
 		$this->db->where($where);
 		$this->db->delete($table);
   }
+
+  //function untuk menghapus soal essay dan benar salah
+  function hapus_soalEssay($where,$table){
+      $this->db->where($where);
+      $this->db->delete($table);
+  }
+
    //function untuk mengedit data soal
   function edit_data($where,$table){		
     return $this->db->get($table,$where);
   }
+
+  //function untuk mengedit soal essay dan benar salah
+  function edit_soalEssay($where,$table){		
+      return $this->db->get($table,$where);
+  }
+
+  //function untuk mengupdate data soal essay dan benar salah setelah di edit
+  function update_soalEssay($where,$data,$table){
+    $this->db->where($where);
+    $this->db->update($table,$data);
+  }
+
   //function untuk mengupdate tabel soal setelah dilakukan edit data
   function update_data($where,$data,$table){
 		$this->db->where($where);
 		$this->db->update($table,$data);
   }	
+
   //function untuk melihat data soal yang diinginkan 
   function lihat_data($where,$table){		
     return $this->db->get($table,$where);
