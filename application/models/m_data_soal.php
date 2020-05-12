@@ -39,7 +39,7 @@ class M_data_soal extends CI_Model{
   }
    //function untuk mengedit data soal
   function edit_data($where,$table){		
-    return $this->db->get_where($table,$where);
+    return $this->db->get($table,$where);
   }
   //function untuk mengupdate tabel soal setelah dilakukan edit data
   function update_data($where,$data,$table){
@@ -48,7 +48,7 @@ class M_data_soal extends CI_Model{
   }	
   //function untuk melihat data soal yang diinginkan 
   function lihat_data($where,$table){		
-    return $this->db->get_where($table,$where);
+    return $this->db->get($table,$where);
   }
 
   // function untuk melihat semua data dalam tabel paket soal
