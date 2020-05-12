@@ -4,15 +4,15 @@ class Pilgan extends CI_Controller{
 
 	function __construct(){
 		parent::__construct();		
-		$this->load->model(array('m_data_soal','m_data_soalEssay'));//controller memangguil database dari model m_data_soal 
+		$this->load->model(array('m_data_soal'));//controller memangguil database dari model m_data_soal 
 				$this->load->helper('url');// menggunakan helper url 
 	}
 // function index yang menampilkan crud pesanggem dan berhubungang dengan function tampil data di model m_data_soal
 	function index(){
 		$data['tb_soal_pilgan'] = $this->m_data_soal->tampil_data()->result();// pada function index dibuat variabel $data yang menampilkan data tabel user vyang diambil dari model m_data_soal
-		$data['tb_soal_essay'] = $this->m_data_soalEssay->tampil_soalEssay()->result();// pada function index dibuat variabel $data yang menampilkan data tabel soal yang daimbil dari model m_data_soalEssay
+		$data['tb_soal_essay'] = $this->m_data_soal->tampil_soalEssay()->result();// pada function index dibuat variabel $data yang menampilkan data tabel soal yang daimbil dari model m_data_soalEssay
 		$data['tb_soal_sorting'] = $this->m_data_soal->tampil_data_sorting()->result();
-		$data['tb_soal_benarSalah'] = $this->m_data_soalEssay->tampil_BenarSalah()->result();
+		$data['tb_soal_benarSalah'] = $this->m_data_soal->tampil_BenarSalah()->result();
 		$this->load->view('template/header');
         $this->load->view('template/topNavbar');
         $this->load->view('template/sideNavbar');
@@ -541,13 +541,13 @@ class Pilgan extends CI_Controller{
 
         // berfugsi untuk membuat fungsi melakukan penambahan ID soal secara otomatis
 		// $jumlahSoal berfungsi untuk mendapatkan jumlah soal yang ada dalam database
-        $jumlahSoal = $this->m_data_soalEssay->tampil_soalEssay()->num_rows();  
+        $jumlahSoal = $this->m_data_soal->tampil_soalEssay()->num_rows();  
             
         //jika jumlah soal lebih dari nol
 		if($jumlahSoal > 0) 
 		{   
            //maka memanggil id soal sebelumnya                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-        	$soalTerakhir = $this->m_data_soalEssay->tampil_soal_akhir()->result();
+        	$soalTerakhir = $this->m_data_soal->tampil_soal_akhir()->result();
 
             //dilakukan untuk melakukan pengulangan untuk mendapatkan soal terakhir
 			foreach($soalTerakhir as $row) 
@@ -613,7 +613,7 @@ class Pilgan extends CI_Controller{
 	
 	public function edit_soalEssay($id_soal) {
             $where = array('id_soal' => $id_soal);
-            $data['tb_soal_essay'] = $this->m_data_soalEssay->edit_soalEssay($where,'tb_soal')->result();
+            $data['tb_soal_essay'] = $this->m_data_soal->edit_soalEssay($where,'tb_soal')->result();
 
             $this->load->view('template/header');
             $this->load->view('template/topNavbar');
@@ -624,7 +624,7 @@ class Pilgan extends CI_Controller{
 	
 	public function hapus_soalEssay($id_soal) {
             $where = array('id_soal' => $id_soal);
-            $this->m_data_soalEssay->hapus_soalEssay($where,'tb_soal');
+            $this->m_data_soal->hapus_soalEssay($where,'tb_soal');
             redirect('guru/pilgan/index');
 	}
 	
@@ -644,19 +644,19 @@ class Pilgan extends CI_Controller{
                 'id_soal' => $id_soal
             );
 
-            $this->m_data_soalEssay->update_soalEssay($where,$data,'tb_soal');
+            $this->m_data_soal->update_soalEssay($where,$data,'tb_soal');
             redirect('guru/pilgan/index');
     }
 
 // ===== Controller Benar Salah =====
 	public function tambah_benarSalah() {
-            $jumlahSoal = $this->m_data_soalEssay->tampil_BenarSalah()->num_rows();  
+            $jumlahSoal = $this->m_data_soal->tampil_BenarSalah()->num_rows();  
             
             //jika jumlah soal lebih dari nol
             if($jumlahSoal > 0) 
             {   
                 //maka memanggil id soal sebelumnya                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-                $soalTerakhir = $this->m_data_soalEssay->tampil_soal_akhir()->result();
+                $soalTerakhir = $this->m_data_soal->tampil_soal_akhir()->result();
 
                 //dilakukan untuk melakukan pengulangan untuk mendapatkan soal terakhir
                 foreach($soalTerakhir as $row)
@@ -717,13 +717,13 @@ class Pilgan extends CI_Controller{
 			'pembahasan' => $pembahasan,
             );
             
-            $this->m_data_soalEssay->tambah_soalEssay($data,'tb_soal');
+            $this->m_data_soal->tambah_soalEssay($data,'tb_soal');
             redirect('guru/pilgan/index');
 	}
 	
 	public function edit_benarSalah($id_soal) {
         $where = array('id_soal' => $id_soal);
-        $data['tb_soal_benarSalah'] = $this->m_data_soalEssay->edit_soalEssay($where, 'tb_soal');    
+        $data['tb_soal_benarSalah'] = $this->m_data_soal->edit_soalEssay($where, 'tb_soal');    
 
         $this->load->view('template/header');
             $this->load->view('template/topNavbar');
@@ -734,7 +734,7 @@ class Pilgan extends CI_Controller{
 	
 	public function hapus_benarSalah($id_soal) {
         $where = array('id_soal' => $id_soal);
-        $this->m_data_soalEssay->hapus_soalEssay($where,'tb_soal');
+        $this->m_data_soal->hapus_soalEssay($where,'tb_soal');
         redirect('guru/pilgan/index');  
 	}
 	
@@ -754,7 +754,7 @@ class Pilgan extends CI_Controller{
                 'id_soal' => $id_soal
             );
 
-            $this->m_data_soalEssay->update_soalEssay($where,$data, 'tb_soal');
+            $this->m_data_soal->update_soalEssay($where,$data, 'tb_soal');
             redirect('guru/pilgan/index');
         
     }
