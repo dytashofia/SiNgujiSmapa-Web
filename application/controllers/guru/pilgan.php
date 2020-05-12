@@ -12,6 +12,7 @@ class Pilgan extends CI_Controller{
 		$data['tb_soal_pilgan'] = $this->m_data_soal->tampil_data()->result();// pada function index dibuat variabel $data yang menampilkan data tabel user vyang diambil dari model m_data_soal
 		$data['tb_soal_essay'] = $this->m_data_soalEssay->tampil_soalEssay()->result();// pada function index dibuat variabel $data yang menampilkan data tabel soal yang daimbil dari model m_data_soalEssay
 		$data['tb_soal_sorting'] = $this->m_data_soal->tampil_data_sorting()->result();
+		$data['tb_soal_benarSalah'] = $this->m_data_soalEssay->tampil_BenarSalah()->result();
 		$this->load->view('template/header');
         $this->load->view('template/topNavbar');
         $this->load->view('template/sideNavbar');
@@ -97,18 +98,37 @@ class Pilgan extends CI_Controller{
 		$namaPaket = $this->input->post("nama_paket");
 		$nip = $this->input->post("nip");
 		
-		$data = array(
-			'id_paket' => $idPaket,
-			'NIP' => $nip,
-			'nama_paket' => $namaPaket,
-			'id_jurusan' => $idJurusan,
-			'id_mapel' => $idMapel,
-			'tgl_pembuatan' => date("d/m/Y")
-		);
+		// Membuat validasi form
+		$this->form_validation->set_rules('id_paket','ID Paket','trim|required|strip_tags');
+		$this->form_validation->set_rules('id_jurusan','ID Jurusan','trim|required|strip_tags');
+		$this->form_validation->set_rules('id_mapel','ID Mapel','trim|required|strip_tags');
+		$this->form_validation->set_rules('nama_paket','Nama Paket Soal','trim|required|strip_tags');
 
-		$this->m_data_soal->tambah_paket($data, "tb_paket_soal");
-		redirect('/guru/pilgan/tampilPaket');
+		// Membuat pesan validasi error
+		$this->form_validation->set_message('required','Kolom %s tidak boleh kosong.');
+		$this->form_validation->set_message('trim','Kolom %s berisi karakter yang dilarang.');
+		$this->form_validation->set_message('strip_tags','Kolom %s berisi karakter yang dilarang.');
 
+		// Menjalankan form
+		// Apabila hasil validasi form menunjukkan ada sesuatu yang salah
+		if($this->form_validation->run() == false)
+		{
+			$this->tambahPaket();
+		}else
+		{
+			// Apabila hasil validasi form menunjukkan tidak ada yang salah
+			$data = array(
+				'id_paket' => $idPaket,
+				'NIP' => $nip,
+				'nama_paket' => $namaPaket,
+				'id_jurusan' => $idJurusan,
+				'id_mapel' => $idMapel,
+				'tgl_pembuatan' => date("d/m/Y")
+			);
+
+			$this->m_data_soal->tambah_paket($data, "tb_paket_soal");
+			redirect('/guru/pilgan/tampilPaket');
+		}
 	}
 
 	// function untuk menampilkan detail data paket
@@ -136,10 +156,10 @@ class Pilgan extends CI_Controller{
 	}
 
 	// function untuk menampilkan view mengedit paket soal
-	function editPaket()
+	function editPaket($idPaketUri)
 	{
 		// Mendapatkan Id Paket Soal dari URL
-		$idPaket = $this->uri->segment(4);
+		$idPaket = $idPaketUri;
 		// Membuat array untuk digunakan sebagai media select
 		$where = array(
 			'id_paket' => $idPaket
@@ -171,27 +191,49 @@ class Pilgan extends CI_Controller{
 		$NIP = $this->input->post('NIP');
 		$nama_paket = $this->input->post('nama_paket');
 
-		// Menyimpan semua variabel kedalam array
-		$data = array(
-			'id_paket' => $id_paket,
-			'NIP' => $NIP,
-			'nama_paket' => $nama_paket,
-			'id_jurusan' => $id_jurusan,
-			'id_mapel' => $id_mapel
-		);
-		// Menyimpan data sebagai unique key yang digunakan untuk mengupdate
-		$where = array(
-			'id_paket' => $id_paket
-		);
-		$this->m_data_soal->update_paket_soal($where,$data,'tb_paket_soal');
-		redirect('guru/pilgan/tampilPaket');
+		// Membuat validasi form
+		$this->form_validation->set_rules('id_paket','ID Paket','required|trim|strip_tags');
+		$this->form_validation->set_rules('id_jurusan','ID Jurusan','required|trim|strip_tags');
+		$this->form_validation->set_rules('id_mapel','ID Mapel','required|trim|strip_tags');
+		$this->form_validation->set_rules('nama_paket','Nama Paket Soal','required|trim|strip_tags');
+
+		// Membuat pesan error untuk validasi form
+		$this->form_validation->set_message('required','Kolom %s tidak boleh kosong.');
+		$this->form_validation->set_message('trim','Kolom %s berisi karakter yang dilarang.');
+		$this->form_validation->set_message('strip_tags','Kolom %s berisi karakter yang dilarang.');
+
+		// Menjalankan validasi form
+		// apabila ditemukan sebuah kesalahan dalam menjalankan validasi form
+		if($this->form_validation->run() == false)
+		{
+			$this->editPaket($id_paket);
+		}else
+		{
+			// Apabila tidak ditemukan sebuah kesalahan dalam menjalankan validasi form
+			// Menyimpan semua variabel kedalam array
+			$data = array(
+				'id_paket' => $id_paket,
+				'NIP' => $NIP,
+				'nama_paket' => $nama_paket,
+				'id_jurusan' => $id_jurusan,
+				'id_mapel' => $id_mapel
+			);
+			// Menyimpan data sebagai unique key yang digunakan untuk mengupdate
+			$where = array(
+				'id_paket' => $id_paket
+			);
+			$this->m_data_soal->update_paket_soal($where,$data,'tb_paket_soal');
+			redirect('guru/pilgan/tampilPaket');
+		}
+
+		
 	}
 
 	// function untuk menghapus paket soal
-	function hapusPaket()
+	function hapusPaket($idPaketUri)
 	{
 		// Mendapatkan id paket soal yang akan dihapus
-		$id_paket = $this->uri->segment(4);
+		$id_paket = $idPaketUri;
 		// Menyimpan id paket soal kedalam array
 		$where = array(
 			'id_paket' => $id_paket
@@ -335,7 +377,7 @@ class Pilgan extends CI_Controller{
 			//kemudian menjadikan data tersebut dalam bentuk array
 			// kemudian menjadikaanya array data yang ditambahakan untuk ditangkap oleh model
 			//yang dijadikan array khusus data yang bisa di edit 
-			
+	
 		);
 	
 		$where = array(
@@ -492,6 +534,230 @@ class Pilgan extends CI_Controller{
 		redirect('guru/pilgan/index');// setelah itu langsung diarah kan ke function index yang menampilkan v_tampil
 	}
 
+
+// ======= Controller Soal Essay =======
+
+	public function tambah_soalEssay() {
+
+        // berfugsi untuk membuat fungsi melakukan penambahan ID soal secara otomatis
+		// $jumlahSoal berfungsi untuk mendapatkan jumlah soal yang ada dalam database
+        $jumlahSoal = $this->m_data_soalEssay->tampil_soalEssay()->num_rows();  
+            
+        //jika jumlah soal lebih dari nol
+		if($jumlahSoal > 0) 
+		{   
+           //maka memanggil id soal sebelumnya                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+        	$soalTerakhir = $this->m_data_soalEssay->tampil_soal_akhir()->result();
+
+            //dilakukan untuk melakukan pengulangan untuk mendapatkan soal terakhir
+			foreach($soalTerakhir as $row) 
+			{
+				// Melakukan pemisahan huruf dengan angka pada id paket
+				$rawIdSoal = substr($row->id_soal,2);
+				// Melakukan konversi id soal yang baru saja dipisahkan dari huruf menjadi integer
+                $intIdSoal = intval($rawIdSoal);
+
+				// Menghitung panjang angka dari id soal yang sudah dijadikan integer
+                if(strlen($intIdSoal) == 1)
+                {
+					// Jika panjangnya hanya 1 digit ( berarti antara 1 - 9)
+					$idSoal = "SL00".($intIdSoal + 1);
+                }   else if(strlen($intIdSoal) == 2)
+                {
+					// Jika panjangnya hanya 2 digit ( berarti 10 - 99 )
+                    $idSoal = "SL0".($idSoal + 1);
+                }	else if(strlen($intIdSoal) == 3)
+                {
+					// Jika panjangnya hanya 3 digit ( berarti 100 - 999 )
+                    $idSoal = "SL".($intIdSoal + 1);
+                }
+            }
+            } else
+            {
+				// Jika jumlah soal tidak sama dengan 0
+				// maka buat id soal baru
+                $idSoal = "SL001";
+            }
+
+            $data = array(
+                'idSoal' => $idSoal
+            );
+
+            $this->load->view('template/header');
+            $this->load->view('template/topNavbar');
+            $this->load->view('template/sideNavbar');
+            $this->load->view('guru/v_tambah_soalEssay',$data); // maka setelah kondisi diatas di lakukan/eksekusi, ditampilkan view v_tambah_soalEssay untuk menambah data
+            $this->load->view('template/footer');
+	}
 	
+	public function tambah_aksiEssay() { //fungsi untuk aksi dari tambah data
+            $id_soal = $this->input->post('id_soal'); //untuk post field namr yang dimasukkan berupa id_soal
+            $id_paket = $this->input->post('id_paket'); //untuk post field namr yang dimasukkan berupa id_paket
+            $id_jenis_soal = $this->input->post('id_jenis_soal'); //untuk post field namr yang dimasukkan berupa id_jenis_soal
+            $pertanyaan = $this->input->post('pertanyaan'); //untuk post field namr yang dimasukkan berupa pertanyaan
+            $kunci_jawaban = $this->input->post('kunci_jawaban'); //untuk post field namr yang dimasukkan berupa kunci_jawaban
+            $pembahasan = $this->input->post('pembahasan'); //untuk post field namr yang dimasukkan berupa pembahasan
+            
+			//kemudian field yang dimasukkan disimpan dalam bentuk array berupa variable data
+			$data = array(
+			'id_soal' => $id_soal, 
+			'id_paket' => $id_paket,
+			'id_jenis_soal' => $id_jenis_soal,
+			'pertanyaan' => $pertanyaan,
+			'kunci_jawaban' => $kunci_jawaban,
+			'pembahasan' => $pembahasan,
+		    );
+            $this->m_data_soalEssay->tambah_soalEssay($data,'tb_soal'); //kemudian data tesebut di kirim ke models tambah soal untuk menambah data ke tabel soal 
+            redirect('guru/pilgan/index'); //setelah itu langsung dialihkan ke view yang dipanggil oleh function index
+	}
+	
+	public function edit_soalEssay($id_soal) {
+            $where = array('id_soal' => $id_soal);
+            $data['tb_soal_essay'] = $this->m_data_soalEssay->edit_soalEssay($where,'tb_soal')->result();
+
+            $this->load->view('template/header');
+            $this->load->view('template/topNavbar');
+            $this->load->view('template/sideNavbar');
+            $this->load->view('guru/v_edit_soalEssay', $data);
+            $this->load->view('template/footer');
+	}
+	
+	public function hapus_soalEssay($id_soal) {
+            $where = array('id_soal' => $id_soal);
+            $this->m_data_soalEssay->hapus_soalEssay($where,'tb_soal');
+            redirect('guru/pilgan/index');
+	}
+	
+	public function update_soalEssay() {
+            $id_soal = $this->input->post('id_soal');
+            $pertanyaan = $this->input->post('pertanyaan');
+            $kunci_jawaban = $this->input->post('kunci_jawaban');
+            $pembahasan = $this->input->post('pembahasan');
+
+            $data = array(
+                'pertanyaan' => $pertanyaan,
+                'kunci_jawaban' => $kunci_jawaban,
+                'pembahasan' => $pembahasan,
+            );
+
+            $where = array(
+                'id_soal' => $id_soal
+            );
+
+            $this->m_data_soalEssay->update_soalEssay($where,$data,'tb_soal');
+            redirect('guru/pilgan/index');
+    }
+
+// ===== Controller Benar Salah =====
+	public function tambah_benarSalah() {
+            $jumlahSoal = $this->m_data_soalEssay->tampil_BenarSalah()->num_rows();  
+            
+            //jika jumlah soal lebih dari nol
+            if($jumlahSoal > 0) 
+            {   
+                //maka memanggil id soal sebelumnya                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                $soalTerakhir = $this->m_data_soalEssay->tampil_soal_akhir()->result();
+
+                //dilakukan untuk melakukan pengulangan untuk mendapatkan soal terakhir
+                foreach($soalTerakhir as $row)
+                {
+					// Melakukan pemisahan huruf dengan angka pada id paket
+					$rawIdSoal = substr($row->id_soal,2);
+
+					// Melakukan konversi id soal yang baru saja dipisahkan dari huruf menjadi integer
+                    $intIdSoal = intval($rawIdSoal);
+				
+					// Menghitung panjang angka dari id soal yang sudah dijadikan integer
+                    if(strlen($intIdSoal) == 1)
+                    {
+						// Jika panjangnya hanya 1 digit ( berarti antara 1 - 9)
+                        $idSoal = "SL00".($intIdSoal + 1);
+                    } else if(strlen($intIdSoal) == 2)
+                    {
+						// Jika panjangnya hanya 2 digit ( berarti 10 - 99 )
+                        $idSoal = "SL0".($idSoal + 1);
+                    }else if(strlen($intIdSoal) == 3)
+                    {
+						// Jika panjangnya hanya 3 digit ( berarti 100 - 999 )
+                        $idSoal = "SL".($intIdSoal + 1);
+                    }
+                }
+            } else
+            {
+                $idSoal = "SL001";
+            }
+
+			// Jika jumlah soal tidak sama dengan 0
+			// maka buat id soal baru
+            $data = array(
+                'idSoal' => $idSoal
+            );
+
+            $this->load->view('template/header');
+            $this->load->view('template/topNavbar');
+            $this->load->view('template/sideNavbar');
+            $this->load->view('guru/v_tambah_benarSalah',$data);
+            $this->load->view('template/footer');
+	}
+	
+	public function tambah_aksi_benarSalah() {
+            $id_soal = $this->input->post('id_soal');
+            $id_paket = $this->input->post('id_paket');
+            $id_jenis_soal = $this->input->post('id_jenis_soal');
+            $pertanyaan = $this->input->post('pertanyaan');
+            $kunci_jawaban = $this->input->post('kunci_jawaban');
+            $pembahasan = $this->input->post('pembahasan');
+            
+            $data = array(
+			'id_soal' => $id_soal,
+			'id_paket' => $id_paket,
+			'id_jenis_soal' => $id_jenis_soal,
+			'pertanyaan' => $pertanyaan,
+			'kunci_jawaban' => $kunci_jawaban,
+			'pembahasan' => $pembahasan,
+            );
+            
+            $this->m_data_soalEssay->tambah_soalEssay($data,'tb_soal');
+            redirect('guru/pilgan/index');
+	}
+	
+	public function edit_benarSalah($id_soal) {
+        $where = array('id_soal' => $id_soal);
+        $data['tb_soal_benarSalah'] = $this->m_data_soalEssay->edit_soalEssay($where, 'tb_soal');    
+
+        $this->load->view('template/header');
+            $this->load->view('template/topNavbar');
+            $this->load->view('template/sideNavbar');
+            $this->load->view('guru/v_edit_benarSalah', $data);
+            $this->load->view('template/footer');
+	}
+	
+	public function hapus_benarSalah($id_soal) {
+        $where = array('id_soal' => $id_soal);
+        $this->m_data_soalEssay->hapus_soalEssay($where,'tb_soal');
+        redirect('guru/pilgan/index');  
+	}
+	
+	public function update_benarSalah() {
+            $id_soal = $this->input->post('id_soal');
+            $pertanyaan = $this->input->post('pertanyaan');
+            $kunci_jawaban = $this->input->post('kunci_jawaban');
+            $pembahasan = $this->input->post('pembahasan');
+
+            $data = array(
+                'pertanyaan' => $pertanyaan,
+                'kunci_jawaban' => $kunci_jawaban,
+                'pembahasan' => $pembahasan,
+            );
+
+            $where = array(
+                'id_soal' => $id_soal
+            );
+
+            $this->m_data_soalEssay->update_soalEssay($where,$data, 'tb_soal');
+            redirect('guru/pilgan/index');
+        
+    }
+
 }
 

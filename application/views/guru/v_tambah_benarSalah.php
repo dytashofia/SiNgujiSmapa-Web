@@ -13,7 +13,7 @@
             </ol>
 
             <div class="block full">
-                <form action="<?php echo base_url('guru/pilgan/tambah_aksiEssay');?>" method="post">
+                <form action="<?php echo base_url('guru/C_soalEssay/tambah_aksi_benarSalah');?>" method="post">
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -41,7 +41,7 @@
                                     ID JENIS
                                 </div>
                             </div>
-                            <input type="text" name="id_jenis_soal" id="id_jenis_soal" class="form-control" value="JNS002" readonly>
+                            <input type="text" name="id_jenis_soal" id="id_jenis_soal" class="form-control" value="JNS003" readonly>
                         </div>
                     </div>
                     <div class="form-group">
@@ -53,9 +53,14 @@
                     <br>
                     <div class="form-group">
                         <label><h3>Kunci Jawaban</h3></label>
-                            <div>
-                                <textarea id="textarea-ckeditor" name="kunci_jawaban"  class="ckeditor"></textarea></div>
-                            </div>
+                            <div class="form-group">
+                                <div>
+                                    <select name="kunci_jawaban" id="kunci_jawaban" class="form-control">
+                                        <option value="true">TRUE</option>
+                                        <option value="false">FALSE</option>
+                                    </select>
+                                </div>
+                            </div>    
                     </div>
                     <br>        
                     <div class="form-group">
@@ -63,6 +68,7 @@
                             <div>
                                 <textarea id="textarea-ckeditor" rows="2" name="pembahasan"  class="ckeditor"></textarea></div>
                             </div>
+                    </div>        
                     <br>
                     <div class="row">
                         <div class="col-sm-12 col-md-2">

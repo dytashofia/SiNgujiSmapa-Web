@@ -4,16 +4,17 @@
     <main>
         <div class="container-fluid">
             <h1>
-                <i class="fa fa-table"></i>Tambah Soal Essay
+                <i class="fa fa-table"></i>Edit Soal Benar Salah
             </h1>
             <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active"><a href="">Dashboard</a></li>
                     <li class="breadcrumb-item"><a href="">Paket Soal</a></li>
-                    <li class="breadcrumb-item active">Input Soal Essay</li>
+                    <li class="breadcrumb-item active">Edit Soal Benar Salah</li>
             </ol>
 
             <div class="block full">
-                <form action="<?php echo base_url('guru/pilgan/tambah_aksiEssay');?>" method="post">
+            <?php foreach($tb_soal_benarSalah as $benar_salah) { ?>
+                <form action="<?php echo base_url('guru/pilgan/update_benarSalah');?>" method="post">
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -21,7 +22,7 @@
                                     ID SOAL
                                 </div>
                             </div>
-                            <input type="text" name="id_soal" id="id_soal" class="form-control" value="<?= $idSoal; ?>" readonly>
+                            <input type="text" name="id_soal" id="id_soal" class="form-control" value="<?= $benar_salah->id_soal; ?>" readonly>
                         </div>
                     </div>  
                     <div class="form-group">
@@ -41,7 +42,7 @@
                                     ID JENIS
                                 </div>
                             </div>
-                            <input type="text" name="id_jenis_soal" id="id_jenis_soal" class="form-control" value="JNS002" readonly>
+                            <input type="text" name="id_jenis_soal" id="id_jenis_soal" class="form-control" value="JNS003" readonly>
                         </div>
                     </div>
                     <div class="form-group">
@@ -53,9 +54,14 @@
                     <br>
                     <div class="form-group">
                         <label><h3>Kunci Jawaban</h3></label>
-                            <div>
-                                <textarea id="textarea-ckeditor" name="kunci_jawaban"  class="ckeditor"></textarea></div>
-                            </div>
+                            <div class="form-group">
+                                <div>
+                                    <select name="kunci_jawaban" id="kunci_jawaban" class="form-control">
+                                        <option value="true">TRUE</option>
+                                        <option value="false">FALSE</option>
+                                    </select>
+                                </div>
+                            </div>    
                     </div>
                     <br>        
                     <div class="form-group">
@@ -63,6 +69,7 @@
                             <div>
                                 <textarea id="textarea-ckeditor" rows="2" name="pembahasan"  class="ckeditor"></textarea></div>
                             </div>
+                    </div>        
                     <br>
                     <div class="row">
                         <div class="col-sm-12 col-md-2">
@@ -72,14 +79,15 @@
                             <button type="submit" class="btn btn-outline-primary w-100">Simpan</button>
                         </div>
                     </div>
-                </form>    
+                </form>   
             </div>
+            <?php }; ?> 
         </div>       
     </main>
 </div>    
 
 
-<!-- 
-<script src="<?php echo base_url('assets/ckeditor/ckeditor.js')?>"></script>         -->
+ 
+<script src="<?php echo base_url('assets/ckeditor/ckeditor.js')?>"></script>    
 
 </html>

@@ -3,7 +3,7 @@
 <div id="layoutSidenav_content">
          <div class="container-fluid">
             <h1 class="mb-4">
-                <i class="fa fa-table mr-2"></i>Tambah Soal Essay
+                <i class="fa fa-table mr-2"></i>Edit Soal Essay
             </h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active"><a href="<?= base_url('guru/home');?>">Dashboard</a></li>
@@ -11,7 +11,8 @@
                 <li class="breadcrumb-item active">Edit Soal Essay</li>
             </ol>
             <div class="block full">
-                <form action="<?php= base_url('guru/C_soalEssay/update_soalEssay');?>" method="post">
+           <?php foreach($tb_soal_essay as $soal_essay){?>
+                <form action="<?php echo base_url('guru/pilgan/update_soalEssay');?>" method="post">
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -19,7 +20,7 @@
                                     ID SOAL
                                 </div>
                             </div>
-                            <input type="text" name="id_soal" id="id_soal" class="form-control" value="<?= $soal->$id_soal ?>" readonly>
+                            <input type="text" name="id_soal" id="id_soal" class="form-control" value="<?php echo $soal_essay->id_soal; ?>" readonly>
                         </div>
                     </div>  
                     <div class="form-group">
@@ -72,6 +73,7 @@
                     </div>
                 </form>    
             </div>
+            <?php }; ?>
         </div>       
     </main>
 </div>
