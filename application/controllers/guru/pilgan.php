@@ -607,7 +607,7 @@ class Pilgan extends CI_Controller{
 			'kunci_jawaban' => $kunci_jawaban,
 			'pembahasan' => $pembahasan,
 		    );
-            $this->m_data_soalEssay->tambah_soalEssay($data,'tb_soal'); //kemudian data tesebut di kirim ke models tambah soal untuk menambah data ke tabel soal 
+            $this->m_data_soal->tambah_soalEssay($data,'tb_soal'); //kemudian data tesebut di kirim ke models tambah soal untuk menambah data ke tabel soal 
             redirect('guru/pilgan/index'); //setelah itu langsung dialihkan ke view yang dipanggil oleh function index
 	}
 	
