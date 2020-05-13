@@ -6,8 +6,8 @@
                 <i class="fa fa-table mr-2"></i>Detail Paket Soal
             </h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active"><a href="">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="<?= base_url('guru/pilgan/tampilPaket');?>">Paket Soal</a></li>
+                <li class="breadcrumb-item active"><a href="<?= base_url('guru');?>">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="<?= base_url('tampilPaket');?>">Paket Soal</a></li>
                 <li class="breadcrumb-item active">Detail Paket Soal</li>
             </ol>
             <div class="row mt-2">
@@ -136,7 +136,7 @@
                                         </div>
                                     </div>
                                     <div class="from-group">
-                                        <a href="<?= base_url('/guru/pilgan/tampilPaket/');?>" class="btn btn-outline-secondary p-2"> Kembali </a>
+                                        <a href="<?= base_url('tampilPaket');?>" class="btn btn-outline-secondary p-2"> Kembali </a>
                                     </div>
                                 <?php
                                     endforeach;
