@@ -8,27 +8,50 @@ class M_data_soal extends CI_Model{
     parent::__construct();
     //Codeigniter : Write Less Do More
   }
+
+  // function untuk menampilkan seluruh isi tabel soal
+  public function tampil_seluruh_soal()
+  {
+    return $this->db->get('tb_soal');
+  }
+
   //fuction untuk menampilkan tabel soal
-  public function tampil_data(){
-    $this->db->where('id_jenis_soal','JNS001');
+  public function tampil_data($whereParam){
+    $where = array(
+      'id_paket' => $whereParam,
+      'id_jenis_soal' => 'JNS001'
+    );
+    $this->db->where($where);
     return $this->db->get('tb_soal');
   }
 
   //function untuk menampilkan data soal essay
-  public function tampil_soalEssay(){
-      $this->db->where('id_jenis_soal','JNS002');
+  public function tampil_soalEssay($whereParam){
+    $where = array(
+      'id_paket' => $whereParam,
+      'id_jenis_soal' => 'JNS002'
+    );
+      $this->db->where($where);
       return $this->db->get('tb_soal');
   }
 
   //function untuk menampilkan data soal sorting
-  public function tampil_data_sorting(){
-    $this->db->where('id_jenis_soal','JNS004');
+  public function tampil_data_sorting($whereParam){
+    $where = array(
+      'id_paket' => $whereParam,
+      'id_jenis_soal' => 'JNS004'
+    );
+    $this->db->where($where);
     return $this->db->get('tb_soal');
   }
 
   //function untuk menampilkan data soal benar salah
-  public function tampil_BenarSalah() {
-      $this->db->where('id_jenis_soal', 'JNS003');
+  public function tampil_BenarSalah($whereParam){
+    $where = array(
+      'id_paket' => $whereParam,
+      'id_jenis_soal' => 'JNS003'
+    );
+      $this->db->where($where);
       return $this->db->get('tb_soal');
   }
 
@@ -65,12 +88,12 @@ class M_data_soal extends CI_Model{
 
    //function untuk mengedit data soal
   function edit_data($where,$table){		
-    return $this->db->get($table,$where);
+    return $this->db->get_where($table,$where);
   }
 
   //function untuk mengedit soal essay dan benar salah
   function edit_soalEssay($where,$table){		
-      return $this->db->get($table,$where);
+      return $this->db->get_where($table,$where);
   }
 
   //function untuk mengupdate data soal essay dan benar salah setelah di edit
