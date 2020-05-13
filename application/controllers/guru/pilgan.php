@@ -8,11 +8,13 @@ class Pilgan extends CI_Controller{
 				$this->load->helper('url');// menggunakan helper url 
 	}
 // function index yang menampilkan crud pesanggem dan berhubungang dengan function tampil data di model m_data_soal
-	function index(){
-		$data['tb_soal_pilgan'] = $this->m_data_soal->tampil_data()->result();// pada function index dibuat variabel $data yang menampilkan data tabel user vyang diambil dari model m_data_soal
-		$data['tb_soal_essay'] = $this->m_data_soal->tampil_soalEssay()->result();// pada function index dibuat variabel $data yang menampilkan data tabel soal yang daimbil dari model m_data_soalEssay
-		$data['tb_soal_sorting'] = $this->m_data_soal->tampil_data_sorting()->result();
-		$data['tb_soal_benarSalah'] = $this->m_data_soal->tampil_BenarSalah()->result();
+	function index($id_paket_uri){
+		$idPaketSoal = $id_paket_uri;
+		$data['tb_soal_pilgan'] = $this->m_data_soal->tampil_data($idPaketSoal)->result();// pada function index dibuat variabel $data yang menampilkan data tabel user vyang diambil dari model m_data_soal
+		$data['tb_soal_essay'] = $this->m_data_soal->tampil_soalEssay($idPaketSoal)->result();// pada function index dibuat variabel $data yang menampilkan data tabel soal yang daimbil dari model m_data_soalEssay
+		$data['tb_soal_sorting'] = $this->m_data_soal->tampil_data_sorting($idPaketSoal)->result();
+		$data['tb_soal_benarSalah'] = $this->m_data_soal->tampil_BenarSalah($idPaketSoal)->result();
+		$data['id_paket_soal'] = $idPaketSoal;
 		$this->load->view('template/header');
         $this->load->view('template/topNavbar');
         $this->load->view('template/sideNavbar');
@@ -246,11 +248,11 @@ class Pilgan extends CI_Controller{
 
 //***  CONTROLLER UNTUK SOAL PILGAN 
 
-	function tambah(){
+	function tambah($idUriSoal){
 
 		// Membuat fungsi untuk melakukan penambahkan ID soal secara otomatis
 		// Mendapatkan jumlah soal yang ada dalam database
-		$jumlahSoal = $this->m_data_soal->tampil_data()->num_rows();
+		$jumlahSoal = $this->m_data_soal->tampil_seluruh_soal()->num_rows();
 		// Jika jumlah soal lebih dari 0	
 		if($jumlahSoal > 0)
 		{
@@ -289,7 +291,8 @@ class Pilgan extends CI_Controller{
 		}
 	
 		$data = array(
-			'idSoal' => $idSoal
+			'idSoal' => $idSoal,
+			'idPaketSoal' => $idUriSoal
 		);
 
 		$this->load->view('template/header');
@@ -330,21 +333,22 @@ class Pilgan extends CI_Controller{
 
 
 		$this->m_data_soal->input_data($data,'tb_soal');//dikirimkan ke model m_data_soal yang ditangkap oleh function input_data
-		redirect('guru/pilgan/index');
+		redirect('soal/'.$this->uri->segment(4));
 	}
 	//function hapus adalah function yang dipanggil saat kita klik aksi hapus di tabel admin
-    function hapus($id_soal){
+    function hapus($id_soal,$id_paket){
 		//function hapus menangkap NIK dari pengiriman NIK yang ditampilkan di view masuk
 		$where = array('id_soal' => $id_soal);// kemudian diubah menjadi array
 		$this->m_data_soal->hapus_data($where,'tb_soal');//dan barulah kita kirim data array hapus tersebut pada m_data_soal yang ditangkap oleh function hapus_data
-		redirect('guru/pilgan/index');// setelah itu langsung diarah kan ke function index yang menampilkan v_masuk
+		redirect('soal/'.$id_paket);// setelah itu langsung diarah kan ke function index yang menampilkan v_masuk
     }
 	//function edit adalah function yang dipanggil saat kita klik aksi edit di tabel pesanggem untuk masuk ke halamn edit data pesanggem atau v_editn
-    function edit($id_soal){
+    function edit($id_soal,$id_paket_uri){
 		//function edit menangkap NIK dari pengiriman NIKyang ditampilkan di v_masuk
+		echo $id_soal;
         $where = array('id_soal'=> $id_soal);// kemudian diubah menjadi array
         $data['tb_soal_pilgan'] = $this->m_data_soal->edit_data($where,'tb_soal')->result();//dan barulah kita kirim data array edit tersebut pada m_data_soal dan ditangkap oleh function edit_data 
-		
+		$data['id_paket_soal'] = $id_paket_uri;
 		$this->load->view('template/header');
 		$this->load->view('template/topNavbar');
 		$this->load->view('template/sideNavbar');
@@ -385,7 +389,7 @@ class Pilgan extends CI_Controller{
 		);
 	
 		$this->m_data_soal->update_data($where,$data,'tb_soal');//SELANJUTNYA KITA KIRIMKAN KE M_DATA UPDATED DATA UNTUK MENGNGUBAH DATABASE  
-		redirect('guru/pilgan/index');// setelah itu langsung diarah kan ke function index yang menampilkan v_tampil
+		redirect('soal/'.$this->uri->segment(4));// setelah itu langsung diarah kan ke function index yang menampilkan v_tampil
 	}
 
 
@@ -396,7 +400,7 @@ class Pilgan extends CI_Controller{
 
 		// Membuat fungsi untuk melakukan penambahkan ID soal secara otomatis
 		// Mendapatkan jumlah soal yang ada dalam database
-		$jumlahSoal = $this->m_data_soal->tampil_data_sorting()->num_rows();
+		$jumlahSoal = $this->m_data_soal->tampil_seluruh_soal()->num_rows();
 		// Jika jumlah soal lebih dari 0	
 		if($jumlahSoal > 0)
 		{
@@ -541,7 +545,7 @@ class Pilgan extends CI_Controller{
 
         // berfugsi untuk membuat fungsi melakukan penambahan ID soal secara otomatis
 		// $jumlahSoal berfungsi untuk mendapatkan jumlah soal yang ada dalam database
-        $jumlahSoal = $this->m_data_soal->tampil_soalEssay()->num_rows();  
+        $jumlahSoal = $this->m_data_soal->tampil_seluruh_soal()->num_rows();  
             
         //jika jumlah soal lebih dari nol
 		if($jumlahSoal > 0) 
@@ -650,7 +654,7 @@ class Pilgan extends CI_Controller{
 
 // ===== Controller Benar Salah =====
 	public function tambah_benarSalah() {
-            $jumlahSoal = $this->m_data_soal->tampil_BenarSalah()->num_rows();  
+            $jumlahSoal = $this->m_data_soal->tampil_seluruh_soal()->num_rows();  
             
             //jika jumlah soal lebih dari nol
             if($jumlahSoal > 0) 
