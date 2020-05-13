@@ -6,7 +6,7 @@
 
 
 
-class Login extends CI_Controller{
+class Loginadm extends CI_Controller{
 
 //fungsi construct yang digunakan untuk memanggil m_login yang merupakanmodel (berisi operasi database)
 	function __construct(){
@@ -17,7 +17,7 @@ class Login extends CI_Controller{
 
 //fungsi index untuk menampilkan view bernama v_login yang merupakan from untuk mengiputkan data saat login 
 	function index(){
-		$this->load->view('loginadm/v_loginadm');
+		$this->load->view('login/v_loginadm');
 	}
 
 //fungsi aksi_login berfungsi untuk mengatur proses login
