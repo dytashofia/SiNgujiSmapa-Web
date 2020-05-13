@@ -6,10 +6,10 @@
             </h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item">
-                    <a href="<?= base_url('pilgan/');?>">Dashboard</a>
+                    <a href="<?= base_url('guru');?>">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="<?= base_url('guru/pilgan/tampilPaket');?>">Paket Soal</a>
+                    <a href="<?= base_url('tampilPaket');?>">Paket Soal</a>
                 </li>
                 <li class="breadcrumb-item active">Tambah Soal</li>
             </ol>
@@ -41,7 +41,7 @@
                                         <div class="card-body">
                                             <div class="row mb-4">
                                                 <div class="col-sm-12 col-md-4">
-                                                    <a href="<?= base_url('guru/pilgan/tambah');?>" class="btn btn-outline-success">Tambah Soal</a>
+                                                    <a href="<?= base_url('tambahPilgan/'.$id_paket_soal);?>" class="btn btn-outline-success">Tambah Soal</a>
                                                 </div>
                                             </div>
                                             <div class="table-responsive">
@@ -68,12 +68,12 @@
                                                                 <td>
                                                                 <div class="row">
                                                                     <div class="col-sm-12 col-md-2 mr-3">
-                                                                        <a href="<?= base_url('guru/pilgan/edit/'.$soal->id_soal);?>" class="btn btn-primary">
+                                                                        <a href="<?= base_url('editPilgan/'.$soal->id_soal.'/'.$soal->id_paket);?>" class="btn btn-primary">
                                                                             <i class="fas fa-pen"></i>
                                                                         </a>
                                                                     </div>
                                                                     <div class="col-sm-12 col-md-2 mr-3">
-                                                                        <a href="<?= base_url('guru/pilgan/hapus/'.$soal->id_soal);?>" class="btn btn-danger">
+                                                                        <a href="<?= base_url('hapusPilgan/'.$soal->id_soal.'/'.$soal->id_paket);?>" class="btn btn-danger">
                                                                             <i class="fas fa-trash-alt"></i>
                                                                         </a>
                                                                     </div>
@@ -263,7 +263,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <
                             </div>
                         </div>
                     </div>
