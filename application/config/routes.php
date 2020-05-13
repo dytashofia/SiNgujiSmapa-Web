@@ -73,5 +73,9 @@ $route['tambahPaket'] = 'guru/pilgan/tambahPaket';
 $route['detailPaket/(:any)'] = 'guru/pilgan/tampilDetailPaket/$1';
 $route['editPaket/(:any)'] = 'guru/pilgan/editPaket/$1';
 $route['hapusPaket/(:any)'] = 'guru/pilgan/hapusPaket/$1';
-
-// Route
+// Route untuk soal
+$route['soal/(:any)'] = 'guru/pilgan/index/$1';
+// Route untuk soal pilihan ganda
+$route['tambahPilgan/(:any)'] = 'guru/pilgan/tambah/$1';
+$route['editPilgan/(:any)/(:any)'] = 'guru/pilgan/edit/$1/$2';
+$route['hapusPilgan/(:any)/(:any)'] = 'guru/pilgan/hapus/$1/$2';
