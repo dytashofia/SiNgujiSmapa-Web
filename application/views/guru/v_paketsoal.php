@@ -6,7 +6,7 @@
                 <i class="fa fa-table mr-2"></i>Daftar Paket Soal
             </h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="<?= base_url('guru');?>">Dashboard</a></li>
                 <li class="breadcrumb-item active">Paket Soal</li>
             </ol>
             <div class="row my-2">
@@ -50,7 +50,7 @@
                                                 <td colspan="3">
                                                     <div class="row justify-content-around mt-2">
                                                         <div class="col-sm-12 col-md-6">
-                                                            <a href="" class="btn btn-info btn-sm">
+                                                            <a href="<?= base_url('soal/'.$paket->id_paket);?>" class="btn btn-info btn-sm">
                                                                 <i class="fas fa-clipboard-list"></i>
                                                             </a>
                                                         </div>
