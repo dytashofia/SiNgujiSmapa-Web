@@ -51,7 +51,7 @@ class Login extends CI_Controller{
 				// Mengisi session dengan data yang diambil menggunakan perulangan
 				$this->session->set_userdata($data_session);
 				// Mengarahkan user ke controller guru
-				redirect(base_url("guru/guru"));
+				redirect(base_url("guru"));
 			}
 
 // jika ternyata username dan passowrd yang diinputkan tidak tersedia maka akan tampil pemberiatahuan password dan username salah
