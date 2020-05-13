@@ -11,7 +11,7 @@
             </ol>
             <div class="row my-2">
                 <div class="col-sm-12 col-md-4">
-                    <a href="<?= base_url('guru/pilgan/tambahPaket');?>" class="btn btn-outline-success p-2">Tambah Paket Soal</a>
+                    <a href="<?= base_url('tambahPaket');?>" class="btn btn-outline-success p-2">Tambah Paket Soal</a>
                 </div>
             </div>
             <div class="row my-2">
@@ -48,22 +48,30 @@
                                                 <td colspan="2"><?= $paket->nama_guru;?></td>
                                                 <td class="text-center"><?= $paket->tgl_pembuatan;?></td>
                                                 <td colspan="3">
-                                                    <div class="row">
-                                                        <div class="col-sm-12 col-md-2 mx-2">
-                                                            <a href="<?= base_url('/guru/pilgan/tampilDetailPaket/'.$paket->id_paket);?>" class="btn btn-success btn-sm">
-                                                                <i class="fas fa-eye"></i>
+                                                    <div class="row justify-content-around mt-2">
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <a href="" class="btn btn-info btn-sm">
+                                                                <i class="fas fa-clipboard-list"></i>
                                                             </a>
                                                         </div>
-                                                        <div class="col-sm-12 col-md-2 mx-2">
-                                                            <a href="<?= base_url('/guru/pilgan/editPaket/'.$paket->id_paket);?>" class="btn btn-primary btn-sm">
-                                                                <i class="fas fa-pen"></i>
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <a href="<?= base_url('detailPaket/'.$paket->id_paket);?>" class="btn btn-success btn-sm">
+                                                                <i class="fas fa-info-circle"></i>
                                                             </a>
                                                         </div>
-                                                        <div class="col-sm-12 col-md-2 mx-2">
+                                                    </div>
+                                                    <div class="row justify-content-around mt-2">
+                                                        <div class="col-sm-12 col-md-6">
                                                             <button type="button" data-toggle="modal" data-target="#deletePaketModal<?=$paket->id_paket;?>" class="btn btn-danger btn-sm">
                                                                 <i class="fas fa-trash-alt"></i>
                                                             </button>
                                                         </div>
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <a href="<?= base_url('editPaket/'.$paket->id_paket);?>" class="btn btn-primary btn-sm">
+                                                                <i class="fas fa-pen"></i>
+                                                            </a>
+                                                        </div>
+                                                        
                                                     </div>
                                                 </td>
                                             </tr>
@@ -98,7 +106,7 @@
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-outline-secondary" type="button" data-dismiss="modal"> Batal </button>
-                        <a href="<?= base_url('guru/pilgan/hapusPaket/'.$row->id_paket);?>" role="button" class="btn btn-success"> Ya </a>
+                        <a href="<?= base_url('hapusPaket/'.$row->id_paket);?>" role="button" class="btn btn-success"> Ya </a>
                     </div>
                 </div>
             </div>
