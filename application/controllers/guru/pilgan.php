@@ -127,15 +127,15 @@ class Pilgan extends CI_Controller{
 			);
 
 			$this->m_data_soal->tambah_paket($data, "tb_paket_soal");
-			redirect('/guru/pilgan/tampilPaket');
+			redirect('tampilPaket');
 		}
 	}
 
 	// function untuk menampilkan detail data paket
-	function tampilDetailPaket()
+	function tampilDetailPaket($idPaketUri)
 	{
 		// Mendapatkan Id Paket Soal dari URL
-		$idPaket = $this->uri->segment(4);
+		$idPaket = $idPaketUri;
 		// Membuat array untuk digunakan sebagai select
 		$where = array(
 			'tb_paket_soal.id_paket' => $idPaket
@@ -223,7 +223,7 @@ class Pilgan extends CI_Controller{
 				'id_paket' => $id_paket
 			);
 			$this->m_data_soal->update_paket_soal($where,$data,'tb_paket_soal');
-			redirect('guru/pilgan/tampilPaket');
+			redirect('tampilPaket');
 		}
 
 		
@@ -240,7 +240,7 @@ class Pilgan extends CI_Controller{
 		);
 
 		$this->m_data_soal->delete_paket_soal($where,'tb_paket_soal');
-		redirect('guru/pilgan/tampilPaket');
+		redirect('tampilPaket');
 
 	}
 
