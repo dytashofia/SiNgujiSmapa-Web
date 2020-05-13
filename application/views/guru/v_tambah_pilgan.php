@@ -6,13 +6,13 @@
                 <i class="fa fa-table mr-2"></i>Tambah Soal Pilihan Ganda
             </h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active"><a href="">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="<?= base_url('guru/pilgan/tampilPaket');?>">Paket Soal</a></li>
+                <li class="breadcrumb-item active"><a href="<?= base_url('guru');?>">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="<?= base_url('tampilPaket');?>">Paket Soal</a></li>
                 <li class="breadcrumb-item active">Input Soal Pilihan Ganda</li>
             </ol>
             <div class="row mt-2">
                 <div class="col-12">
-                    <form action="<?= base_url('guru/pilgan/tambah_aksi');?>" method="post">
+                    <form action="<?= base_url('guru/pilgan/tambah_aksi/'.$idPaketSoal);?>" method="post">
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -30,7 +30,7 @@
                                         ID PAKET
                                     </div>
                                 </div>
-                                <input type="text" name="id_paket" id="id_paket" class="form-control" value="PKT001" readonly>
+                                <input type="text" name="id_paket" id="id_paket" class="form-control" value="<?= $idPaketSoal;?>" readonly>
                             </div>
                         </div>
                         <div class="form-group">
@@ -84,7 +84,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-md-2">
-                                <a href="<?= base_url('guru/pilgan');?>" class="btn btn-outline-secondary w-100"> Kembali </a>
+                                <a href="<?= base_url('soal/'.$idPaketSoal);?>" class="btn btn-outline-secondary w-100"> Kembali </a>
                             </div>
                             <div class="col-sm-12 col-md-2">
                                 <button type="submit" class="btn btn-outline-primary w-100">Simpan</button>
