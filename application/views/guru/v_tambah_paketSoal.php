@@ -6,7 +6,7 @@
                 <i class="fa fa-table mr-2"></i>Tambah Paket Soal
             </h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active"><a href="">Dashboard</a></li>
+                <li class="breadcrumb-item active"><a href="<?= base_url('guru');?>">Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="<?= base_url('tampilPaket');?>">Paket Soal</a></li>
                 <li class="breadcrumb-item active">Tambah Paket Soal</li>
             </ol>
