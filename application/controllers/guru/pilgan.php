@@ -654,7 +654,7 @@ class Pilgan extends CI_Controller{
     }
 
 // ===== Controller Benar Salah =====
-	public function tambah_benarSalah() {
+	public function tambah_benarSalah($id_paket_soal) {
             $jumlahSoal = $this->m_data_soal->tampil_seluruh_soal()->num_rows();  
             
             //jika jumlah soal lebih dari nol
@@ -695,7 +695,8 @@ class Pilgan extends CI_Controller{
 			// Jika jumlah soal tidak sama dengan 0
 			// maka buat id soal baru
             $data = array(
-                'idSoal' => $idSoal
+				'idSoal' => $idSoal,
+				'idPaketSoal' => $id_paket_soal
             );
 
             $this->load->view('template/header');
@@ -723,24 +724,24 @@ class Pilgan extends CI_Controller{
             );
             
             $this->m_data_soal->tambah_soalEssay($data,'tb_soal');
-            redirect('guru/pilgan/index');
+            redirect('soal/'.$this->uri->segment(4));
 	}
 	
-	public function edit_benarSalah($id_soal) {
+	public function edit_benarSalah($id_soal,$id_paket_soal_uri) {
         $where = array('id_soal' => $id_soal);
-        $data['tb_soal_benarSalah'] = $this->m_data_soal->edit_soalEssay($where, 'tb_soal');    
-
+        $data['tb_soal_benarSalah'] = $this->m_data_soal->edit_soalEssay($where, 'tb_soal')->result();    
+		$data['id_paket_soal'] = $id_paket_soal_uri;
         $this->load->view('template/header');
-            $this->load->view('template/topNavbar');
-            $this->load->view('template/sideNavbar');
-            $this->load->view('guru/v_edit_benarSalah', $data);
-            $this->load->view('template/footer');
+		$this->load->view('template/topNavbar');
+		$this->load->view('template/sideNavbar');
+		$this->load->view('guru/v_edit_benarSalah', $data);
+		$this->load->view('template/footer');
 	}
 	
-	public function hapus_benarSalah($id_soal) {
+	public function hapus_benarSalah($id_soal,$id_paket_soal) {
         $where = array('id_soal' => $id_soal);
         $this->m_data_soal->hapus_soalEssay($where,'tb_soal');
-        redirect('guru/pilgan/index');  
+        redirect('soal/'.$id_paket_soal);  
 	}
 	
 	public function update_benarSalah() {
@@ -760,7 +761,7 @@ class Pilgan extends CI_Controller{
             );
 
             $this->m_data_soal->update_soalEssay($where,$data, 'tb_soal');
-            redirect('guru/pilgan/index');
+            redirect('soal/'.$this->uri->segment(4));
         
     }
 
