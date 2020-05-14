@@ -83,3 +83,7 @@ $route['hapusPilgan/(:any)/(:any)'] = 'guru/pilgan/hapus/$1/$2';
 $route['tambahEssay/(:any)'] = 'guru/pilgan/tambah_soalEssay/$1';
 $route['editEssay/(:any)/(:any)'] = 'guru/pilgan/edit_soalEssay/$1/$2';
 $route['hapusEssay/(:any)/(:any)'] = 'guru/pilgan/hapus_soalEssay/$1/$2';
+// Route untuk soal benar salah
+$route['tambahBenarSalah/(:any)'] = 'guru/pilgan/tambah_benarSalah/$1';
+$route['editBenarSalah/(:any)/(:any)'] = 'guru/pilgan/edit_benarSalah/$1/$2';
+$route['hapusBenarSalah/(:any)/(:any)'] = 'guru/pilgan/hapus_benarSalah/$1/$2';
