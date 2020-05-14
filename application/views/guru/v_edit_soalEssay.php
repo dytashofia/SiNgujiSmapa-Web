@@ -6,13 +6,13 @@
                 <i class="fa fa-table mr-2"></i>Edit Soal Essay
             </h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active"><a href="<?= base_url('guru/home');?>">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="<?= base_url('guru/pilgan/tampilPaket');?>">Paket Soal</a></li>
+                <li class="breadcrumb-item active"><a href="<?= base_url('guru');?>">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="<?= base_url('tampilPaket');?>">Paket Soal</a></li>
                 <li class="breadcrumb-item active">Edit Soal Essay</li>
             </ol>
             <div class="block full">
            <?php foreach($tb_soal_essay as $soal_essay){?>
-                <form action="<?php echo base_url('guru/pilgan/update_soalEssay');?>" method="post">
+                <form action="<?php echo base_url('guru/pilgan/update_soalEssay/'.$id_paket_soal);?>" method="post">
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -30,7 +30,7 @@
                                     ID PAKET
                                 </div>
                             </div>
-                            <input type="text" name="id_paket" id="id_paket" class="form-control" value="PKT001" readonly>
+                            <input type="text" name="id_paket" id="id_paket" class="form-control" value="<?= $soal_essay->id_paket;?>" readonly>
                         </div>
                     </div>
                     <div class="form-group">
@@ -65,7 +65,7 @@
                     <br>
                     <div class="row">
                         <div class="col-sm-12 col-md-2">
-                            <a href="" class="btn btn-outline-secondary w-100"> Kembali </a>
+                            <a href="<?= base_url('soal/'.$soal_essay->id_paket);?>" class="btn btn-outline-secondary w-100"> Kembali </a>
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <button type="submit" class="btn btn-outline-primary w-100">Simpan</button>
@@ -77,7 +77,7 @@
         </div>       
     </main>
 </div>
-<script src="<?php echo base_url('assets/ckeditor/ckeditor.js')?>"></script>        
+<!-- <script src="<?php echo base_url('assets/ckeditor/ckeditor.js')?>"></script>         -->
 
 
 </body>
