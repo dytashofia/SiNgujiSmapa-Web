@@ -79,3 +79,7 @@ $route['soal/(:any)'] = 'guru/pilgan/index/$1';
 $route['tambahPilgan/(:any)'] = 'guru/pilgan/tambah/$1';
 $route['editPilgan/(:any)/(:any)'] = 'guru/pilgan/edit/$1/$2';
 $route['hapusPilgan/(:any)/(:any)'] = 'guru/pilgan/hapus/$1/$2';
+// Route untuk soal essay
+$route['tambahEssay/(:any)'] = 'guru/pilgan/tambah_soalEssay/$1';
+$route['editEssay/(:any)/(:any)'] = 'guru/pilgan/edit_soalEssay/$1/$2';
+$route['hapusEssay/(:any)/(:any)'] = 'guru/pilgan/hapus_soalEssay/$1/$2';
