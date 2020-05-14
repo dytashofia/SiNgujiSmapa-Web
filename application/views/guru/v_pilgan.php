@@ -155,7 +155,7 @@
                                         <div class="card-body">
                                         <div class="row mb-4">
                                                 <div class="col-sm-12 col-md-4">
-                                                    <a href="<?= base_url('guru/pilgan/tambah_benarSalah');?>" class="btn btn-outline-success">Tambah Soal</a>
+                                                    <a href="<?= base_url('tambahBenarSalah/'.$id_paket_soal);?>" class="btn btn-outline-success">Tambah Soal</a>
                                                 </div>
                                         </div>
                                             <div class="table-responsive">
@@ -182,12 +182,12 @@
                                                                 <td>
                                                                     <div class="row">
                                                                         <div class="col-sm-12 col-md-2 mr-3">
-                                                                            <a href="<?= base_url('guru/pilgan/edit_benarSalah/'.$benarSalah->id_soal);?>" class="btn btn-primary">
+                                                                            <a href="<?= base_url('editBenarSalah/'.$benarSalah->id_soal.'/'.$benarSalah->id_paket);?>" class="btn btn-primary">
                                                                                 <i class="fas fa-pen"></i>
                                                                             </a>
                                                                         </div>
                                                                         <div class="col-sm-12 col-md-2 mr-3">
-                                                                            <a href="<?= base_url('guru/pilgan/hapus_benarSalah/'.$benarSalah->id_soal);?>" class="btn btn-danger">
+                                                                            <a href="<?= base_url('hapusBenarSalah/'.$benarSalah->id_soal.'/'.$benarSalah->id_paket);?>" class="btn btn-danger">
                                                                                 <i class="fas fa-trash-alt"></i>
                                                                             </a>
                                                                         </div>
