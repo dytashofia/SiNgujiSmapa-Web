@@ -87,3 +87,6 @@ $route['hapusEssay/(:any)/(:any)'] = 'guru/pilgan/hapus_soalEssay/$1/$2';
 $route['tambahBenarSalah/(:any)'] = 'guru/pilgan/tambah_benarSalah/$1';
 $route['editBenarSalah/(:any)/(:any)'] = 'guru/pilgan/edit_benarSalah/$1/$2';
 $route['hapusBenarSalah/(:any)/(:any)'] = 'guru/pilgan/hapus_benarSalah/$1/$2';
+// Route untuk soal mengurutkan
+$route['tambahSorting/(:any)'] = 'guru/pilgan/tambah_sorting/$1';
+

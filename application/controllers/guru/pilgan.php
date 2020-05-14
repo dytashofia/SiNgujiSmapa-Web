@@ -396,7 +396,7 @@ class Pilgan extends CI_Controller{
 // ***CONTROLLER UNTUK SOAL SORTING 
 
 	//function tambh adalah function yang dipanggil saat kita klik aksi tambah data di tabel admin untuk masuk ke halamn tambah data admin atau v_input_admin
-	function tambah_sorting(){
+	function tambah_sorting($id_paket_soal){
 
 		// Membuat fungsi untuk melakukan penambahkan ID soal secara otomatis
 		// Mendapatkan jumlah soal yang ada dalam database
@@ -439,7 +439,8 @@ class Pilgan extends CI_Controller{
 		}
 	
 		$data = array(
-			'idSoal' => $idSoal
+			'idSoal' => $idSoal,
+			'idPaketSoal' => $id_paket_soal
 		);
 
 		$this->load->view('template/header');
