@@ -12,6 +12,7 @@
             </ol>
             
             <div class="block full">
+                <!-- Fungsi variabel idPaketSoal disini adalah sebagai penanda paket soal mana yang digunakan dan akan dirubah secara otomatis -->
                 <form action="<?php echo base_url('guru/pilgan/tambah_aksi_sorting/'.$idPaketSoal);?>" method="post">
                     <div class="form-group">
                         <div class="input-group">
@@ -30,6 +31,7 @@
                                         ID PAKET
                                     </div>
                                 </div>
+                                <!-- Fungsi variabel idPaketSoal disini adalah sebagai penanda paket soal mana yang digunakan dan akan dirubah secara otomatis -->
                                 <input type="text" name="id_paket" id="id_paket" class="form-control" value="<?= $idPaketSoal;?>" readonly>
                             </div>
                         </div>

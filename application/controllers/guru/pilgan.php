@@ -250,6 +250,8 @@ class Pilgan extends CI_Controller{
 
 	function tambah($idUriSoal){
 
+		// Fungsi idUriSoal disini adalah sebagai id_paket_soal yang dinamis nanti dalam form
+
 		// Membuat fungsi untuk melakukan penambahkan ID soal secara otomatis
 		// Mendapatkan jumlah soal yang ada dalam database
 		$jumlahSoal = $this->m_data_soal->tampil_seluruh_soal()->num_rows();
@@ -333,6 +335,7 @@ class Pilgan extends CI_Controller{
 
 
 		$this->m_data_soal->input_data($data,'tb_soal');//dikirimkan ke model m_data_soal yang ditangkap oleh function input_data
+		// Uri Segment disini merujuk pada id paket soal yang dikirim melalui form
 		redirect('soal/'.$this->uri->segment(4));
 	}
 	//function hapus adalah function yang dipanggil saat kita klik aksi hapus di tabel admin
@@ -340,10 +343,12 @@ class Pilgan extends CI_Controller{
 		//function hapus menangkap NIK dari pengiriman NIK yang ditampilkan di view masuk
 		$where = array('id_soal' => $id_soal);// kemudian diubah menjadi array
 		$this->m_data_soal->hapus_data($where,'tb_soal');//dan barulah kita kirim data array hapus tersebut pada m_data_soal yang ditangkap oleh function hapus_data
+		// id paket disini merujuk pada id paket soal mana yang digunakan sekarang
 		redirect('soal/'.$id_paket);// setelah itu langsung diarah kan ke function index yang menampilkan v_masuk
     }
 	//function edit adalah function yang dipanggil saat kita klik aksi edit di tabel pesanggem untuk masuk ke halamn edit data pesanggem atau v_editn
     function edit($id_soal,$id_paket_uri){
+		// fungsi variabel id_paket_uri adalah sebagai penanda kita berada di paket soal yang mana
 		//function edit menangkap NIK dari pengiriman NIKyang ditampilkan di v_masuk
 		echo $id_soal;
         $where = array('id_soal'=> $id_soal);// kemudian diubah menjadi array
@@ -389,6 +394,7 @@ class Pilgan extends CI_Controller{
 		);
 	
 		$this->m_data_soal->update_data($where,$data,'tb_soal');//SELANJUTNYA KITA KIRIMKAN KE M_DATA UPDATED DATA UNTUK MENGNGUBAH DATABASE  
+		// uri segment disini merujuk pada id paket soal yang dikirim melalui form
 		redirect('soal/'.$this->uri->segment(4));// setelah itu langsung diarah kan ke function index yang menampilkan v_tampil
 	}
 
@@ -397,6 +403,8 @@ class Pilgan extends CI_Controller{
 
 	//function tambh adalah function yang dipanggil saat kita klik aksi tambah data di tabel admin untuk masuk ke halamn tambah data admin atau v_input_admin
 	function tambah_sorting($id_paket_soal){
+
+		// Fungsi id_paket_soal disini adalah sebagai id_paket_soal yang dinamis nanti dalam form
 
 		// Membuat fungsi untuk melakukan penambahkan ID soal secara otomatis
 		// Mendapatkan jumlah soal yang ada dalam database
@@ -479,6 +487,7 @@ class Pilgan extends CI_Controller{
 
 
 		$this->m_data_soal->input_data($data,'tb_soal');//dikirimkan ke model m_data_soal yang ditangkap oleh function input_data
+		// Uri Segment disini merujuk pada id paket soal yang dikirim melalui form
 		redirect('soal/'.$this->uri->segment(4));
 	}
 	//function hapus adalah function yang dipanggil saat kita klik aksi hapus di tabel admin
@@ -486,9 +495,11 @@ class Pilgan extends CI_Controller{
 		//function hapus menangkap NIK dari pengiriman NIK yang ditampilkan di view masuk
 		$where = array('id_soal' => $id_soal);// kemudian diubah menjadi array
 		$this->m_data_soal->hapus_data($where,'tb_soal');//dan barulah kita kirim data array hapus tersebut pada m_data_soal yang ditangkap oleh function hapus_data
+		// fungsi variabel id paket soal disini adalah sebagai penanda kita berada di paket soal yang mana sekarang
 		redirect('soal/'.$id_paket_soal);// setelah itu langsung diarah kan ke function index yang menampilkan v_masuk
 	}
 	function edit_sorting($id_soal,$id_paket_soal_uri){
+		// fungsi variabel id_paket_soal_uri adalah sebagai penanda kita berada di paket soal yang mana sekarang
 		//function edit menangkap NIK dari pengiriman NIKyang ditampilkan di v_masuk
         $where = array('id_soal'=> $id_soal);// kemudian diubah menjadi array
         $data['tb_soal_sorting'] = $this->m_data_soal->edit_data($where,'tb_soal')->result();//dan barulah kita kirim data array edit tersebut pada m_data_soal dan ditangkap oleh function edit_data 
@@ -536,6 +547,7 @@ class Pilgan extends CI_Controller{
 		);
 	
 		$this->m_data_soal->update_data($where,$data,'tb_soal');//SELANJUTNYA KITA KIRIMKAN KE M_DATA UPDATED DATA UNTUK MENGNGUBAH DATABASE  
+		// Uri Segment disini merujuk pada id paket soal yang dikirim melalui form
 		redirect('soal/'.$this->uri->segment(4));// setelah itu langsung diarah kan ke function index yang menampilkan v_tampil
 	}
 
@@ -543,6 +555,8 @@ class Pilgan extends CI_Controller{
 // ======= Controller Soal Essay =======
 
 	public function tambah_soalEssay($idPaketSoalUri) {
+
+		// Fungsi idPaketSoalUri disini adalah sebagai id_paket_soal yang dinamis nanti dalam form
 
         // berfugsi untuk membuat fungsi melakukan penambahan ID soal secara otomatis
 		// $jumlahSoal berfungsi untuk mendapatkan jumlah soal yang ada dalam database
@@ -614,10 +628,12 @@ class Pilgan extends CI_Controller{
 			'pembahasan' => $pembahasan,
 		    );
             $this->m_data_soal->tambah_soalEssay($data,'tb_soal'); //kemudian data tesebut di kirim ke models tambah soal untuk menambah data ke tabel soal 
-            redirect('soal/'.$this->uri->segment(4)); //setelah itu langsung dialihkan ke view yang dipanggil oleh function index
+			// Uri Segment disini merujuk pada id paket soal yang dikirim melalui form
+			redirect('soal/'.$this->uri->segment(4)); //setelah itu langsung dialihkan ke view yang dipanggil oleh function index
 	}
 	
 	public function edit_soalEssay($id_soal,$id_paket_soal_uri) {
+		//	Fungsi dari variabel id_paket_soal_uri disini adalah sebagai penanda kita berada di paket soal yang mana sekarang 
             $where = array('id_soal' => $id_soal);
             $data['tb_soal_essay'] = $this->m_data_soal->edit_soalEssay($where,'tb_soal')->result();
 			$data['id_paket_soal'] = $id_paket_soal_uri;
@@ -631,7 +647,8 @@ class Pilgan extends CI_Controller{
 	public function hapus_soalEssay($id_soal,$id_paket_soal) {
             $where = array('id_soal' => $id_soal);
             $this->m_data_soal->hapus_soalEssay($where,'tb_soal');
-            redirect('soal/'.$id_paket_soal);
+			// Fungsi dari id paket soal adalah sebagai penanda kita berada di paket soal yang mana
+			redirect('soal/'.$id_paket_soal);
 	}
 	
 	public function update_soalEssay() {
@@ -651,13 +668,16 @@ class Pilgan extends CI_Controller{
             );
 
             $this->m_data_soal->update_soalEssay($where,$data,'tb_soal');
-            redirect('soal/'.$this->uri->segment(4));
+			// Uri Segment disini merujuk pada id paket soal yang dikirim melalui form
+			redirect('soal/'.$this->uri->segment(4));
     }
 
 // ===== Controller Benar Salah =====
 	public function tambah_benarSalah($id_paket_soal) {
             $jumlahSoal = $this->m_data_soal->tampil_seluruh_soal()->num_rows();  
-            
+			
+			// Fungsi id_paket_soal disini adalah sebagai id_paket_soal yang dinamis nanti dalam form
+			
             //jika jumlah soal lebih dari nol
             if($jumlahSoal > 0) 
             {   
@@ -725,10 +745,12 @@ class Pilgan extends CI_Controller{
             );
             
             $this->m_data_soal->tambah_soalEssay($data,'tb_soal');
-            redirect('soal/'.$this->uri->segment(4));
+			// Uri Segment disini merujuk pada id paket soal yang dikirim melalui form
+			redirect('soal/'.$this->uri->segment(4));
 	}
 	
 	public function edit_benarSalah($id_soal,$id_paket_soal_uri) {
+		// Fungsi variabel id_paket_soal_uri disini adalah sebagai penanda kita sedang berada di paket soal yang mana
         $where = array('id_soal' => $id_soal);
         $data['tb_soal_benarSalah'] = $this->m_data_soal->edit_soalEssay($where, 'tb_soal')->result();    
 		$data['id_paket_soal'] = $id_paket_soal_uri;
@@ -741,7 +763,8 @@ class Pilgan extends CI_Controller{
 	
 	public function hapus_benarSalah($id_soal,$id_paket_soal) {
         $where = array('id_soal' => $id_soal);
-        $this->m_data_soal->hapus_soalEssay($where,'tb_soal');
+		$this->m_data_soal->hapus_soalEssay($where,'tb_soal');
+		// Fungsi variabel id_pake_soal adalah sebagai penanda kita sedang berada di paket soal yang mana
         redirect('soal/'.$id_paket_soal);  
 	}
 	
@@ -762,7 +785,8 @@ class Pilgan extends CI_Controller{
             );
 
             $this->m_data_soal->update_soalEssay($where,$data, 'tb_soal');
-            redirect('soal/'.$this->uri->segment(4));
+			// Uri Segment disini merujuk pada id paket soal yang dikirim melalui form
+			redirect('soal/'.$this->uri->segment(4));
         
     }
 

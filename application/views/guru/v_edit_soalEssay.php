@@ -7,11 +7,12 @@
             </h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active"><a href="<?= base_url('guru');?>">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="<?= base_url('tampilPaket');?>">Paket Soal</a></li>
+                <li class="breadcrumb-item"><a href="<?= base_url('soal/'.$id_paket_soal);?>">Paket Soal</a></li>
                 <li class="breadcrumb-item active">Edit Soal Essay</li>
             </ol>
             <div class="block full">
            <?php foreach($tb_soal_essay as $soal_essay){?>
+                <!-- Fungsi variabel idPaketSoal disini adalah sebagai penanda paket soal mana yang digunakan dan akan dirubah secara otomatis -->
                 <form action="<?php echo base_url('guru/pilgan/update_soalEssay/'.$id_paket_soal);?>" method="post">
                     <div class="form-group">
                         <div class="input-group">
@@ -30,6 +31,7 @@
                                     ID PAKET
                                 </div>
                             </div>
+                            <!-- Fungsi variabel idPaketSoal disini adalah sebagai penanda paket soal mana yang digunakan dan akan dirubah secara otomatis -->
                             <input type="text" name="id_paket" id="id_paket" class="form-control" value="<?= $soal_essay->id_paket;?>" readonly>
                         </div>
                     </div>

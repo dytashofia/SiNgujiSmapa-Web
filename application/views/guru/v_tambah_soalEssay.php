@@ -8,11 +8,12 @@
             </h1>
             <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active"><a href="<?= base_url('guru');?>">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="<?= base_url('tampilPaket');?>">Paket Soal</a></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('soal/'.$idPaketSoal);?>">Paket Soal</a></li>
                     <li class="breadcrumb-item active">Input Soal Essay</li>
             </ol>
 
             <div class="block full">
+                <!-- Fungsi variabel idPaketSoal disini adalah sebagai penanda paket soal mana yang digunakan dan akan dirubah secara otomatis -->
                 <form action="<?php echo base_url('guru/pilgan/tambah_aksiEssay/'.$idPaketSoal);?>" method="post">
                     <div class="form-group">
                         <div class="input-group">
@@ -31,6 +32,7 @@
                                     ID PAKET
                                 </div>
                             </div>
+                            <!-- Fungsi variabel idPaketSoal disini adalah sebagai penanda paket soal mana yang digunakan dan akan dirubah secara otomatis -->
                             <input type="text" name="id_paket" id="id_paket" class="form-control" value="<?= $idPaketSoal;?>" readonly>
                         </div>
                     </div>

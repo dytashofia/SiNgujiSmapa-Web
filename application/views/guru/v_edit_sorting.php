@@ -13,6 +13,7 @@
             
         <div class="block full">
             <?php foreach($tb_soal_sorting as $soal_sorting){?>
+                <!-- Fungsi variabel idPaketSoal disini adalah sebagai penanda paket soal mana yang digunakan dan akan dirubah secara otomatis -->
                 <form action="<?php echo base_url('guru/pilgan/update_sorting/'.$id_paket_soal);?>" method="post">
                     <div class="form-group">
                         <div class="input-group">
@@ -31,6 +32,7 @@
                                         ID PAKET
                                     </div>
                                 </div>
+                                <!-- Fungsi variabel idPaketSoal disini adalah sebagai penanda paket soal mana yang digunakan dan akan dirubah secara otomatis -->
                                 <input type="text" name="id_paket" id="id_paket" class="form-control" value="<?= $soal_sorting->id_paket;?>" readonly>
                             </div>
                         </div>

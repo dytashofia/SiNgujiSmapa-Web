@@ -14,6 +14,7 @@
 
             <div class="block full">
             <?php foreach($tb_soal_benarSalah as $benar_salah) { ?>
+                <!-- Fungsi variabel idPaketSoal disini adalah sebagai penanda paket soal mana yang digunakan dan akan dirubah secara otomatis -->
                 <form action="<?php echo base_url('guru/pilgan/update_benarSalah/'.$id_paket_soal);?>" method="post">
                     <div class="form-group">
                         <div class="input-group">
@@ -32,6 +33,7 @@
                                     ID PAKET
                                 </div>
                             </div>
+                            <!-- Fungsi variabel idPaketSoal disini adalah sebagai penanda paket soal mana yang digunakan dan akan dirubah secara otomatis -->
                             <input type="text" name="id_paket" id="id_paket" class="form-control" value="<?= $benar_salah->id_paket;?>" readonly>
                         </div>
                     </div>
