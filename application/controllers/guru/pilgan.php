@@ -479,20 +479,20 @@ class Pilgan extends CI_Controller{
 
 
 		$this->m_data_soal->input_data($data,'tb_soal');//dikirimkan ke model m_data_soal yang ditangkap oleh function input_data
-		redirect('guru/pilgan/');
+		redirect('soal/'.$this->uri->segment(4));
 	}
 	//function hapus adalah function yang dipanggil saat kita klik aksi hapus di tabel admin
-    function hapus_sorting($id_soal){
+    function hapus_sorting($id_soal,$id_paket_soal){
 		//function hapus menangkap NIK dari pengiriman NIK yang ditampilkan di view masuk
 		$where = array('id_soal' => $id_soal);// kemudian diubah menjadi array
 		$this->m_data_soal->hapus_data($where,'tb_soal');//dan barulah kita kirim data array hapus tersebut pada m_data_soal yang ditangkap oleh function hapus_data
-		redirect('guru/pilgan/index');// setelah itu langsung diarah kan ke function index yang menampilkan v_masuk
+		redirect('soal/'.$id_paket_soal);// setelah itu langsung diarah kan ke function index yang menampilkan v_masuk
 	}
-	function edit_sorting($id_soal){
+	function edit_sorting($id_soal,$id_paket_soal_uri){
 		//function edit menangkap NIK dari pengiriman NIKyang ditampilkan di v_masuk
         $where = array('id_soal'=> $id_soal);// kemudian diubah menjadi array
         $data['tb_soal_sorting'] = $this->m_data_soal->edit_data($where,'tb_soal')->result();//dan barulah kita kirim data array edit tersebut pada m_data_soal dan ditangkap oleh function edit_data 
-		
+		$data['id_paket_soal'] = $id_paket_soal_uri;
 		$this->load->view('template/header');
 		$this->load->view('template/topNavbar');
 		$this->load->view('template/sideNavbar');
@@ -536,7 +536,7 @@ class Pilgan extends CI_Controller{
 		);
 	
 		$this->m_data_soal->update_data($where,$data,'tb_soal');//SELANJUTNYA KITA KIRIMKAN KE M_DATA UPDATED DATA UNTUK MENGNGUBAH DATABASE  
-		redirect('guru/pilgan/index');// setelah itu langsung diarah kan ke function index yang menampilkan v_tampil
+		redirect('soal/'.$this->uri->segment(4));// setelah itu langsung diarah kan ke function index yang menampilkan v_tampil
 	}
 
 
