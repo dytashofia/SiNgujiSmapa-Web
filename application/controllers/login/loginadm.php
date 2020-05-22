@@ -27,25 +27,34 @@ class Loginadm extends CI_Controller{
 
 		//kemudian data yang diterima dan ditangkap di jadikan array agar dapat dikembalikan lagi ke model m_login
 		$where = array(
-			'username' => $username,
-			'password' => md5($password) //md5 digunakan untuk enskripsi password
+			'username_guru' => $username,
+			'password_guru' => md5($password), //md5 digunakan untuk enskripsi password
+			'status' => 'administrator'
 			);
 
 		//cek ketersediaan username dan pasword admin dengan fungsi cek login yang da di m_login
-		$cek = $this->m_login->cek_login("tb_admin",$where)->num_rows();
+		$cek = $this->m_loginadm->cek_login("tb_guru",$where)->num_rows();
 
 		//jika hasil cek ternyata menyatakan username dan pasword tersedia maka dibuat sesion berisi username dan status login, kemudian akan di arahkan ke controller admin.
 		if($cek > 0){
 
-			$data_session = array(
-				'nama' => $username,
-				'status' => "login"
+			// Mengambil seluruh data user dari tabel admin
+			$row = $this->m_loginadm->cek_login("tb_guru", $where)->result();
+			// Melakukan perulangan untuk menyimpan data yang sudah diambil kedalam variabel baru
+			foreach($row as $detailUser)
+			{
+				$data_session = array(
+					'nama_user' => $detailUser->nama_guru,
+					'nip' => $detailUser->NIP,
+					'id_mapel' => $detailUser->id_mapel,
+					'id_jurusan' => $detailUser->id_jurusan,
+					'status' => 'login'
 				);
-
-			$this->session->set_userdata($data_session);
-
-			redirect(base_url("admin/admin"));
-
+				// Mengisi session dengan data yang diambil menggunakan perulangan
+				$this->session->set_userdata($data_session);
+				// Mengarahkan user ke controller guru
+				redirect(base_url("admin/Admin"));
+			}
 // jika ternyata username dan passowrd yang diinputkan tidak tersedia maka akan tampil pemberiatahuan password dan username salah
 		}else{
 		echo "<script>alert('Username atau password salah!');history.go(-1);</script>";
