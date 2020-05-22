@@ -28,7 +28,8 @@ class Login extends CI_Controller{
 		//kemudian data yang diterima dan ditangkap di jadikan array agar dapat dikembalikan lagi ke model m_login
 		$where = array(
 			'username_guru' => $username,
-			'password_guru' => md5($password) //md5 digunakan untuk enskripsi password
+			'password_guru' => md5($password), //md5 digunakan untuk enskripsi password
+			'status' => 'guru'
 			);
 
 		//cek ketersediaan username dan pasword admin dengan fungsi cek login yang da di m_login
@@ -46,7 +47,7 @@ class Login extends CI_Controller{
 					'nip' => $detailUser->NIP,
 					'id_mapel' => $detailUser->id_mapel,
 					'id_jurusan' => $detailUser->id_jurusan,
-					'status' => "login"
+					'status' => 'login'
 				);
 				// Mengisi session dengan data yang diambil menggunakan perulangan
 				$this->session->set_userdata($data_session);
