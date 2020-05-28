@@ -61,8 +61,8 @@ img{
 	background: black;
 	position: absolute;
 	/*meletakkan form ke tengah*/
-	margin: -645px 713px;
-	padding: 20px 50px;
+	margin: -637px 711px;
+	padding: 13px 52px;
 }
 
 label{
