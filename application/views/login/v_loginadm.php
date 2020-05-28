@@ -62,8 +62,8 @@ img{
 	background: black;
 	position: absolute;
 	/*meletakkan form ke tengah*/
-	margin: -645px 713px;
-	padding: 20px 50px;
+	margin: -636px 711px;
+	padding: 23px 52px;
 }
 
 label{
@@ -116,7 +116,7 @@ color: #ffffff;
 
 		<div class="row">
             <div class="col-12 col-md-6 text-center mt-5 mx-auto p-4">
-                <h1 class="h2">Login admin</h1>
+                <h1 class="h2">Login Admin</h1>
   
             </div>
         </div>
