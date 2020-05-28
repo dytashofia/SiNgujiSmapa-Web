@@ -130,11 +130,8 @@ color: #ffffff;
 		<div class="form-group">
                         <div class="d-flex justify-content-between">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" name="rememberme" id="rememberme" />
-                                <label class="custom-control-label" for="rememberme"> Ingat Saya</label>
-                            <!-- </div> -->
-                            <!-- <a href="<?= site_url('reset_password') ?>">Lupa Password?</a> -->
-                        <!-- </div> -->
+                           
+                         
                     </div>
                     <div class="form-group">
 		<br/>
