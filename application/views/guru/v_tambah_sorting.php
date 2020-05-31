@@ -45,10 +45,11 @@
                                 <input type="text" name="id_jenis_soal" id="id_jenis_soal" class="form-control" value="JNS004" readonly>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <p class="form-text text-muted"> Form ini wajib diisi. </p>
+                        <div class="form-group<?=form_error('pertanyaan') ? 'has-error' : null?>">
                             <label for="textarea-pertanyaan"><h5> Pertanyaan <h5></label>
-                            <textarea name="pertanyaan" id="textarea-ckeditor textarea-pertanyaan" class="form-control ckeditor"></textarea>
-                            <p class="form-text text-muted"> Form ini wajib diisi. </p>
+                            <textarea name="pertanyaan" id="textarea-ckeditor textarea-pertanyaan" class="form-control ckeditor"><?=set_value('pertanyaan');?></textarea>
+                            <?=form_error('pertanyaan','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                         </div>
                         <div class="form-group">
                             <div class="form-inline">
@@ -61,6 +62,7 @@
                                 </select>
                                     <input type="text" name="opsi_a" size="167" class="form-control" placeholder="pilihan A">
                                 </div>
+                                <?=form_error('urutana','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                         </div>
                         <div class="form-group">
                             <div class="form-inline">
@@ -111,16 +113,19 @@
                                 </div>
                         </div>
                         <br>
-                        <div class="form-group">
+                        <div class="form-group<?=form_error('kunci_jawaban') ? 'has-error' : null?>">
                         <label><h5>Kunci Jawaban</h5></label>
                             <div>
-                                <textarea id="textarea-ckeditor" name="kunci_jawaban"  class="ckeditor"></textarea></div>
+                                <textarea id="textarea-ckeditor" name="kunci_jawaban"  class="ckeditor"><?=set_value('kunci_jawaban');?></textarea>
                             </div>
+                            <?=form_error('kunci_jawaban','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                         </div>        
-                        <div class="form-group">
+                        <div class="form-group<?=form_error('pembahasan') ? 'has-error' : null?>">
                         <label><h5>Pembahasan</h5></label>
                             <div>
-                                <textarea id="textarea-ckeditor" rows="2" name="pembahasan"  class="ckeditor"></textarea></div>
+                                <textarea id="textarea-ckeditor" rows="2" name="pembahasan"  class="ckeditor"><?=set_value('pembahasan');?></textarea>
+                                </div>
+                                <?=form_error('pembahasan','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                             </div>
                             <br>
                         <div class="form-group form-actions">

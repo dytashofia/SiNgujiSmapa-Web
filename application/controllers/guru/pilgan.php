@@ -307,6 +307,8 @@ class Pilgan extends CI_Controller{
 //function ini yang mengupdate hasil tambah data baru yang ditambahakan pada tabel admin
 	
 	function tambah_aksi(){
+
+	//inputan
 		$id_soal = $this->input->post('id_soal');//function melakukan post dari name field yang di inputkan
 		$id_paket = $this->input->post('id_paket');//function melakukan post dari name field yang di inputkan
 		$id_jenis_soal = $this->input->post('id_jenis_soal');
@@ -318,7 +320,27 @@ class Pilgan extends CI_Controller{
 		$opsi_e = $this->input->post('opsi_e');
 		$kunci_jawaban = $this->input->post('kunci_jawaban');//function melakukan post dari name field yang di inputkan
 		$pembahasan = $this->input->post('pembahasan');//function melakukan post dari name field yang di inputkan
+	
+	// Membuat validasi form
+		$this->form_validation->set_rules('pertanyaan','Pertanyaan','required');
+		$this->form_validation->set_rules('opsi_a','Pilihan A','required');
+		$this->form_validation->set_rules('opsi_b','Pilihan B','required');
+		$this->form_validation->set_rules('opsi_c','Pilihan C','required');
+		$this->form_validation->set_rules('opsi_d','Pilihan D','required');
+		$this->form_validation->set_rules('opsi_e','Pilihan E','required');
+		$this->form_validation->set_rules('kunci_jawaban','Kunci Jawaban','required');
+		$this->form_validation->set_rules('pembahasan','Pembahasan','required');
+
+	// Membuat pesan validasi error
+		$this->form_validation->set_message('required','Kolom %s tidak boleh kosong.');
 		
+	// Menjalankan form
+		// Apabila hasil validasi form menunjukkan ada sesuatu yang salah
+		if($this->form_validation->run() == false)
+		{
+			$this->tambah($id_paket);
+		}else
+		{
 		$data = array(
 			'id_soal' => $id_soal,
 			'id_paket' => $id_paket,
@@ -337,7 +359,9 @@ class Pilgan extends CI_Controller{
 		$this->m_data_soal->input_data($data,'tb_soal');//dikirimkan ke model m_data_soal yang ditangkap oleh function input_data
 		// Uri Segment disini merujuk pada id paket soal yang dikirim melalui form
 		redirect('soal/'.$this->uri->segment(4));
+		}
 	}
+
 	//function hapus adalah function yang dipanggil saat kita klik aksi hapus di tabel admin
     function hapus($id_soal,$id_paket){
 		//function hapus menangkap NIK dari pengiriman NIK yang ditampilkan di view masuk
@@ -459,6 +483,7 @@ class Pilgan extends CI_Controller{
 	}
 
 	function tambah_aksi_sorting(){
+	//INPUTAN
 		$id_soal = $this->input->post('id_soal');//function melakukan post dari name field yang di inputkan
 		$id_paket = $this->input->post('id_paket');//function melakukan post dari name field yang di inputkan
 		$id_jenis_soal = $this->input->post('id_jenis_soal');
@@ -470,7 +495,23 @@ class Pilgan extends CI_Controller{
 		$opsi_e = $this->input->post('opsi_e');
 		$kunci_jawaban = $this->input->post('kunci_jawaban');//function melakukan post dari name field yang di inputkan
 		$pembahasan = $this->input->post('pembahasan');//function melakukan post dari name field yang di inputkan
+	
+	//FORM VALIDASI
+		// Membuat validasi form
+		$this->form_validation->set_rules('pertanyaan','Pertanyaan','required');
+		$this->form_validation->set_rules('kunci_jawaban','Kunci Jawaban','required');
+		$this->form_validation->set_rules('pembahasan','Pembahasan','required');
+
+	// Membuat pesan validasi error
+		$this->form_validation->set_message('required','Kolom %s tidak boleh kosong.');
 		
+	// Menjalankan form
+		// Apabila hasil validasi form menunjukkan ada sesuatu yang salah
+		if($this->form_validation->run() == false)
+		{
+			$this->tambah_sorting($id_paket);
+		}else
+		{
 		$data = array(
 			'id_soal' => $id_soal,
 			'id_paket' => $id_paket,
@@ -489,6 +530,7 @@ class Pilgan extends CI_Controller{
 		$this->m_data_soal->input_data($data,'tb_soal');//dikirimkan ke model m_data_soal yang ditangkap oleh function input_data
 		// Uri Segment disini merujuk pada id paket soal yang dikirim melalui form
 		redirect('soal/'.$this->uri->segment(4));
+		}
 	}
 	//function hapus adalah function yang dipanggil saat kita klik aksi hapus di tabel admin
     function hapus_sorting($id_soal,$id_paket_soal){
@@ -554,7 +596,7 @@ class Pilgan extends CI_Controller{
 
 // ======= Controller Soal Essay =======
 
-	public function tambah_soalEssay($idPaketSoalUri) {
+	function tambah_soalEssay($idPaketSoalUri) {
 
 		// Fungsi idPaketSoalUri disini adalah sebagai id_paket_soal yang dinamis nanti dalam form
 
@@ -610,7 +652,7 @@ class Pilgan extends CI_Controller{
             $this->load->view('template/footer');
 	}
 	
-	public function tambah_aksiEssay() { //fungsi untuk aksi dari tambah data
+	function tambah_aksiEssay() { //fungsi untuk aksi dari tambah data
             $id_soal = $this->input->post('id_soal'); //untuk post field namr yang dimasukkan berupa id_soal
             $id_paket = $this->input->post('id_paket'); //untuk post field namr yang dimasukkan berupa id_paket
             $id_jenis_soal = $this->input->post('id_jenis_soal'); //untuk post field namr yang dimasukkan berupa id_jenis_soal
@@ -632,7 +674,7 @@ class Pilgan extends CI_Controller{
 			redirect('soal/'.$this->uri->segment(4)); //setelah itu langsung dialihkan ke view yang dipanggil oleh function index
 	}
 	
-	public function edit_soalEssay($id_soal,$id_paket_soal_uri) {
+	function edit_soalEssay($id_soal,$id_paket_soal_uri) {
 		//	Fungsi dari variabel id_paket_soal_uri disini adalah sebagai penanda kita berada di paket soal yang mana sekarang 
             $where = array('id_soal' => $id_soal);
             $data['tb_soal_essay'] = $this->m_data_soal->edit_soalEssay($where,'tb_soal')->result();
@@ -644,14 +686,14 @@ class Pilgan extends CI_Controller{
             $this->load->view('template/footer');
 	}
 	
-	public function hapus_soalEssay($id_soal,$id_paket_soal) {
+	function hapus_soalEssay($id_soal,$id_paket_soal) {
             $where = array('id_soal' => $id_soal);
             $this->m_data_soal->hapus_soalEssay($where,'tb_soal');
 			// Fungsi dari id paket soal adalah sebagai penanda kita berada di paket soal yang mana
 			redirect('soal/'.$id_paket_soal);
 	}
 	
-	public function update_soalEssay() {
+	function update_soalEssay() {
             $id_soal = $this->input->post('id_soal');
             $pertanyaan = $this->input->post('pertanyaan');
             $kunci_jawaban = $this->input->post('kunci_jawaban');
@@ -673,7 +715,7 @@ class Pilgan extends CI_Controller{
     }
 
 // ===== Controller Benar Salah =====
-	public function tambah_benarSalah($id_paket_soal) {
+	function tambah_benarSalah($id_paket_soal) {
             $jumlahSoal = $this->m_data_soal->tampil_seluruh_soal()->num_rows();  
 			
 			// Fungsi id_paket_soal disini adalah sebagai id_paket_soal yang dinamis nanti dalam form
@@ -727,7 +769,7 @@ class Pilgan extends CI_Controller{
             $this->load->view('template/footer');
 	}
 	
-	public function tambah_aksi_benarSalah() {
+	function tambah_aksi_benarSalah() {
             $id_soal = $this->input->post('id_soal');
             $id_paket = $this->input->post('id_paket');
             $id_jenis_soal = $this->input->post('id_jenis_soal');
@@ -749,7 +791,7 @@ class Pilgan extends CI_Controller{
 			redirect('soal/'.$this->uri->segment(4));
 	}
 	
-	public function edit_benarSalah($id_soal,$id_paket_soal_uri) {
+	function edit_benarSalah($id_soal,$id_paket_soal_uri) {
 		// Fungsi variabel id_paket_soal_uri disini adalah sebagai penanda kita sedang berada di paket soal yang mana
         $where = array('id_soal' => $id_soal);
         $data['tb_soal_benarSalah'] = $this->m_data_soal->edit_soalEssay($where, 'tb_soal')->result();    
@@ -761,14 +803,14 @@ class Pilgan extends CI_Controller{
 		$this->load->view('template/footer');
 	}
 	
-	public function hapus_benarSalah($id_soal,$id_paket_soal) {
+	function hapus_benarSalah($id_soal,$id_paket_soal) {
         $where = array('id_soal' => $id_soal);
 		$this->m_data_soal->hapus_soalEssay($where,'tb_soal');
 		// Fungsi variabel id_pake_soal adalah sebagai penanda kita sedang berada di paket soal yang mana
         redirect('soal/'.$id_paket_soal);  
 	}
 	
-	public function update_benarSalah() {
+	function update_benarSalah() {
             $id_soal = $this->input->post('id_soal');
             $pertanyaan = $this->input->post('pertanyaan');
             $kunci_jawaban = $this->input->post('kunci_jawaban');
@@ -788,7 +830,7 @@ class Pilgan extends CI_Controller{
 			// Uri Segment disini merujuk pada id paket soal yang dikirim melalui form
 			redirect('soal/'.$this->uri->segment(4));
         
-    }
-
+	}
 }
+
 

@@ -25,10 +25,11 @@
                                 <input type="text" name="id_soal" id="id_soal" class="form-control" value="<?= $soal->id_soal;?>" readonly>
                             </div>
                         </div>
+                        <p class="form-text text-muted"> Form ini wajib diisi. </p>
                         <div class="form-group">
                             <label for="textarea-pertanyaan"> Pertanyaan </label>
                             <textarea name="pertanyaan" id="textarea-ckeditor textarea-pertanyaan" class="form-control ckeditor"><?= $soal->pertanyaan;?></textarea>
-                            <p class="form-text text-muted"> Form ini wajib diisi. </p>
+                            
                         </div>
                         <div class="form-group">
                             <label for="opsi_a"> Pilihan A </label>
