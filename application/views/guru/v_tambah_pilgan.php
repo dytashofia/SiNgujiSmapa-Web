@@ -45,44 +45,53 @@
                                 <input type="text" name="id_jenis_soal" id="id_jenis_soal" class="form-control" value="JNS001" readonly>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <p class="form-text text-muted"> Form ini wajib diisi. </p>
+                        <div class="form-group<?=form_error('pertanyaan') ? 'has-error' : null?>">
                             <label for="textarea-pertanyaan"> Pertanyaan </label>
-                            <textarea name="pertanyaan" id="textarea-ckeditor textarea-pertanyaan" class="form-control ckeditor"></textarea>
-                            <p class="form-text text-muted"> Form ini wajib diisi. </p>
+                            <textarea name="pertanyaan" id="textarea-ckeditor textarea-pertanyaan" class="form-control ckeditor"><?=set_value('pertanyaan');?></textarea>
+                            <?=form_error('pertanyaan','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group<?=form_error('opsi_a') ? 'has-error' : null?>">
                             <label for="opsi_a"> Pilihan A </label>
-                            <textarea name="opsi_a" id="textarea-ckeditor opsi_a" class="form-control ckeditor"></textarea>
+                            <textarea name="opsi_a" id="textarea-ckeditor opsi_a" class="form-control ckeditor"><?=set_value('opsi_a');?></textarea>
+                            <?=form_error('opsi_a','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group<?=form_error('opsi_b') ? 'has-error' : null?>">
                             <label for="opsi_b"> Pilihan B </label>
-                            <textarea name="opsi_b" id="textarea-ckeditor opsi_b" class="form-control ckeditor"></textarea>
+                            <textarea name="opsi_b" id="textarea-ckeditor opsi_b" class="form-control ckeditor"><?=set_value('opsi_b');?></textarea>
+                            <?=form_error('opsi_b','<small class="text-form text-danger mt-2 ml-2">','</small>');?>                        
                         </div>
-                        <div class="form-group">
+                        <div class="form-group<?=form_error('opsi_c') ? 'has-error' : null?>">
                             <label for="opsi_c"> Pilihan C </label>
-                            <textarea name="opsi_c" id="textarea-ckeditor opsi_c" class="form-control ckeditor"></textarea>
+                            <textarea name="opsi_c" id="textarea-ckeditor opsi_c" class="form-control ckeditor"><?=set_value('opsi_c');?></textarea>
+                            <?=form_error('opsi_c','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group<?=form_error('opsi_d') ? 'has-error' : null?>">
                             <label for="opsi_d"> Pilihan D </label>
-                            <textarea name="opsi_d" id="textarea-ckeditor opsi_d" class="form-control ckeditor"></textarea>
+                            <textarea name="opsi_d" id="textarea-ckeditor opsi_d" class="form-control ckeditor"><?=set_value('opsi_d');?></textarea>
+                            <?=form_error('opsi_d','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group<?=form_error('opsi_e') ? 'has-error' : null?>">
                             <label for="opsi_e"> Pilihan E </label>
-                            <textarea name="opsi_e" id="textarea-ckeditor opsi_e" class="form-control ckeditor"></textarea>
+                            <textarea name="opsi_e" id="textarea-ckeditor opsi_e" class="form-control ckeditor"><?=set_value('opsi_e');?></textarea>
+                            <?=form_error('opsi_e','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group<?=form_error('kunci_jawaban') ? 'has-error' : null?>">
                             <label for="kunci_jawaban"> Kunci Jawaban </label>
                             <select name="kunci_jawaban" id="kunci_jawaban" class="custom-select">
-                                <option value="B">Pilihan A</option>
-                                <option value="C">Pilihan B</option>
-                                <option value="D">Pilihan C</option>
-                                <option value="A">Pilihan D</option>
+                                <!--set value diberi kondisi agar yang tampil sesuai dengan yang dipilih-->
+                                <option value="A">Pilihan A</option>
+                                <option value="B">Pilihan B</option>
+                                <option value="C">Pilihan C</option>
+                                <option value="D">Pilihan D</option>
                                 <option value="E">Pilihan E</option>
                             </select>
+                            <?=form_error('kunci_jawaban','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group"<?=form_error('pembahasan') ? 'has-error' : null?>>
                             <label for="pembahasan"> Pembahasan </label>
-                            <textarea name="pembahasan" id="textarea-ckeditor pembahasan" class="form-control ckeditor"></textarea>
+                            <textarea name="pembahasan" id="textarea-ckeditor pembahasan" class="form-control ckeditor"><?=set_value('pembahasan');?></textarea>
+                            <?=form_error('pembahasan','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-md-2">
