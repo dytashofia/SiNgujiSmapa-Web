@@ -50,7 +50,7 @@
                     <div class="form-group">
                         <label><h3>Soal</h3></label>
                             <div>
-                                <textarea id="textarea-ckeditor" name="pertanyaan"  class="ckeditor"></textarea>
+                                <textarea id="textarea-ckeditor" name="pertanyaan"  class="ckeditor"><?= $benar_salah->pertanyaan;?></textarea>
                             </div>
                     </div>    
                     <br>
@@ -69,13 +69,13 @@
                     <div class="form-group">
                         <label><h3>Pembahasan</h3></label>
                             <div>
-                                <textarea id="textarea-ckeditor" rows="2" name="pembahasan"  class="ckeditor"></textarea></div>
+                                <textarea id="textarea-ckeditor" rows="2" name="pembahasan"  class="ckeditor"><?= $benar_salah->pembahasan;?></textarea></div>
                             </div>
                     </div>        
                     <br>
                     <div class="row">
                         <div class="col-sm-12 col-md-2">
-                            <a href="<?= base_url('soal/'.$benar_salah->id_paket);?>" class="btn btn-outline-secondary w-100"> Kembali </a>
+                            <a href="<?= base_url('soal/'.$benar_salah->id_paket);?>" class="btn btn-outline-secondary w-100">Kembali </a>
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <button type="submit" class="btn btn-outline-primary w-100">Simpan</button>

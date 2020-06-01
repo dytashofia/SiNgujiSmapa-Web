@@ -48,21 +48,21 @@
                     <div class="form-group">
                         <label><h3>Soal</h3></label>
                             <div>
-                                <textarea id="textarea-ckeditor" name="pertanyaan"  class="ckeditor"></textarea>
+                                <textarea id="textarea-ckeditor" name="pertanyaan"  class="ckeditor"><?= $soal_essay->pertanyaan ?></textarea>
                             </div>
                     </div>    
                     <br>
                     <div class="form-group">
                         <label><h3>Kunci Jawaban</h3></label>
                             <div>
-                                <textarea id="textarea-ckeditor" name="kunci_jawaban"  class="ckeditor"></textarea></div>
+                                <textarea id="textarea-ckeditor" name="kunci_jawaban"  class="ckeditor"><?= $soal_essay->kunci_jawaban ?></textarea></div>
                             </div>
                     </div>
                     <br>        
                     <div class="form-group">
                         <label><h3>Pembahasan</h3></label>
                             <div>
-                                <textarea id="textarea-ckeditor" rows="2" name="pembahasan"  class="ckeditor"></textarea></div>
+                                <textarea id="textarea-ckeditor" rows="2" name="pembahasan"  class="ckeditor"><?= $soal_essay->pembahasan ?></textarea></div>
                             </div>
                     <br>
                     <div class="row">
