@@ -13,7 +13,10 @@ body{
 background: 
    
 
-  url(<?php echo base_url("gambar/latar.jpg");?>) no-repeat  fixed;background: 
+  url(<?php echo base_url("gambar/latar.jpg");?>) no-repeat  fixed;
+  width : 100%;
+  height : 100%;
+  background-size:100%;
 
 	
 }
@@ -37,7 +40,7 @@ background:
   padding: 40px;
   width: 300px;
   height: 400px;
-  background: url('gambar/kiri.png');
+  background: url('gambar/kiri2.png');
   background-size: cover;
   background-position: center;
   border-radius: 0 2px 2px 0;
