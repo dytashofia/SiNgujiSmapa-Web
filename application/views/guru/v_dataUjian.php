@@ -3,15 +3,15 @@
     <main>
         <div class="container-fluid">
             <h1 class="my-4">
-                <i class="fa fa-table mr-2"></i>Daftar Paket Soal
+                <i class="fa fa-table mr-2"></i>Daftar Data Ujian
             </h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a href="<?= base_url('guru'); ?>">Dashboard</a></li>
-                <li class="breadcrumb-item active">Paket Soal</li>
+                <li class="breadcrumb-item active">Data Ujian</li>
             </ol>
             <div class="row my-2">
                 <div class="col-sm-12 col-md-4">
-                    <a href="<?= base_url('guru/setUjian/tambahDujian'); ?>" class="btn btn-outline-success p-2">Tambah Paket Soal</a>
+                    <a href="<?= base_url('guru/setUjian/tambahDujian'); ?>" class="btn btn-outline-success p-2">Tambah Data Ujian</a>
                 </div>
             </div>
             <div class="row my-2">
