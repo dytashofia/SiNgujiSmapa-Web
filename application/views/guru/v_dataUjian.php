@@ -47,14 +47,14 @@
                                                 <td class="text-center"><?= $paket->token_soal; ?></td>
                                                 <td class="text-center"><?= $paket->id_jenis_soal; ?></td>
                                                 <td class="text-center"><?= $paket->id_mapel; ?></td>
-                                                <td class="text-center"><?= $paket->waktu_mengerjakan; ?></td>
+                                                <td class="text-center"><?= $paket->waktu_mengerjakan; ?> Menit</td>
                                                 <td class="text-center"><?= $paket->waktu_mulai; ?></td>
-                                                <td class="text-center"><?= $paket->jumlah_soal; ?></td>
+                                                <td class="text-center"><?= $paket->jumlah_soal; ?> Soal</td>
                                                 <td class="text-center">
                                                     <?php if ($paket->status_ujian == 'Aktif') {
-                                                        echo '<span class="label label-success">Aktif</span>';
+                                                        echo '<span class="badge badge-primary">Aktif</span>';
                                                     } else {
-                                                        echo '<span class="label label-danger">Tidak Aktif</span>';
+                                                        echo '<span class="badge badge-danger">Tidak Aktif</span>';
                                                     } ?></td>
 
                                                 <td colspan="3">
