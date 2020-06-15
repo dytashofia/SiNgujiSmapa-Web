@@ -57,32 +57,22 @@
                                                         echo '<span class="badge badge-danger">Tidak Aktif</span>';
                                                     } ?></td>
 
-                                                <td colspan="3">
-                                                    <div class="row justify-content-around mt-2">
-                                                        <div class="col-sm-12 col-md-6">
-                                                            <a href="<?= base_url('soal/' . $paket->id_ujian); ?>" class="btn btn-info btn-sm">
-                                                                <i class="fas fa-clipboard-list"></i>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-12 col-md-6">
-                                                            <a href="<?= base_url('detailPaket/' . $paket->id_ujian); ?>" class="btn btn-success btn-sm">
-                                                                <i class="fas fa-info-circle"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row justify-content-around mt-2">
-                                                        <div class="col-sm-12 col-md-6">
-                                                            <button type="button" data-toggle="modal" data-target="#deletePaketModal<?= $paket->id_ujian; ?>" class="btn btn-danger btn-sm">
-                                                                <i class="fas fa-trash-alt"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div class="col-sm-12 col-md-6">
-                                                            <a href="<?= base_url('editPaket/' . $paket->id_ujian); ?>" class="btn btn-primary btn-sm">
-                                                                <i class="fas fa-pen"></i>
-                                                            </a>
-                                                        </div>
+                                                <td class="text-center">
 
-                                                    </div>
+
+                                                    <a href="<?= base_url('guru/setUjian/tampilDetailUjian/' . $paket->id_ujian); ?>" class="btn btn-success btn-sm">
+                                                        <i class="fas fa-info-circle"></i>
+                                                    </a>
+                                                    <a href="<?= base_url('guru/setUjian/editDujian/' . $paket->id_ujian); ?>" class="btn btn-primary btn-sm">
+                                                        <i class="fas fa-pen"></i>
+                                                    </a>
+                                                    <button type="button" data-toggle="modal" data-target="#deletePaketModal<?= $paket->id_ujian; ?>" class="btn btn-danger btn-sm">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+
+
+
+
                                                 </td>
                                             </tr>
                                         <?php

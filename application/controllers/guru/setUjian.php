@@ -54,9 +54,13 @@ class SetUjian extends CI_Controller
 
         $jenis_soal = $this->db->get('tb_jenis_soal')->result();
         $tipe = $this->db->get('tb_tipe_ujian')->result();
+        $nama_mapel = $this->db->get('tb_mapel')->result();
+        $nama_jurusan = $this->db->get('tb_jurusan')->result();
 
         $data = array(
             "id_ujian" => $idUjian,
+            'nama_mapel' => $nama_mapel,
+            'nama_jurusan' => $nama_jurusan,
             'jenis_soal' => $jenis_soal,
             'tipe' => $tipe
         );
@@ -130,5 +134,119 @@ class SetUjian extends CI_Controller
 
         $this->m_data_ujian->deleteDujian($where, 'tb_ujian');
         redirect('guru/setUjian/tampilDujian');
+    }
+
+    function editDujian($idUjian)
+    {
+        // Mendapatkan Id Paket Soal dari URL
+        $id_ujian = $idUjian;
+        // Membuat array untuk digunakan sebagai media select
+        $where = array(
+            'id_ujian' => $id_ujian
+        );
+        // Mendapatkan data paket soal tertentu melalui modal
+        $result = $this->m_data_ujian->tampil_data_ujian_where_only($where, "tb_ujian")->result();
+        // Mendapatkan data mata pelajaran melalui modal
+        $nama_mapel = $this->db->get('tb_mapel')->result();
+        $nama_jurusan = $this->db->get('tb_jurusan')->result();
+        $jenis_soal = $this->db->get('tb_jenis_soal')->result();
+        $tipe = $this->db->get('tb_tipe_ujian')->result();
+        // Menyimpan hasil dari model kedalam array
+        $data = array(
+            'data_ujian' => $result,
+            'nama_mapel' => $nama_mapel,
+            'nama_jurusan' => $nama_jurusan,
+            'jenis_soal' => $jenis_soal,
+            'tipe' => $tipe
+        );
+        // Menampilkan view dengan data dari model
+        $this->load->view('template/header');
+        $this->load->view('template/topNavbar');
+        $this->load->view('template/sideNavbar');
+        $this->load->view('guru/v_edit_dataUjian.php', $data);
+        $this->load->view('template/footer');
+    }
+    function aksiEditUjian()
+    {
+        // Menyimpan input dari user kedalam variabel
+        $idUjian = $this->input->post("id_ujian");
+        $nip = $this->input->post("nip");
+        $idMapel = $this->input->post("id_mapel");
+        $idJurusan = $this->input->post("id_jurusan");
+        $idJenisSoal = $this->input->post("id_jenis_soal");
+        $idTipe = $this->input->post("id_tipe");
+        $jumlahSoal = $this->input->post("jumlah_soal");
+        $waktuMengerjakan = $this->input->post("wkatu_mengerjakan");
+        $waktuMulai = $this->input->post("wkatu_mulai");
+        $tokenSoal = $this->input->post("token_soal");
+        $status = $this->input->post("status");
+
+        // Membuat validasi form
+        $this->form_validation->set_rules('id_paket', 'ID Paket', 'required|trim|strip_tags');
+        $this->form_validation->set_rules('id_jurusan', 'ID Jurusan', 'required|trim|strip_tags');
+        $this->form_validation->set_rules('id_mapel', 'ID Mapel', 'required|trim|strip_tags');
+        $this->form_validation->set_rules('nama_paket', 'Nama Paket Soal', 'required|trim|strip_tags');
+
+        // Membuat pesan error untuk validasi form
+        $this->form_validation->set_message('required', 'Kolom %s tidak boleh kosong.');
+        $this->form_validation->set_message('trim', 'Kolom %s berisi karakter yang dilarang.');
+        $this->form_validation->set_message('strip_tags', 'Kolom %s berisi karakter yang dilarang.');
+
+        // Menjalankan validasi form
+        // apabila ditemukan sebuah kesalahan dalam menjalankan validasi form
+        // if ($this->form_validation->run() == false) {
+        //     $this->editPaket($id_paket);
+        // } else {
+        // Apabila tidak ditemukan sebuah kesalahan dalam menjalankan validasi form
+        // Menyimpan semua variabel kedalam array
+        $data = array(
+            'id_ujian' => $idUjian,
+            'NIP' => $nip,
+            'id_mapel' => $idMapel,
+            'id_jurusan' => $idJurusan,
+            'id_jenis_soal' => $idJenisSoal,
+            'id_tipe' => $idTipe,
+            'jumlah_soal' => $jumlahSoal,
+            'waktu_mengerjakan' => $waktuMengerjakan,
+            'waktu_mulai' => $waktuMulai,
+            'token_soal' => $tokenSoal,
+            'status_ujian' => $status,
+        );
+        // Menyimpan data sebagai unique key yang digunakan untuk mengupdate
+        $where = array(
+            'id_ujian' => $idUjian
+        );
+        $this->m_data_ujian->update_data_ujian($where, $data, 'tb_ujian');
+        redirect('guru/setUjian/tampilDujian');
+        //}
+    }
+    function tampilDetailUjian($idUjian)
+    {
+        // Mendapatkan Id Paket Soal dari URL
+        $id_ujian = $idUjian;
+        // Membuat array untuk digunakan sebagai select
+        $where = array(
+            'tb_ujian.id_ujian' => $id_ujian
+        );
+        // Mendapatkan data paket soal tertentu melalui model
+        $result = $this->m_data_ujian->tampil_data_ujian_where_only($where, 'tb_ujian')->result();
+        $nama_mapel = $this->db->get('tb_mapel')->result();
+        $nama_jurusan = $this->db->get('tb_jurusan')->result();
+        $nama_jenis = $this->db->get('tb_jenis_soal')->result();
+        $tipe_ujian = $this->db->get('tb_tipe_ujian')->result();
+        // Menyimpan hasil dari model kedalam array
+        $data = array(
+            'data_ujian' => $result,
+            'nama_mapel' => $nama_mapel,
+            'nama_jurusan' => $nama_jurusan,
+            'nama_jenis' => $nama_jenis,
+            'tipe_ujian' => $tipe_ujian
+        );
+        // Menampilkan view dengan data dari model
+        $this->load->view('template/header');
+        $this->load->view('template/topNavbar');
+        $this->load->view('template/sideNavbar');
+        $this->load->view('guru/v_detail_dataUjian', $data);
+        $this->load->view('template/footer');
     }
 }

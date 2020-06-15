@@ -30,4 +30,13 @@ class M_data_ujian extends CI_Model
 
         $this->db->delete($table, $where);
     }
+    function tampil_data_ujian_where_only($where, $table)
+    {
+        return $this->db->get_where($table, $where);
+    }
+    function update_data_ujian($where, $data, $table)
+    {
+        $this->db->where($where);
+        $this->db->update($table, $data);
+    }
 }

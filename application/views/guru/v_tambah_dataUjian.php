@@ -3,7 +3,7 @@
     <main>
         <div class="container-fluid">
             <h1 class="mb-4">
-                <i class="fa fa-table mr-2"></i>Tambah Data Ujian
+                <i class="fa fa-table mr-2 mt-4"></i>Tambah Data Ujian
             </h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active"><a href="<?= base_url('guru'); ?>">Dashboard</a></li>
@@ -45,7 +45,15 @@
                                                 ID Mapel
                                             </div>
                                         </div>
-                                        <input type="text" name="id_mapel" id="id_mapel" class="form-control" value="<?= $_SESSION['id_mapel']; ?>" readonly>
+                                        <?php
+                                        foreach ($nama_mapel as $mapel) {
+                                            if ($mapel->id_mapel == $_SESSION['id_mapel']) {
+                                                echo '<input type="text" name="" id="" class="form-control" value="' . $mapel->mata_pelajaran . '" readonly>';
+                                            }
+                                        }
+
+                                        ?>
+                                        <input type="hidden" name="id_mapel" id="id_mapel" class="form-control" value="<?= $_SESSION['id_mapel']; ?>" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -55,7 +63,15 @@
                                                 ID Jurusan
                                             </div>
                                         </div>
-                                        <input type="text" name="id_jurusan" id="id_jurusan" class="form-control" value="<?= $_SESSION['id_jurusan']; ?>" readonly>
+                                        <?php
+                                        foreach ($nama_jurusan as $jurusan) {
+                                            if ($jurusan->id_jurusan == $_SESSION['id_jurusan']) {
+                                                echo '<input type="text" name="" id="" class="form-control" value="' . $jurusan->jurusan . '" readonly>';
+                                            }
+                                        }
+
+                                        ?>
+                                        <input type="hidden" name="id_jurusan" id="id_jurusan" class="form-control" value="<?= $_SESSION['id_jurusan']; ?>" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
