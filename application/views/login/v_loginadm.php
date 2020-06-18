@@ -1,147 +1,246 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>login Admin</title>
+	<title>Login guru</title>
 </head>
 <style>
-	body{
-	font-family: sans-serif;
-	background: 
-  	linear-gradient(
-          rgba(0, 0, 0, 0.8), 
-          rgba(0, 0, 0, 0.8)
-        ),
-
-	url(<?php echo base_url("gambar/smajem.jpg");?>) no-repeat  fixed;
+	@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+*:focus {
+  outline: none;
 }
+body{
+  
+background: 
+   
 
-h1{
-	text-align: center;
-	/*ketebalan font*/
-	font-weight: 300;
-}
+  url(<?php echo base_url("gambar/dasar6.png");?>) no-repeat  fixed;background: 
 
-.caption{
-	width: 100%;
-	margin: 40px 200PX;
-	position: absolute;
-	top: 230px;
-}
-
-.caption .cap_title{
-	font-family: 'LatoBold', arial;
-	font-weight: Bold;
-	font-size: 50px;
-	color: #ffffff;
-	letter-spacing: 1.5px;
-}
-
-.caption .cap_desc{
-	font-family: 'HoneyLight';
-	font-size: 24px;
-	color: #ffffff;
-	margin-top: 5px;
-}
-
-.tulisan_login{
-	text-align: center;
-	/*membuat semua huruf menjadi kapital*/
-	text-transform: uppercase;
-}
-img{
-
-	/*meletakkan form ke tengah*/
-	margin: 150px 600px;
-	padding: 60px 20px;
+	
 }
 
 
-.kotak_login{
-	width: 330px;
-	background: black;
-	position: absolute;
-	/*meletakkan form ke tengah*/
-	margin: -636px 711px;
-	padding: 23px 52px;
+#login-box {
+  position: relative;
+  margin: 10% auto;
+  width: 600px;
+  height: 400px;
+  background: #FFF;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-label{
-	font-size: 11pt;
-color: #ffffff;
+.left {
+   position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 40px;
+  width: 300px;
+  height: 400px;
+  line-height: 1;
+  text-align: center;
+  margin-top: 0px;
+  color : black;
+  background: url('gambar/kiriadm4.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 2px 2px 0;
+
 }
 
-.h2{
-	color: #ffffff;
+
+h1 {
+  margin: 0 0 20px 0;
+  font-weight: 600;
+  font-size: 30px;
 }
 
-.form_login{
-	/*membuat lebar form penuh*/
-	box-sizing : border-box;
-	width: 100%;
-	padding: 6px;
-	font-size: 11pt;
-	margin-bottom: 4px;
+input[type="text"],
+input[type="password"],
+input[type="tel"]{
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  padding: 7px;
+  width: 200px;
+  height: 15px;
+  border: none;
+  background:#5dabe9;
+  border-bottom: 1.5px solid #195e83;
+  font-family: 'Roboto', sans-serif;
+
+  font-weight: 400;
+  font-size: 16px;
+  transition: 0.2s ease;
 }
 
-.tombol_login{
-	background: #0000A0;
-	color: white;
-	font-size: 11pt;
-	width: 100%;
-	border: none;
-	border-radius: 3px;
-	padding: 10px 20px;
+
+hr {
+display: block;
+margin-top: 0.5em;
+margin-bottom: 0.5em;
+margin-left: auto;
+margin-right: auto;
+border-style: inset;
+border-width: 1px;
+width: 180px;
+
 }
 
-.link{
-	color: #232323;
-	text-decoration: none;
-	font-size: 10pt;
+
+input[type="text"]:focus,
+input[type="password"]:focus{
+  border-bottom: 2px solid #195e83;
+  color: black;
+  transition: 0.2s ease;
 }
+
+input[type="submit"] {
+  margin-top: -3px;
+  width: 120px;
+  height: 38px;
+  background: #195e83;
+  border: none;
+  border-radius: 12px;
+  color:#ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 799;
+  text-transform: uppercase;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  opacity: 0.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+input[type="submit"]:active {
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+.or {
+  position: absolute;
+  top: 180px;
+  left: 280px;
+  width: 40px;
+  height: 40px;
+  background: #DDD;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  line-height: 40px;
+  text-align: center;
+}
+
+.right {
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+  padding: 40px;
+  width: 300px;
+  height: 400px;
+  background: url('gambar/kananadm5.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 2px 2px 0;
+
+ 
+  
+}
+
+.left .ketlogin {
+	font-family: 'Montserrat', sans-serif;
+  font-size : 30px;
+  line-height: 2cm;
+  margin-bottom: 30px;
+  font-weight: 600;
+  font-weight: 540;
+  color: #195e83;
+}
+
+
+.left .loginwith {
+  display: block;
+  line-height: 1cm;
+  margin-bottom: -50px;
+  font-weight: 600;
+  font-size: 20px;
+  color: Black;
+  text-align: center;
+}
+
+ 
+button.social-signin {
+  margin-bottom: 15px;
+  width: 140px;
+  height: 38px;
+  left :400px;
+  border: none;
+  border-radius: 12px;
+  color:rgb(247, 178,74) ;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+button.social-signin:hover,
+button.social-signin:focus {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+}
+ 
+button.social-signin:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+}
+
+button.social-signin.facebook {
+  background:#43270f;
+  text-decoration: none;
+}
+
+
 </style>
 <body>
-
-
-<img src="gambar/lp3.png" width="650px" height="450px">
-	<section class="caption">
-			<p class="cap_title">WELCOME TO <br> SINGUJI SMAPA</p>
-			<p class="cap_desc">Untuk masuk ke panel admin , silahkan login <br> terlebih dahulu!</p>
-		</section>
-	
-	<!-- aksi form ini diarah ke fungsi aksi_login yang terdapat di controler login -->
-
-	<div class="kotak_login">
-	<form action="<?php echo base_url('login/loginadm/aksi_login'); ?>" method="post">		
-
-		<div class="row">
-            <div class="col-12 col-md-6 text-center mt-5 mx-auto p-4">
-                <h1 class="h2">Login Admin</h1>
+<form action="<?php echo base_url('login/loginAdm/aksi_login'); ?>" method="post" > 
+        <div id="login-box">
+          <div class="left">
+            <!-- <h1>Sign In</h1> -->
+           
+            <span class="ketlogin"> Masuk </span>
+            <br>
+            <br>
+            <br>
+            <!-- <h1>Sign In</h1> -->
+            
+            <input type="text" name="username" placeholder="Nama pengguna" required autocomplete="off" autofocus style="color: white" />
+            <input type="password" name="password" placeholder="kata sandi" required autocomplete="off" />
+            <br>
+            
+            <input type="submit" name="signin_submit" value="LOGIN" />
+            <br> <br> <br> <br>
+            <hr>
+            <span class="lupa"><a href="http://localhost/SiNgujiSmapa-Web/login" style="text-decoration:none"> Masuk sebagai guru??</a></span>
+          </div>
   
-            </div>
+          
+        
+          <div class="right">
+              
+             
+         </div>
+        
         </div>
-
-		<label>Username</label>
-		<input type="text" name="username" class="form_login" placeholder="Username" required>
- 
-		<label>Password</label>
-		<input type="password" name="password" class="form_login" placeholder="Password .." required>
-		<br/>
-		<div class="form-group">
-                        <div class="d-flex justify-content-between">
-                            <div class="custom-control custom-checkbox">
-                           
-                         
-                    </div>
-                    <div class="form-group">
-		<br/>
-
-		<input type="submit" class="tombol_login" value="LOGIN">
-
- 
-		<br/>
-		<br/>
-	</form>
-	</div>
+        <form>
 </body>
 </html>
