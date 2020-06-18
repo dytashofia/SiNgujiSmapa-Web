@@ -213,7 +213,7 @@ button.social-signin.facebook {
             <input type="submit" name="signin_submit" value="LOGIN" />
             <br> <br> <br> <br>
             <hr>
-            <span class="lupa"><a href="http://localhost/SiNgujiweb/loginAdmin" style="text-decoration:none"> Masuk sebagai admin?</a></span>
+            <span class="lupa"><a href="http://localhost/SiNgujiSmapa-Web/loginAdmin" style="text-decoration:none"> Masuk sebagai admin?</a></span>
           </div>
   
           
