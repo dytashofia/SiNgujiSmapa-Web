@@ -31,8 +31,7 @@
                                                             <td>Jurusan</td>
                                                             <td>Kelas</td>
                                                             <td>Semester</td>
-                                                            <td>Username</td>
-                                                            <td>Password</td>
+                                                            <td>Foto</td>
                                                             <th>Aksi</th>
                                                         </tr>
                                                     </thead>
@@ -49,12 +48,11 @@
                                                                 <td><?= $siswa->jurusan;?></td>
                                                                 <td><?= $siswa->kelas;?></td>
                                                                 <td><?= $siswa->semester;?></td>
-                                                                <td><?= $siswa->username_siswa;?></td>
-                                                                <td><?= $siswa->password_siswa;?></td>
+                                                                <td><?= $siswa->foto_siswa;?></td>
                                                                 <td>
-                                                                <div class="row">
-                                                                    <div class="col-sm-12 col-md-2 mr-3">
-                                                                        <a href="<?= base_url('editSiswa/'.$siswa->NIS);?>" class="btn btn-primary">
+                                                                <div class="row justify-content-around mt-2">
+                                                                    <div class="col-sm-12 col-md-6">
+                                                                        <a href="<?= base_url('editSiswa/'.$siswa->NIS);?>" class="btn btn-primary btn-sm">
                                                                             <i class="fas fa-pen"></i>
                                                                         </a>
                                                                     </div>
