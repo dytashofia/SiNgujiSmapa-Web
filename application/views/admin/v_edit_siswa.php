@@ -14,7 +14,7 @@
                             <span class="text-muted">Edit Data Siswa</span>
                         </div>
                         <div class="card-body">
-                            <form action="<?= base_url('/admin/admin/aksiEditSiswa/');?>" method="post">
+                            <form action="<?= base_url('/admin/Admin/aksiEditSiswa/');?>" method="post">
                                 <?php
                                     foreach($tb_siswa as $siswa) :
                                 ?>

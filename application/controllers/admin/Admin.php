@@ -105,6 +105,7 @@ class Admin extends CI_Controller {
     }   
     
    //  ===== Controller Untuk Siswa =====
+   
    //function untuk tampilan tabel master siswa
    public function tampilSiswa()
 	{
@@ -114,10 +115,60 @@ class Admin extends CI_Controller {
 		$this->load->view('template/sideNavbar');
 		$this->load->view('admin/v_tampil_siswa', $data);
 		$this->load->view('template/footer');
+    }
+    public function tambahSiswa()
+	{
+        $jurusan = $this->m_data_master->tampil_jurusan()->result();
+        
+        $data = array(
+            'jurusan' => $jurusan
+        );
+
+    $this->load->view('template/header');
+    $this->load->view('template/topNavbar');
+    $this->load->view('template/sideNavbar');
+    $this->load->view('admin/v_tambah_siswa',$data);
+    $this->load->view('template/footer');
+  
+    }
+    public function  aksiTambahSiswa()
+    {
+        $NIS = $this->input->post('NIS');
+        $nama_siswa = $this->input->post('nama_siswa');
+        $jenis_kelamin = $this->input->post('jenis_kelamin');
+        $id_jurusan = $this->input->post('id_jurusan');
+        $kelas = $this->input->post('kelas');
+        $semester = $this->input->post('semester');
+        $username_siswa = $this->input->post('username_siswa');
+        $password_siswa= $this->input->post('password_siswa');
+        $foto_siswa = $this->input->post('foto_siswa');
+
+        $data = array(
+            'NIS' => $NIS,
+            'nama_siswa' => $nama_siswa,
+            'jenis_kelamin' => $jenis_kelamin,
+            'id_jurusan' => $id_jurusan,
+            'kelas' => $kelas,
+            'semester' => $semester,
+            'username_siswa' => $username_siswa,
+            'password_siswa' => $password_siswa,
+            'foto_siswa' => $foto_siswa
+        );
+        $this->m_data_master->tambah_siswa($data, 'tb_siswa');
+        redirect('admin/Admin/tampilSiswa'); 
+    }
+    function tampilDetailSiswa($NIS)
+	{
+		//function edit menangkap NIS dari pengiriman NIS yang ditampilkan di v_TAMPIL_SISWA
+		echo $NIS;
+		$where = array('NIS' => $NIS); // kemudian diubah menjadi array
+		$data['tb_siswa'] = $this->m_data_master->tampil_paket_where_only($where, 'tb_siswa')->result(); //dan barulah kita kirim data array edit tersebut pada m_data_soal dan ditangkap oleh function edit_data 
+		$this->load->view('template/header');
+		$this->load->view('template/topNavbar');
+		$this->load->view('template/sideNavbar');
+		$this->load->view('admin/v_detail_siswa', $data); // kemudian setelah eksekusi ditrampilkan view v_edit untuk mengubah data
+		$this->load->view('template/footer');
 	}
-
- 
-
 
 
 }

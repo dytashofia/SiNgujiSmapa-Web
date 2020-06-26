@@ -8,7 +8,7 @@
                 <li class="breadcrumb-item">
                     <a href="<?= base_url('admin');?>">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active">Menu Tambah Siswa</li>
+                <li class="breadcrumb-item active">Menu Siswa</li>
             </ol>
                                     <div class="card mb-4">
                                         <div class="card-header">
@@ -17,7 +17,7 @@
                                         <div class="card-body">
                                             <div class="row mb-4">
                                                 <div class="col-sm-12 col-md-4">
-                                                    <a href="<?= base_url('tambahsiswa');?>" class="btn btn-outline-success">Tambah Siswa</a>
+                                                    <a href="<?= base_url('admin/Admin/tambahSiswa');?>" class="btn btn-outline-success">Tambah Siswa</a>
                                                 </div>
                                             </div>
                                             <div class="table-responsive">
@@ -52,14 +52,21 @@
                                                                 <td>
                                                                 <div class="row justify-content-around mt-2">
                                                                     <div class="col-sm-12 col-md-6">
-                                                                        <a href="<?= base_url('editSiswa/'.$siswa->NIS);?>" class="btn btn-primary btn-sm">
-                                                                            <i class="fas fa-pen"></i>
+                                                                        <a href="<?= base_url('admin/Admin/tampilDetailSiswa/'.$siswa->NIS);?>" class="btn btn-info btn-sm">
+                                                                            <i class="fas fa-info-circle"></i>
                                                                         </a>
                                                                     </div>
                                                                     <div class="col-sm-12 col-md-6">
-                                                                        <button type="button" data-toggle="modal" data-target="#deletePaketModal<?=$siswa->NIS;?>" class="btn btn-danger btn-sm">
-                                                                            <i class="fas fa-trash-alt"></i>
-                                                                        </button>
+                                                                        <a href="<?= base_url('admin/Admin/editSiswa/'.$siswa->NIS);?>" class="btn btn-primary btn-sm">
+                                                                            <i class="fas fa-pen"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                    <div class="row justify-content-around mt-2">
+                                                                        <div class="col-sm-12 col-md-6">
+                                                                            <button type="button" data-toggle="modal" data-target="#deletePaketModal<?=$siswa->NIS;?>" class="btn btn-danger btn-sm">
+                                                                                <i class="fas fa-trash-alt"></i>
+                                                                            </button>
                                                                     </div>
                                                                 </div>
                                                                 </td>
@@ -99,7 +106,7 @@
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-outline-secondary" type="button" data-dismiss="modal"> Batal </button>
-                        <a href="<?= base_url('hapusPaket/'.$row->NIS);?>" role="button" class="btn btn-success"> Ya </a>
+                        <a href="<?= base_url('admin/Admin/hapusSiswa/'.$row->NIS);?>" role="button" class="btn btn-success"> Ya </a>
                     </div>
                 </div>
             </div>

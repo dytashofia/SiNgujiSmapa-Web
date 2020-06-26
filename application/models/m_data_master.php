@@ -60,6 +60,24 @@ class M_data_master extends CI_Model
       $query = $this->db->get();
       return $query;
     }
+
+    function tampil_jurusan()
+  {
+    return $this->db->get('tb_jurusan');
+  }
+    function tampil_paket_where_only($where, $table)
+  {
+    return $this->db->get_where($table, $where);
+  }
+
+    function tambah_siswa($data, $table)
+  {
+      $this->db->insert($table, $data);
+  }
+    function edit_siswa() 
+  {
+    return $this->db->get_where($table, $where);
+  }
     function update_siswa($where, $data, $table)
   {
     $this->db->where($where);
