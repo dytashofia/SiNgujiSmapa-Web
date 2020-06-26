@@ -78,7 +78,7 @@ class M_data_master extends CI_Model
   {
     return $this->db->get_where($table, $where);
   }
-    function update_siswa($where, $data, $table)
+  function update_siswa($where, $data, $table)
   {
     $this->db->where($where);
     $this->db->update($table, $data);

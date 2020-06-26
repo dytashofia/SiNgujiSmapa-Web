@@ -168,8 +168,59 @@ class Admin extends CI_Controller {
 		$this->load->view('template/sideNavbar');
 		$this->load->view('admin/v_detail_siswa', $data); // kemudian setelah eksekusi ditrampilkan view v_edit untuk mengubah data
 		$this->load->view('template/footer');
-	}
+    }
+    
+    function editSiswa($NIS)
+	{
+		echo $NIS;
+		$where = array('NIS' => $NIS);
+		$result = $this->m_data_master->tampil_paket_where_only($where, "tb_siswa")->result();
+		// Mendapatkan data mata pelajaran melalui modal
+		$resultJurusan = $this->m_data_master->tampil_jurusan()->result();
+		// Menyimpan hasil dari model kedalam array
+		$data = array(
+			'data_siswa' => $result,
+			'data_jurusan' => $resultJurusan
+		);
+		// Menampilkan view dengan data dari model
+		$this->load->view('template/header');
+		$this->load->view('template/topNavbar');
+		$this->load->view('template/sideNavbar');
+		$this->load->view('admin/v_edit_siswa.php', $data);
+		$this->load->view('template/footer');
+    }
+    
+     function aksiEditSiswa() 
+    {
+        $NIS = $this->input->post('NIS');
+        $nama_siswa = $this->input->post('nama_siswa');
+        $jenis_kelamin = $this->input->post('jenis_kelamin');
+        $id_jurusan = $this->input->post('id_jurusan');
+        $kelas = $this->input->post('kelas');
+        $semester = $this->input->post('semester');
+        $username_siswa = $this->input->post('username_siswa');
+        $password_siswa= $this->input->post('password_siswa');
 
+        $data = array(   
+            'NIS' => $NIS,
+            'nama_siswa' => $nama_siswa,
+            'jenis_kelamin' => $jenis_kelamin,
+            'id_jurusan' => $id_jurusan,
+            'kelas' => $kelas,
+            'semester' => $semester,
+            'username_siswa' => $username_siswa,
+            'password_siswa' => $password_siswa
+        );
+
+        $where = array(
+            'NIS' => $NIS,
+        );
+
+        $this->m_data_master->update_siswa($where,$data,'tb_siswa');
+        redirect('admin/Admin/tampilSiswa');
+
+
+    }
 
 }
 
