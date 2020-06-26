@@ -54,7 +54,7 @@ class Admin extends CI_Controller {
         );
         $this->m_data_master->tambah_Master($data, 'tb_guru');
         redirect('Admin/index'); 
-
+    }
 
     public function editDataGuru ($NIP) 
     {
@@ -100,11 +100,11 @@ class Admin extends CI_Controller {
         
         $this->m_data_master->haous_Master($where, 'tb_guru');
         redirect('Admin/index');
-    }
- 
-   
+    }   
     
-    
+
+
+
 }
 
 ?>
