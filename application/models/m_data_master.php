@@ -83,8 +83,6 @@ class M_data_master extends CI_Model
     $this->db->where($where);
     $this->db->update($table, $data);
   }
-
-  // function untuk menghapus data paket soal
   function delete_siswa($where, $table)
   {
     $this->db->delete($table, $where);

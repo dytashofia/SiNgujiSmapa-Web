@@ -218,9 +218,16 @@ class Admin extends CI_Controller {
 
         $this->m_data_master->update_siswa($where,$data,'tb_siswa');
         redirect('admin/Admin/tampilSiswa');
-
-
     }
+    function hapusSiswa($NIS)
+	{
+        //function hapus menangkap NIS dari pengiriman NIS yang ditampilkan di view MASTER SISWA
+		$where = array('NIS' => $NIS); // kemudian diubah menjadi array
+		$this->m_data_master->delete_siswa($where, 'tb_siswa'); //dan barulah kita kirim data array hapus tersebut pada m_data_soal yang ditangkap oleh function hapus_data
+		// id paket disini merujuk pada id paket soal mana yang digunakan sekarang
+		redirect('admin/Admin/tampilSiswa'); // setelah itu langsung diarah kan ke function index yang menampilkan v_masuk
+	}
+
 
 }
 
