@@ -32,7 +32,12 @@ class Admin extends CI_Controller {
 //  ===== Controller Untuk Guru =====
     public function tambahdataGuru() 
     {
-        $tambahData = $this->m_data_master->tambahMaster->num_rows;      
+        $tambahData = $this->m_data_master->tambahMaster->num_rows; 
+        $this->load->view('template/header');
+        $this->load->view('template/topNavbar');
+        $this->load->view('template/sideNavbar');
+        $this->load->view('admin/v_tampil_guru');
+        $this->load->view('template/footer');     
     }
 
     public function tambahAksi_guru ()
@@ -62,9 +67,15 @@ class Admin extends CI_Controller {
     {
         $where = array ('NIP' => $NIP);
         $data['tb_guru'] = $this->m_data_master->edit_Master($where, 'tb_guru');
+
+        $this->load->view('template/header');
+        $this->load->view('template/topNavbar');
+        $this->load->view('template/sideNavbar');
+        $this->load->view('admin/v_edit_guru');
+        $this->load->view('template/footer');
     }
 
-    public function aksiEditGuru ($NIP) 
+    public function updateGuru ($NIP) 
     {
         $NIP = $this->input->post('NIP');
         $id_mapel = $this->input->post('id_mapel');
@@ -85,7 +96,10 @@ class Admin extends CI_Controller {
         );
 
         $where = array(
+        
+
             'NIP' => $NIP,
+
         );
 
         $this->m_data_master->update_Master($data, 'tb_guru');

@@ -17,7 +17,7 @@ function index(){
     $data['jurusan'] = $this->m_jus->tampil_data()->result(); //mengambil daata dari database 
      $this->load->view('template/header');
             $this->load->view('template/topNavbar');
-            $this->load->view('template/sideNavbar');
+            $this->load->view('template/sideNavbaradm');
             $this->load->view('admin/v_tampiljurusan',$data);
             $this->load->view('template/footer');
      // parsing data ke view
