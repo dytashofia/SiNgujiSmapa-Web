@@ -5,7 +5,7 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Home</div>
-                    <a class="nav-link" href="overview">
+                    <a class="nav-link" href="<?= base_url('admin/Admin/'); ?>">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Dashboard
                     </a>

@@ -35,7 +35,7 @@ class Admin extends CI_Controller {
         $tambahData = $this->m_data_master->tambahMaster->num_rows; 
         $this->load->view('template/header');
         $this->load->view('template/topNavbar');
-        $this->load->view('template/sideNavbar');
+        $this->load->view('template/sideNavbaradm');
         $this->load->view('admin/v_tampil_guru');
         $this->load->view('template/footer');     
     }
@@ -70,7 +70,7 @@ class Admin extends CI_Controller {
 
         $this->load->view('template/header');
         $this->load->view('template/topNavbar');
-        $this->load->view('template/sideNavbar');
+        $this->load->view('template/sideNavbaradm');
         $this->load->view('admin/v_edit_guru');
         $this->load->view('template/footer');
     }
@@ -126,7 +126,7 @@ class Admin extends CI_Controller {
 		$data['tb_siswa'] = $this->m_data_master->tampil_siswa()->result(); // function untuk mengambil semua data paket soal dari database
 		$this->load->view('template/header');
 		$this->load->view('template/topNavbar');
-		$this->load->view('template/sideNavbar');
+		$this->load->view('template/sideNavbaradm');
 		$this->load->view('admin/v_tampil_siswa', $data);
 		$this->load->view('template/footer');
     }
@@ -140,7 +140,7 @@ class Admin extends CI_Controller {
 
     $this->load->view('template/header');
     $this->load->view('template/topNavbar');
-    $this->load->view('template/sideNavbar');
+    $this->load->view('template/sideNavbaradm');
     $this->load->view('admin/v_tambah_siswa',$data);
     $this->load->view('template/footer');
   
@@ -207,7 +207,7 @@ class Admin extends CI_Controller {
 		// Menampilkan view dengan data dari model
 		$this->load->view('template/header');
 		$this->load->view('template/topNavbar');
-		$this->load->view('template/sideNavbar');
+		$this->load->view('template/sideNavbaradm');
 		$this->load->view('admin/v_detail_siswa.php', $data);
 		$this->load->view('template/footer');
     }
@@ -227,7 +227,7 @@ class Admin extends CI_Controller {
 		// Menampilkan view dengan data dari model
 		$this->load->view('template/header');
 		$this->load->view('template/topNavbar');
-		$this->load->view('template/sideNavbar');
+		$this->load->view('template/sideNavbaradm');
 		$this->load->view('admin/v_edit_siswa.php', $data);
 		$this->load->view('template/footer');
     }
@@ -290,8 +290,6 @@ class Admin extends CI_Controller {
 		// id paket disini merujuk pada id paket soal mana yang digunakan sekarang
 		redirect('admin/Admin/tampilSiswa'); // setelah itu langsung diarah kan ke function index yang menampilkan v_masuk
 	}
-
-
 }
 
 ?>

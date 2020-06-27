@@ -2,7 +2,7 @@
     <main>
         <div class="container-fluid">
             <h1 class="my-4">
-                <i class="fa fa-table mr-2"></i>Daftar Soal
+                <i class="fa fa-table mr-2"></i>Data Siswa
             </h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item">
