@@ -11,7 +11,7 @@
             </ol>
             <div class="row my-2">
                 <div class="col-sm-12 col-md-4">
-                    <a href="<?php echo base_url() ?>admin/crudjurusan/tambah/" class="btn btn-outline-success p-2">Tambah Jurusan</a>
+                    <a href="<?= base_url('admin/crudjurusan/tambah');?>" class="btn btn-outline-success p-2">Tambah Jurusan</a>
                 </div>
             </div>
             <div class="row my-2">
@@ -19,7 +19,7 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table mr-2"></i>
-                            Jurusan
+                           JURUSAN
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -27,10 +27,9 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center">No</th>
-                                             <th class="text-center">ID Jurusan</th>
-                                            <th class="text-center"> Jurusan</th>
-
-                                            <th class="text-center" colspan="3">Aksi</th>
+                                                           <th class="text-center">ID Jurusan</th>
+                                                            <th class="text-center"> Jurusan</th>
+                                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -39,25 +38,21 @@
                                             foreach($jurusan as $j) :
                                         ?>
                                             <tr>
-                                                <td class="text-center"><?= $noUrut;?></td>
+                                               <td class="text-center"><?= $noUrut;?></td>
                                                  <td class="text-center"><?= $j->id_jurusan;?></td>
                                                 <td class="text-center"><?= $j->jurusan;?></td>
-                                                
-                                                
-                                        
                                                 <td colspan="3">
-                                                    <div class="row justify-content-around mt-2 ">
-                                                        <div class="col-sm-12 col-md-6" >
-                                                            <button type="button" data-toggle="modal" data-target="#deletePaketModal<?=$j->id_jurusan;?>" class="btn btn-danger btn-sm"> 
+                                
+                                                    <div class="row justify-content-around mt-2">
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <button type="button" data-toggle="modal" data-target="#deletePaketModal<?=$j->id_jurusan;?>" class="btn btn-danger btn-sm">
                                                                 <i class="fas fa-trash-alt"></i>
                                                             </button>
-                                                            <a>Hapus </a>
                                                         </div>
                                                         <div class="col-sm-12 col-md-6">
                                                             <a href="<?php echo base_url() ?>admin/crudjurusan/edit/<?php echo $j->id_jurusan ?>" class="btn btn-primary btn-sm">
                                                                 <i class="fas fa-pen"></i>
                                                             </a>
-                                                            <a>Edit </a>
                                                         </div>
                                                         
                                                     </div>
@@ -69,7 +64,7 @@
                                         ?>
                                     </tbody>
                                 </table>
-                
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -90,7 +85,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h5 class="text-justify">Apakah anda yakin akan menghapus paket soal <em><strong><?= $row->jurusan;?></strong></em></h5>
+                        <h5 class="text-justify">Apakah anda yakin akan menghapus jurusan <em><strong><?= $row->jurusan;?></strong></em></h5>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-outline-secondary" type="button" data-dismiss="modal"> Batal </button>
