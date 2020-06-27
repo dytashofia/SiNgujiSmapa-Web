@@ -5,7 +5,7 @@
                 <i class="fa fa-table mr-2"></i>Edit Data Siswa
             </h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active"><a href="<?= base_url('admin');?>">Dashboard</a></li>
+                <li class="breadcrumb-item active"><a href="<?= base_url('admin/Admin/');?>">Dashboard</a></li>
             </ol>
             <div class="row mt-2">
                 <div class="col-12">
@@ -25,6 +25,7 @@
                                     <div class="form-group">
                                         <label for="nama_siswa">Nama Siswa </label>
                                         <input type="text" name="nama_siswa" id="nama_siswa" class="form-control" value="<?= $siswa->nama_siswa;?>">
+                                        <?= form_error('nama_siswa','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                                     </div>
                                     <div class="form-group">
                                     <label for="jenis_kelamin"> Jenis Kelamin </label>
@@ -47,6 +48,7 @@
                                                 endforeach;
                                            ?>
                                     </select>
+                                    <?= form_error('jenis_kelamin','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                                     </div>
                                     <div class="form-group">
                                     <label for="id_jurusan"> Jurusan </label>
@@ -67,10 +69,12 @@
                                                 endforeach;
                                            ?>
                                         </select>
+                                        <?= form_error('id_jurusan','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                                     </div>
                                     <div class="form-group">
                                         <label for="kelas"> Kelas</label>
                                         <input type="text" name="kelas" id="kelas" class="form-control" value="<?= $siswa->kelas;?>">
+                                        <?= form_error('kelas','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                                     </div>
                                     <div class="form-group">
                                     <label for="semester"> Semester </label>
@@ -93,19 +97,18 @@
 
                                            ?>
                                     </select> 
+                                    <?= form_error('semester','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                                     </div>
                                     <div class="form-group">
                                         <label for="username_siswa"> Username </label>
                                         <input type="text" name="username_siswa" id="username_siswa" class="form-control" value="<?= $siswa->username_siswa;?>">
+                                        <?= form_error('username_siswa','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="password_siswa"> Password </label>
-                                        <input type="text" name="password_siswa" id="password_siswa" class="form-control" value="<?= $siswa->password_siswa;?>">
-                                    </div>
+                    
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-12 col-md-2">
-                                                <a href="<?= base_url('tampilSiswa');?>" class="btn btn-outline-secondary p-2 w-100">Kembali</a>
+                                                <a href="<?= base_url('admin/Admin/tampilSiswa');?>" class="btn btn-outline-secondary p-2 w-100">Kembali</a>
                                             </div>
                                             <div class="col-sm-12 col-md-2">
                                                 <button type="submit" class="btn btn-primary p-2 w-100">Simpan</button>

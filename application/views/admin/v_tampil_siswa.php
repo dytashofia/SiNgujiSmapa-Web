@@ -6,7 +6,7 @@
             </h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item">
-                    <a href="<?= base_url('admin');?>">Dashboard</a>
+                    <a href="<?= base_url('admin/Admin');?>">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item active">Menu Siswa</li>
             </ol>

@@ -17,7 +17,7 @@
                         <div class="card-body">
                             <form>
                                 <?php
-                                    foreach($tb_siswa as $row) :
+                                    foreach($data_siswa as $row) :
                                 ?>
                                     <div class="form-group">
                                         <div class="input-group">
@@ -90,19 +90,7 @@
                                                             Username
                                                         </div>
                                                     </div>
-                                                    <input type="text" name="username_siswa" id="username_siswa" class="form-control" value="<?= $row->username_siswa;?>" readonly>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-6">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <div class="input-group-text">
-                                                            Password
-                                                        </div>
-                                                    </div>
-                                                    <input type="text" name="password_siswa" id="password_siswa" class="form-control" value="<?= $row->password_siswa;?>" readonly>
+                                                    <input type="text" name="password_siswa" id="password_siswa" class="form-control" value="<?= $row->username_siswa;?>" readonly>
                                                 </div>
                                             </div>
                                         </div>

@@ -18,11 +18,12 @@
                             <form action="<?= base_url('/admin/Admin/aksiTambahSiswa/');?>" method="post">
                                     <div class="form-group">
                                         <label for="NIS"> NIS </label>
-                                        <input type="text" name="NIS" id="NIS" class="form-control" >
+                                        <input type="text" name="NIS" id="NIS" class="form-control" value="<?= set_value('NIS'); ?>" placeholder="Masukkan NIS...">
+                                        <?= form_error('NIS', '<small class="text-form text-danger mt-2 ml-2">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">
                                         <label for="nama_siswa">Nama Siswa </label>
-                                        <input type="text" name="nama_siswa" id="nama_siswa" class="form-control" >
+                                        <input type="text" name="nama_siswa" id="nama_siswa" class="form-control" value="<?= set_value('nama_siswa'); ?>" placeholder="Masukkan Nama Siswa...">
                                     </div>
                                     <div class="form-group">
                                     <label for="jenis_kelamin"> Jenis Kelamin </label>
@@ -31,6 +32,7 @@
                                         <option value="Laki-Laki">Laki-Laki</option>
                                         <option value="Perempuan">Perempuan</option>
                                     </select>
+                                    <?= form_error('jenis_kelamin', '<small class="text-form text-danger mt-2 ml-2">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">
                                     <label for="id_jurusan"> Jurusan </label>
@@ -44,10 +46,11 @@
                                         endforeach;
                                         ?>
                                     </select>
+                                    <?= form_error('id_jurusan', '<small class="text-form text-danger mt-2 ml-2">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">
                                         <label for="kelas"> Kelas</label>
-                                        <input type="text" name="kelas" id="kelas" class="form-control" >
+                                        <input type="text" name="kelas" id="kelas" class="form-control" value="<?= set_value('kelas'); ?>" placeholder="Masukkan Kelas..." >
                                     </div>
                                     <div class="form-group">
                                         <label for="semester"> Semester </label>
@@ -56,22 +59,26 @@
                                             <option value="Ganjil">Ganjil</option>
                                             <option value="Genap">Genap</option>
                                         </select>
+                                        <?= form_error('semester', '<small class="text-form text-danger mt-2 ml-2">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">
                                         <label for="username_siswa"> Username </label>
-                                        <input type="text" name="username_siswa" id="username_siswa" class="form-control" >
+                                        <input type="text" name="username_siswa" id="username_siswa" class="form-control" value="<?= set_value('username_siswa'); ?>" placeholder="Masukkan username ..." >
+                                        <?= form_error('username_siswa', '<small class="text-form text-danger mt-2 ml-2">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">
                                         <label for="password_siswa"> Password </label>
-                                        <input type="text" name="password_siswa" id="password_siswa" class="form-control" >
+                                        <input type="text" name="password_siswa" id="password_siswa" class="form-control" value="<?= set_value('password_siswa'); ?>" placeholder="Masukkan Password ..." >
+                                        <?= form_error('password_siswa', '<small class="text-form text-danger mt-2 ml-2">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">
                                         <label for="foto_siswa"> Foto Siswa </label>
                                         <div class="custom-file mb-5 ">
-                                            <input type="file" name="foto_siswa" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" accept=".jpg, .jpeg, .png">
+                                            <input type="file" name="foto_siswa" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" accept=".jpg, .jpeg, .png"value="<?= set_value('foto_siswa'); ?>" >
                                             <label class="custom-file-label" for="inputGroupFile01">Unggah Foto Siswa</label>
                                             <p class="form-text text-muted"> Silakan Unggah Foto Disini </p>
                                         </div>
+                                        <?= form_error('foto_siswa', '<small class="text-form text-danger mt-2 ml-2">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
