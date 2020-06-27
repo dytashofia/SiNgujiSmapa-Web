@@ -81,7 +81,7 @@ function index(){
 
          $this->load->view('template/header');
             $this->load->view('template/topNavbar');
-               $this->load->view('template/sideNavbar');
+               $this->load->view('template/sideNavbaradm');
            $this->load->view('admin/v_tambahjurusan',$data); 
         
             $this->load->view('template/footer');// menampilkan topbar ke view
@@ -126,7 +126,7 @@ function index(){
     $data['jurusan'] = $this->m_jus->edit_data($where,'tb_jurusan')->result(); // mengambil data yanga akan di edit berdasaekan data array berupa id 
      $this->load->view('template/header');
             $this->load->view('template/topNavbar');
-           
+           $this->load->view('template/sideNavbaradm');
             $this->load->view('admin/v_editjurusan',$data);
             $this->load->view('template/footer');
            
