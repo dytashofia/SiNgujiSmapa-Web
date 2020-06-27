@@ -22,7 +22,7 @@
                             </li>
                             <li>
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<?= base_url(''); ?>">Guru</a>
+                                    <a class="nav-link" href="<?= base_url('jurusan'); ?>">Guru</a>
                                 </nav>
                             </li>
                             <li>
