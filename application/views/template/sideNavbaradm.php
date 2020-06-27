@@ -22,12 +22,12 @@
                             </li>
                             <li>
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<?= base_url('jurusan'); ?>">Guru</a>
+                                    <a class="nav-link" href="<?= base_url(''); ?>">Guru</a>
                                 </nav>
                             </li>
                             <li>
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<?= base_url(''); ?>">Jurusan</a>
+                                    <a class="nav-link" href="<?= base_url('jurusan'); ?>">Jurusan</a>
                                 </nav>
                             </li>
                         </ul>
