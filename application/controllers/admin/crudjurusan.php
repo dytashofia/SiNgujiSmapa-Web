@@ -1,4 +1,4 @@
-
+ 
 <!-- crud.php meruapakan controler yang berisi fungsi mengambil data obat dari model yang kemudian ditampilkan ke view-->
 <?php 
 
@@ -8,10 +8,14 @@ class Crudjurusan extends CI_Controller{
     parent::__construct();      
     $this->load->model('m_jus'); //memanggil m_data
     $this->load->helper('url'); //mengaktifkan helper url
+    
+    if($this->session->userdata('status') != "login"){ 
+            redirect(base_url("login")); //jika user tidak berhasil login maka akan diarahkan ke halaamn login
+        }
 
 }
 					// ======Menampilkan data=======
-// fungsi construct pada crud.php digunakan untuk memanggil m_data yang merupakan model (berisi operasi database) dan helper  url
+// fungsi construct pada crudjurusan.php digunakan untuk memanggil m_jurusan yang merupakan model (berisi operasi database) dan helper  url
 
 function index(){
     $data['jurusan'] = $this->m_jus->tampil_data()->result(); //mengambil daata dari database 
@@ -30,7 +34,7 @@ function index(){
                     
                     // ======input data======
 
-// fungsi tambah berfungsi untuk menampilkan v_input yang merupakan form input data obat 
+// fungsi tambah berfungsi untuk menampilkan v_input yang merupakan form input data jurusan
     function tambah(){
         $data= $this->m_jus->tampil_data()->num_rows();
         // Jika jumlah paket soal lebih dari 0
@@ -88,7 +92,7 @@ function index(){
     
     }
 
-// fungsi tambah_aksi digunakan untuk mengatur proses penginputan data obat 
+// fungsi tambah_aksi digunakan untuk mengatur proses penginputan data juursan
     function tambah_aksi(){
         $id_jurusan = $this->input->post('id_jurusan'); 
         $jurusan = $this->input->post('jurusan');
@@ -101,9 +105,9 @@ function index(){
 //kemudian data yang diterima atau ditangkap di jadikan sebuah aray
        
 
-//menginput data array ke database  dengan menggunakan fungsi input_data yang terdpat pada model m_data
+//menginput data array ke database  dengan menggunakan fungsi input_data yang terdpat pada model m_jurusan
 //parameter petama berisi data yang akan diinpukan (array data : $data)
-//parameter kedua berisi tabel tujuan untuk menyimpan data (user)
+//parameter kedua berisi tabel tujuan untuk menyimpan data (tb_jurusan)
         $this->m_jus->input_data($data,'tb_jurusan'); //menginputkan data ke tabel user
         redirect('admin/crudjurusan/index'); // mengerahkan ke index
     }
@@ -111,16 +115,16 @@ function index(){
 
                      // ======hapus data=======
 
-// fungsi hapus data  pada controller crud.php berfungsi untuk menghapus data obat yang ada didatabase berdasarkan id yang tertampung di variabel $where mengunakan fungsi hapus_data yang terdapat di model m_data
+// fungsi hapus data  pada controller crudjurusan.php berfungsi untuk menghapus data jurusan yang ada didatabase berdasarkan id yang tertampung di variabel $where mengunakan fungsi hapus_data yang terdapat di model m_jurusan
     function hapus($id){
         $where = array('id_jurusan' => $id); //data id obat yang akan dihapus dijadikan array
-        $this->m_jus->hapus_data($where,'tb_jurusan'); // mengahapus data tabel obat dengan id yang tertampung di variabel where
+        $this->m_jus->hapus_data($where,'tb_jurusan'); // mengahapus data tabel jurusan dengan id yang tertampung di variabel where
         redirect('admin/crudjurusan/index'); //jika proses hapus data berhasil akan diarahkan ke index
     }
 
                             // ======edit data========
 
-// fungsi edit  pada controller crud.php berfungsi untuk mengambil data dari tabel obat untuk di edit di from v_edit                        
+// fungsi edit  pada controller crudjurusan.php berfungsi untuk mengambil data dari tabel jurusan untuk di edit di from v_edit                        
     function edit($id){
     $where = array('id_jurusan' => $id); //menjadikan id yang akan digunakan sebgai array 
     $data['jurusan'] = $this->m_jus->edit_data($where,'tb_jurusan')->result(); // mengambil data yanga akan di edit berdasaekan data array berupa id 
@@ -134,7 +138,7 @@ function index(){
 
 }
 
-// fungsi update digunakan untuk mengatur proses update data  obatterbaru ke database
+// fungsi update digunakan untuk mengatur proses update data  jurusan terbaru ke database
 function update(){
         $id = $this->input->post('id_jurusan');
         $jurusan = $this->input->post('jurusan');
@@ -145,13 +149,13 @@ function update(){
             
             );
 
-//smentara data id yang menjadi penentu obat mana yang mau diedit, data id tersebut di simpan di dalam variabel where dan juga dijadikan array.
+//smentara data id yang menjadi penentu jurusan mana yang mau diedit, data id tersebut di simpan di dalam variabel where dan juga dijadikan array.
     $where = array(
         'id_jurusan' => $id
     );
 
-//mengupdate data obat ke tb-obat berdasarkan id yamg terdapat di dalam variabel whwre
-    $this->m_jus->update_data($where,$data,'tb_jurusan'); // update data obat ke database
+//mengupdate data obat ke tb-jurusan berdasarkan id yamg terdapat di dalam variabel whwre
+    $this->m_jus->update_data($where,$data,'tb_jurusan'); // update data jurusan ke database
     redirect('admin/crudjurusan/index'); //mengarahkan ke index
 }
 
