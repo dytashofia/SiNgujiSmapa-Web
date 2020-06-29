@@ -17,7 +17,7 @@
                         <ul class="children collapse" id="sub-item-1">
                             <li>
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<?= base_url('login/loginadm'); ?>">Login</a>
+                                    <a class="nav-link" href="<?= base_url('login'); ?>">Login</a>
                                 </nav>
                             </li>
                         </ul>
