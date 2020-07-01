@@ -22,6 +22,7 @@ class M_data_master extends CI_Model
         "tb_jurusan.jurusan",
         "tb_guru.nama_guru",
         "tb_guru.status",
+        "tb_guru.username_guru",
         "tb_guru.foto_guru"              
       );
       $this->db->select($fields);
@@ -53,6 +54,11 @@ class M_data_master extends CI_Model
     {
         $this->db->where($where);
         $this->db->update($table, $dataGuru);
+    }
+
+    function tampil_mapel()
+    {
+      return $this->db->get('tb_mapel');
     }
 
     // Model data siswa

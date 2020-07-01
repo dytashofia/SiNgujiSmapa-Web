@@ -30,6 +30,7 @@
                                                             <td>Jurusan</td>
                                                             <td>Nama Guru</td>
                                                             <td>Status</td>
+                                                            <td>Username</td>
                                                             <td>Foto</td>
                                                             <th>Aksi</th>
                                                         </tr>
@@ -45,7 +46,8 @@
                                                                 <td><?= $guru->mata_pelajaran;?></td>
                                                                 <td><?= $guru->jurusan;?></td>
                                                                 <td><?= $guru->nama_guru;?></td>
-                                                                <td><?= $guru->status?></td>
+                                                                <td><?= $guru->status; ?></td>
+                                                                <td><?= $guru->username_guru; ?></td>
                                                                 <td><?= $guru->foto_guru;?></td>
                                                                 <td>
                                                                 <div class="row justify-content-around mt-2">
