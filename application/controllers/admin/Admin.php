@@ -97,8 +97,8 @@ class Admin extends CI_Controller {
             'nama_guru' => $nama_guru,
             'status' => $status,
             'username_guru' => $username_guru,
-            'password_guru' => $password_guru,
-            'foto_guru' => $password_guru
+            'password_guru' => md5($password_guru),
+            'foto_guru' => $foto_guru
         );
         $this->m_data_master->tambah_Guru($data, 'tb_guru');
         redirect('admin/Admin/tampilDataGuru'); 
@@ -152,11 +152,11 @@ class Admin extends CI_Controller {
         $NIP = $this->input->post('NIP');
         $id_mapel = $this->input->post('id_mapel');
         $id_jurusan = $this->input->post('id_jurusan');
-        $nama_guru = $this->input->post('kelas');
+        $nama_guru = $this->input->post('nama_guru');
         $status = $this->input->post('status');
         $username_guru = $this->input->post('username_guru');
-        $password_guru= $this->input->post('password_guru');
-        $foto_guru = $this->input->post('foto_guru');
+        //$password_guru= $this->input->post('password_guru');
+        //$foto_guru = $this->input->post('foto_guru');
 
         // Membuat validasi form
 		$this->form_validation->set_rules('NIP', 'NIP', 'trim|required|strip_tags');
@@ -165,8 +165,8 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('nama_guru', 'Nama Guru', 'trim|required|strip_tags');
         $this->form_validation->set_rules('status', 'status', 'trim|required|strip_tags');
         $this->form_validation->set_rules('username_guru', 'Username Guru', 'trim|required|strip_tags');
-        $this->form_validation->set_rules('password_guru', 'Password Guru', 'trim|required|strip_tags');
-        $this->form_validation->set_rules('foto_guru', 'Foto Guru', 'trim|required|strip_tags');
+        //$this->form_validation->set_rules('password_guru', 'Password Guru', 'trim|required|strip_tags');
+        //$this->form_validation->set_rules('foto_guru', 'Foto Guru', 'trim|required|strip_tags');
 
 		// Membuat pesan validasi error
 		$this->form_validation->set_message('required', 'Kolom %s tidak boleh kosong.');
@@ -185,9 +185,7 @@ class Admin extends CI_Controller {
             'id_jurusan' => $id_jurusan,
             'nama_guru' => $nama_guru,
             'status' => $status,
-            'username_guru' => $username_guru,
-            'password_guru' => $password_guru,
-            'foto_guru' => $password_guru
+            'username_guru' => $username_guru
             
         );
 
@@ -195,12 +193,11 @@ class Admin extends CI_Controller {
             'NIP' => $NIP,
         );
 
-        $this->m_data_master->editDataGuru($where,$data,'tb_guru');
+        $this->m_data_master->update_Guru($where, $data,'tb_guru');
         redirect('admin/Admin/tampilDataGuru');
         }
     }
 
-    
 
     public function hapusDataGuru ($NIP) 
     {
@@ -209,7 +206,7 @@ class Admin extends CI_Controller {
         );
         
         $this->m_data_master->hapus_Guru($where, 'tb_guru');
-        redirect('Admin/tampilDataGuru');
+        redirect('admin/Admin/tampilDataGuru');
     }   
     
    //  ===== Controller Untuk Siswa =====

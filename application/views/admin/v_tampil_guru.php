@@ -47,7 +47,7 @@
                                                                 <td><?= $guru->jurusan;?></td>
                                                                 <td><?= $guru->nama_guru;?></td>
                                                                 <td><?= $guru->status; ?></td>
-                                                                <td><?= $guru->username_guru; ?></td>
+                                                                <td><?= $guru->username_guru; ?>
                                                                 <td><?= $guru->foto_guru;?></td>
                                                                 <td>
                                                                 <div class="row justify-content-around mt-2">

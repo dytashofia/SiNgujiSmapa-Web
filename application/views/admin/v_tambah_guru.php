@@ -67,11 +67,13 @@
                                         <input type="text" name="username_guru" id="username_guru" class="form-control" value="<?= set_value('username_guru'); ?>" placeholder="Masukkan Username ..." >
                                         <?= form_error('username_guru', '<small class="text-form text-danger mt-2 ml-2">', '</small>'); ?>
                                     </div>
+
                                     <div class="form-group">
                                         <label for="password_guru"> Password Guru </label>
                                         <input type="text" name="password_guru" id="password_guru" class="form-control" value="<?= set_value('password_guru'); ?>" placeholder="Masukkan Password ..." >
                                         <?= form_error('password_guru', '<small class="text-form text-danger mt-2 ml-2">', '</small>'); ?>
                                     </div>
+                                    
                                     <div class="form-group">
                                         <label for="foto_guru"> Foto Guru </label>
                                         <div class="custom-file mb-5 ">

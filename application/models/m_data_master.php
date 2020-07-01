@@ -23,6 +23,7 @@ class M_data_master extends CI_Model
         "tb_guru.nama_guru",
         "tb_guru.status",
         "tb_guru.username_guru",
+        "tb_guru.password_guru",
         "tb_guru.foto_guru"              
       );
       $this->db->select($fields);
@@ -50,10 +51,10 @@ class M_data_master extends CI_Model
         $this->db->delete($table);
     }
 
-    function update_Guru ($where, $dataGuru, $table)
+    function update_Guru ($where, $data, $table)
     {
         $this->db->where($where);
-        $this->db->update($table, $dataGuru);
+        $this->db->update($table, $data);
     }
 
     function tampil_mapel()

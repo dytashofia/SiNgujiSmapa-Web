@@ -5,8 +5,6 @@
 
                 <i class="fa fa-table mr-2"></i>Daftar Siswa
 
-                <i class="fa fa-table mr-2"></i>Data Siswa
-
             </h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item">

@@ -22,7 +22,7 @@
                             </li>
                             <li>
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<?= base_url(''); ?>">Guru</a>
+                                    <a class="nav-link" href="<?= base_url('admin/Admin/tampilDataGuru'); ?>">Guru</a>
                                 </nav>
                             </li>
                             <li>
