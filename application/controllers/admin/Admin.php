@@ -44,19 +44,17 @@ class Admin extends CI_Controller {
     public function tambahdataGuru() 
     {
         $jurusan = $this->m_data_master->tampil_jurusan()->result();
+        $mata_pelajaran = $this->m_data_master->tampil_mapel()->result();
 
         $data = array (
+            'mata_pelajaran' => $mata_pelajaran,
             'jurusan' => $jurusan
         );
 
         $this->load->view('template/header');
         $this->load->view('template/topNavbar');
         $this->load->view('template/sideNavbaradm');
-
         $this->load->view('admin/v_tambah_guru', $data);
-
-        $this->load->view('admin/v_tampil_guru');
-
         $this->load->view('template/footer');     
     }
 
@@ -65,7 +63,7 @@ class Admin extends CI_Controller {
         $NIP = $this->input->post('NIP');
         $id_mapel = $this->input->post('id_mapel');
         $id_jurusan = $this->input->post('id_jurusan');
-        $nama_guru = $this->input->post('kelas');
+        $nama_guru = $this->input->post('nama_guru');
         $status = $this->input->post('status');
         $username_guru = $this->input->post('username_guru');
         $password_guru= $this->input->post('password_guru');
@@ -102,7 +100,7 @@ class Admin extends CI_Controller {
             'password_guru' => $password_guru,
             'foto_guru' => $password_guru
         );
-        $this->m_data_master->tambahdataGuru($data, 'tb_guru');
+        $this->m_data_master->tambah_Guru($data, 'tb_guru');
         redirect('admin/Admin/tampilDataGuru'); 
 
         }
@@ -115,7 +113,7 @@ class Admin extends CI_Controller {
 		$result = $this->m_data_master->tampil_paket_where_only($where, "tb_guru")->result();
 		// Menyimpan hasil dari model kedalam array
 		$data = array(
-			'data_guru' => $result,
+            'data_guru' => $result,
 		);
 		// Menampilkan view dengan data dari model
 		$this->load->view('template/header');
@@ -132,11 +130,13 @@ class Admin extends CI_Controller {
 		$where = array('NIP' => $NIP);
 		$result = $this->m_data_master->tampil_paket_where_only($where, "tb_guru")->result();
 		// Mendapatkan data mata pelajaran melalui modal
-		$resultJurusan = $this->m_data_master->tampil_jurusan()->result();
+        $resultJurusan = $this->m_data_master->tampil_jurusan()->result();
+        $resultMataPelajaran = $this->m_data_master->tampil_mapel()->result();
 		// Menyimpan hasil dari model kedalam array
 		$data = array(
 			'data_guru' => $result,
-			'data_jurusan' => $resultJurusan
+            'data_jurusan' => $resultJurusan,
+            'data_mapel' => $resultMataPelajaran
 		);
 		// Menampilkan view dengan data dari model
 		$this->load->view('template/header');
@@ -144,12 +144,6 @@ class Admin extends CI_Controller {
 		$this->load->view('template/sideNavbaradm');
 		$this->load->view('admin/v_edit_guru', $data);
 		$this->load->view('template/footer');
-
-        $this->load->view('template/header');
-        $this->load->view('template/topNavbar');
-        $this->load->view('template/sideNavbaradm');
-        $this->load->view('admin/v_edit_guru');
-        $this->load->view('template/footer');
 
     }
 

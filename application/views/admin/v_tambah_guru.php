@@ -22,11 +22,21 @@
                                         <?= form_error('NIP', '<small class="text-form text-danger mt-2 ml-2">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <label for="id_mapel"> Mata Pelajaran </label>
-                                        <input type="text" name="id_mapel" id="id_mapel" class="form-control" value="<?= set_value('id_mapel'); ?>" placeholder="Masukkan Mata Pelajaran...">
+                                    <label for="id_mapel"> Mata Pelajaran </label>
+                                    <select name="id_mapel" id="id_mapel" class="custom-select">
+                                        <option value=""> Pilih Mata Pelajaran </option>
+                                        <?php
+                                        foreach ($mata_pelajaran as $detailMapel) :
+                                        ?>
+                                            <option value="<?= $detailMapel->id_mapel; ?>"><?= $detailMapel->mata_pelajaran; ?></option>
+                                        <?php
+                                        endforeach;
+                                        ?>
+                                    </select>
+                                    <?= form_error('id_mapel', '<small class="text-form text-danger mt-2 ml-2">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">
-                                    <label for="id_jurusan"> Jurusan </label>
+                                    <label for="id_mapel"> Jurusan </label>
                                     <select name="id_jurusan" id="id_jurusan" class="custom-select">
                                         <option value=""> Pilih Jurusan </option>
                                         <?php
@@ -59,8 +69,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="password_guru"> Password Guru </label>
-                                        <input type="text" name="password_guru" id="password_siswa" class="form-control" value="<?= set_value('password_siswa'); ?>" placeholder="Masukkan Password ..." >
-                                        <?= form_error('password_siswa', '<small class="text-form text-danger mt-2 ml-2">', '</small>'); ?>
+                                        <input type="text" name="password_guru" id="password_guru" class="form-control" value="<?= set_value('password_guru'); ?>" placeholder="Masukkan Password ..." >
+                                        <?= form_error('password_guru', '<small class="text-form text-danger mt-2 ml-2">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">
                                         <label for="foto_guru"> Foto Guru </label>

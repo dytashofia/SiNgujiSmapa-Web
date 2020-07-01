@@ -23,9 +23,25 @@
                                         <input type="text" name="NIP" id="NIP" class="form-control" value="<?= $guru->NIP;?>">
                                     </div>
                                     <div class="form-group">
-                                        <label for="id_mapel"> Mata Pelajaran </label>
-                                        <input type="text" name="id_mapel" id="id_mapel" class="form-control" value="<?= $guru->id_mapel;?>">
-                                        <?= form_error('nama_siswa','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
+                                    <label for="id_mapel"> Mata Pelajaran </label>
+                                        <select name="id_mapel" id="id_mapel" class="custom-select">
+                                           <?php
+                                                foreach($data_mapel as $opt_dataMapel) :
+                                                    if($opt_dataMapel->id_mapel == $guru->id_mapel)
+                                                    {
+                                                        ?>
+                                                            <option value="<?= $opt_dataMapel->id_mapel;?>" selected><?= $opt_dataMapel->mata_pelajaran?></option>
+                                                        <?php
+                                                    }else
+                                                    {
+                                                        ?>
+                                                            <option value="<?= $opt_dataMapel->id_mapel;?>"><?= $opt_dataMapel->mata_pelajaran;?></option>
+                                                        <?php
+                                                    }
+                                                endforeach;
+                                           ?>
+                                        </select>
+                                        <?= form_error('id_mapel','<small class="text-form text-danger mt-2 ml-2">','</small>');?>
                                     </div>
                                    
                                     <div class="form-group">
