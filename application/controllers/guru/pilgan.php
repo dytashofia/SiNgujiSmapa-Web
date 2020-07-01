@@ -254,17 +254,18 @@ class Pilgan extends CI_Controller
 				$rawIdSoal = substr($row->id_soal, 2);
 				// Melakukan konversi id soal yang baru saja dipisahkan dari huruf menjadi integer
 				$intIdSoal = intval($rawIdSoal);
+				$intIdSoal += 1;
 
 				// Menghitung panjang angka dari id soal yang sudah dijadikan integer
 				if (strlen($intIdSoal) == 1) {
 					// Jika panjangnya hanya 1 digit ( berarti antara 1 - 9)
-					$idSoal = "SL00" . ($intIdSoal + 1);
+					$idSoal = "SL00" . ($intIdSoal);
 				} else if (strlen($intIdSoal) == 2) {
 					// Jika panjangnya hanya 2 digit ( berarti 10 - 99 )
-					$idSoal = "SL0" . ($intIdSoal + 1);
+					$idSoal = "SL0" . ($intIdSoal);
 				} else if (strlen($intIdSoal) == 3) {
 					// Jika panjangnya hanya 3 digit ( berarti 100 - 999 )
-					$idSoal = "SL" . ($intIdSoal + 1);
+					$idSoal = "SL" . ($intIdSoal);
 				}
 			}
 		} else {
@@ -426,17 +427,18 @@ class Pilgan extends CI_Controller
 				$rawIdSoal = substr($row->id_soal, 2);
 				// Melakukan konversi id soal yang baru saja dipisahkan dari huruf menjadi integer
 				$intIdSoal = intval($rawIdSoal);
+				$intIdSoal += 1;
 
 				// Menghitung panjang angka dari id soal yang sudah dijadikan integer
 				if (strlen($intIdSoal) == 1) {
 					// Jika panjangnya hanya 1 digit ( berarti antara 1 - 9)
-					$idSoal = "SL00" . ($intIdSoal + 1);
+					$idSoal = "SL00" . ($intIdSoal);
 				} else if (strlen($intIdSoal) == 2) {
 					// Jika panjangnya hanya 2 digit ( berarti 10 - 99 )
-					$idSoal = "SL0" . ($intIdSoal + 1);
+					$idSoal = "SL0" . ($intIdSoal);
 				} else if (strlen($intIdSoal) == 3) {
 					// Jika panjangnya hanya 3 digit ( berarti 100 - 999 )
-					$idSoal = "SL" . ($intIdSoal + 1);
+					$idSoal = "SL" . ($intIdSoal);
 				}
 			}
 		} else {
@@ -593,17 +595,18 @@ class Pilgan extends CI_Controller
 				$rawIdSoal = substr($row->id_soal, 2);
 				// Melakukan konversi id soal yang baru saja dipisahkan dari huruf menjadi integer
 				$intIdSoal = intval($rawIdSoal);
+				$intIdSoal += 1;
 
 				// Menghitung panjang angka dari id soal yang sudah dijadikan integer
 				if (strlen($intIdSoal) == 1) {
 					// Jika panjangnya hanya 1 digit ( berarti antara 1 - 9)
-					$idSoal = "SL00" . ($intIdSoal + 1);
+					$idSoal = "SL00" . ($intIdSoal);
 				} else if (strlen($intIdSoal) == 2) {
 					// Jika panjangnya hanya 2 digit ( berarti 10 - 99 )
-					$idSoal = "SL0" . ($idSoal + 1);
+					$idSoal = "SL0" . ($intIdSoal);
 				} else if (strlen($intIdSoal) == 3) {
 					// Jika panjangnya hanya 3 digit ( berarti 100 - 999 )
-					$idSoal = "SL" . ($intIdSoal + 1);
+					$idSoal = "SL" . ($intIdSoal);
 				}
 			}
 		} else {
@@ -709,17 +712,18 @@ class Pilgan extends CI_Controller
 
 				// Melakukan konversi id soal yang baru saja dipisahkan dari huruf menjadi integer
 				$intIdSoal = intval($rawIdSoal);
+				$intIdSoal += 1;
 
 				// Menghitung panjang angka dari id soal yang sudah dijadikan integer
 				if (strlen($intIdSoal) == 1) {
 					// Jika panjangnya hanya 1 digit ( berarti antara 1 - 9)
-					$idSoal = "SL00" . ($intIdSoal + 1);
+					$idSoal = "SL00" . ($intIdSoal);
 				} else if (strlen($intIdSoal) == 2) {
 					// Jika panjangnya hanya 2 digit ( berarti 10 - 99 )
-					$idSoal = "SL0" . ($idSoal + 1);
+					$idSoal = "SL0" . ($intIdSoal);
 				} else if (strlen($intIdSoal) == 3) {
 					// Jika panjangnya hanya 3 digit ( berarti 100 - 999 )
-					$idSoal = "SL" . ($intIdSoal + 1);
+					$idSoal = "SL" . ($intIdSoal);
 				}
 			}
 		} else {
