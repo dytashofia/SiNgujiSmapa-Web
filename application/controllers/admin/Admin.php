@@ -5,7 +5,7 @@
 class Admin extends CI_Controller {
     public function __construct() {
         parent:: __construct();
-        $this->load->model(array('m_data_master')); //controller memangguil database dari model m_data_soal 
+        $this->load->model(array('m_data_master')); //controller memanggil database dari model m_data_master 
 		$this->load->helper('url'); // menggunakan helper url 
 
         // mengecek apakah sesion status, untuk mendeteksi apakah user atau admin sudah login atau belum. 
@@ -30,25 +30,63 @@ class Admin extends CI_Controller {
     }
 
 //  ===== Controller Untuk Guru =====
-    public function tambahdataGuru() 
-    {
-        $tambahData = $this->m_data_master->tambahMaster->num_rows; 
+
+    public function tampilDataGuru() {
+        $data['tb_guru'] = $this->m_data_master->tampil_Guru()->result(); //memanggil fungsi tampil guru dari m_data_master. 
         $this->load->view('template/header');
         $this->load->view('template/topNavbar');
-        $this->load->view('template/sideNavbar');
-        $this->load->view('admin/v_tampil_guru');
+        $this->load->view('template/sideNavbaradm');
+        $this->load->view('admin/v_tampil_guru', $data);
+        $this->load->view('template/footer');
+
+    }
+
+    public function tambahdataGuru() 
+    {
+        $jurusan = $this->m_data_master->tampil_jurusan()->result();
+
+        $data = array (
+            'jurusan' => $jurusan
+        );
+
+        $this->load->view('template/header');
+        $this->load->view('template/topNavbar');
+        $this->load->view('template/sideNavbaradm');
+        $this->load->view('admin/v_tambah_guru', $data);
         $this->load->view('template/footer');     
     }
 
-    public function tambahAksi_guru ()
+    public function aksiTambah_guru ()
     {
         $NIP = $this->input->post('NIP');
         $id_mapel = $this->input->post('id_mapel');
         $id_jurusan = $this->input->post('id_jurusan');
-        $nama_guru = $this->input->post('nama_guru');
+        $nama_guru = $this->input->post('kelas');
         $status = $this->input->post('status');
         $username_guru = $this->input->post('username_guru');
-        $password_guru = $this->input->post('password_guru'); 
+        $password_guru= $this->input->post('password_guru');
+        $foto_guru = $this->input->post('foto_guru');
+
+        // Membuat validasi form
+		$this->form_validation->set_rules('NIP', 'NIP', 'trim|required|strip_tags');
+		$this->form_validation->set_rules('id_mapel', 'Mata Pelajaran', 'trim|required|strip_tags');
+		$this->form_validation->set_rules('id_jurusan', 'Jurusan', 'trim|required|strip_tags');
+		$this->form_validation->set_rules('nama_guru', 'Nama Guru', 'trim|required|strip_tags');
+        $this->form_validation->set_rules('status', 'status', 'trim|required|strip_tags');
+        $this->form_validation->set_rules('username_guru', 'Username Guru', 'trim|required|strip_tags');
+        $this->form_validation->set_rules('password_guru', 'Password Guru', 'trim|required|strip_tags');
+        $this->form_validation->set_rules('foto_guru', 'Foto Guru', 'trim|required|strip_tags');
+
+		// Membuat pesan validasi error
+		$this->form_validation->set_message('required', 'Kolom %s tidak boleh kosong.');
+		$this->form_validation->set_message('trim', 'Kolom %s berisi karakter yang dilarang.');
+		$this->form_validation->set_message('strip_tags', 'Kolom %s berisi karakter yang dilarang.');
+
+		// Menjalankan form
+		// Apabila hasil validasi form menunjukkan ada sesuatu yang salah
+		if ($this->form_validation->run() == false) {
+			$this->tambahdataGuru();
+		} else {
 
         $data = array(
             'NIP' => $NIP,
@@ -57,65 +95,115 @@ class Admin extends CI_Controller {
             'nama_guru' => $nama_guru,
             'status' => $status,
             'username_guru' => $username_guru,
-            'password_guru' => $password_guru
+            'password_guru' => $password_guru,
+            'foto_guru' => $password_guru
         );
-        $this->m_data_master->tambah_Master($data, 'tb_guru');
-        redirect('Admin/index'); 
+        $this->m_data_master->tambahdataGuru($data, 'tb_guru');
+        redirect('admin/Admin/tampilDataGuru'); 
+
+        }
+    }
+
+    public function detailGuru($NIP) 
+    {
+        echo $NIP;
+		$where = array('NIP' => $NIP);
+		$result = $this->m_data_master->tampil_paket_where_only($where, "tb_guru")->result();
+		// Menyimpan hasil dari model kedalam array
+		$data = array(
+			'data_guru' => $result,
+		);
+		// Menampilkan view dengan data dari model
+		$this->load->view('template/header');
+		$this->load->view('template/topNavbar');
+		$this->load->view('template/sideNavbaradm');
+		$this->load->view('admin/v_detail_guru', $data);
+		$this->load->view('template/footer');
     }
 
     public function editDataGuru ($NIP) 
     {
-        $where = array ('NIP' => $NIP);
-        $data['tb_guru'] = $this->m_data_master->edit_Master($where, 'tb_guru');
-
-        $this->load->view('template/header');
-        $this->load->view('template/topNavbar');
-        $this->load->view('template/sideNavbar');
-        $this->load->view('admin/v_edit_guru');
-        $this->load->view('template/footer');
+        echo $NIP;
+		$where = array('NIP' => $NIP);
+		$result = $this->m_data_master->tampil_paket_where_only($where, "tb_guru")->result();
+		// Mendapatkan data mata pelajaran melalui modal
+		$resultJurusan = $this->m_data_master->tampil_jurusan()->result();
+		// Menyimpan hasil dari model kedalam array
+		$data = array(
+			'data_guru' => $result,
+			'data_jurusan' => $resultJurusan
+		);
+		// Menampilkan view dengan data dari model
+		$this->load->view('template/header');
+		$this->load->view('template/topNavbar');
+		$this->load->view('template/sideNavbaradm');
+		$this->load->view('admin/v_edit_guru', $data);
+		$this->load->view('template/footer');
     }
 
-    public function updateGuru ($NIP) 
+    public function aksiEditGuru() 
     {
         $NIP = $this->input->post('NIP');
         $id_mapel = $this->input->post('id_mapel');
         $id_jurusan = $this->input->post('id_jurusan');
-        $nama_guru = $this->input->post('nama_guru');
+        $nama_guru = $this->input->post('kelas');
         $status = $this->input->post('status');
         $username_guru = $this->input->post('username_guru');
-        $password_guru = $this->input->post('password_guru'); 
+        $password_guru= $this->input->post('password_guru');
+        $foto_guru = $this->input->post('foto_guru');
 
-        $data = array(
+        // Membuat validasi form
+		$this->form_validation->set_rules('NIP', 'NIP', 'trim|required|strip_tags');
+		$this->form_validation->set_rules('id_mapel', 'Mata Pelajaran', 'trim|required|strip_tags');
+		$this->form_validation->set_rules('id_jurusan', 'Jurusan', 'trim|required|strip_tags');
+		$this->form_validation->set_rules('nama_guru', 'Nama Guru', 'trim|required|strip_tags');
+        $this->form_validation->set_rules('status', 'status', 'trim|required|strip_tags');
+        $this->form_validation->set_rules('username_guru', 'Username Guru', 'trim|required|strip_tags');
+        $this->form_validation->set_rules('password_guru', 'Password Guru', 'trim|required|strip_tags');
+        $this->form_validation->set_rules('foto_guru', 'Foto Guru', 'trim|required|strip_tags');
+
+		// Membuat pesan validasi error
+		$this->form_validation->set_message('required', 'Kolom %s tidak boleh kosong.');
+		$this->form_validation->set_message('trim', 'Kolom %s berisi karakter yang dilarang.');
+		$this->form_validation->set_message('strip_tags', 'Kolom %s berisi karakter yang dilarang.');
+
+		// Menjalankan form
+		// Apabila hasil validasi form menunjukkan ada sesuatu yang salah
+		if ($this->form_validation->run() == false) {
+			$this->editDataGuru($NIP);
+		} else {
+
+        $data = array(   
             'NIP' => $NIP,
             'id_mapel' => $id_mapel,
             'id_jurusan' => $id_jurusan,
             'nama_guru' => $nama_guru,
             'status' => $status,
             'username_guru' => $username_guru,
-            'password_guru' => $password_guru
+            'password_guru' => $password_guru,
+            'foto_guru' => $password_guru
+            
         );
 
         $where = array(
-        
-
             'NIP' => $NIP,
-
         );
 
-        $this->m_data_master->update_Master($data, 'tb_guru');
-        redirect('Admin/index');
-
-
+        $this->m_data_master->editDataGuru($where,$data,'tb_guru');
+        redirect('admin/Admin/tampilDataGuru');
+        }
     }
 
-    public function hapusDataGuru () 
+    
+
+    public function hapusDataGuru ($NIP) 
     {
         $where = array (
             'NIP' => $NIP
         );
         
-        $this->m_data_master->haous_Master($where, 'tb_guru');
-        redirect('Admin/index');
+        $this->m_data_master->hapus_Guru($where, 'tb_guru');
+        redirect('Admin/tampilDataGuru');
     }   
     
    //  ===== Controller Untuk Siswa =====
@@ -195,6 +283,7 @@ class Admin extends CI_Controller {
 
         }
     }
+
     function tampilDetailSiswa($NIS)
 	{
 		echo $NIS;
