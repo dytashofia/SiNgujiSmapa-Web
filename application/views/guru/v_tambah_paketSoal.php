@@ -50,16 +50,6 @@
                                         endforeach;
                                         ?>
                                     </select>
-                                    <div class="form-group">
-                                        <label>ID Transportasi</label>
-                                        <select name="id_transport" class="form-control">
-                                            <option value="">--Pilih Transport--</option>
-                                            <?php foreach ($transport as $sport) : ?>
-                                                <option value="<?php echo $sport->id_transport; ?>"> <?php echo $sport->id_transport; ?>
-                                                </option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
                                     <?= form_error('id_mapel', '<small class="text-form text-danger mt-2 ml-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
@@ -86,4 +76,3 @@
 
         </div>
     </main>
-</div>
