@@ -58,7 +58,7 @@ class M_data_saya extends CI_Model
                 basename($_SERVER['SCRIPT_NAME']),
                 "",
                 $_SERVER['SCRIPT_NAME']
-            ) . "assets/files/gambar_customer/" . $id . ".jpeg";
+            ) . "assets/foto_siswa/" . $id . ".jpeg";
             $finalpath = $id . ".jpeg";
             if (file_put_contents($path, base64_decode($foto))) {
                 $where = array(
