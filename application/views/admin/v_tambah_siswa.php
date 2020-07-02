@@ -15,7 +15,8 @@
                             <span class="text-muted">Tambah Data Siswa</span>
                         </div>
                         <div class="card-body">
-                            <form action="<?= base_url('/admin/Admin/aksiTambahSiswa/');?>" method="post">
+                        <?php echo form_open_multipart('/admin/Admin/aksiTambahSiswa/');?>
+                            
                                     <div class="form-group">
                                         <label for="NIS"> NIS </label>
                                         <input type="text" name="NIS" id="NIS" class="form-control" value="<?= set_value('NIS'); ?>" placeholder="Masukkan NIS...">
@@ -72,13 +73,9 @@
                                         <?= form_error('password_siswa', '<small class="text-form text-danger mt-2 ml-2">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <label for="foto_siswa"> Foto Siswa </label>
-                                        <div class="custom-file mb-5 ">
-                                            <input type="file" name="foto_siswa" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" accept=".jpg, .jpeg, .png"value="<?= set_value('foto_siswa'); ?>" >
-                                            <label class="custom-file-label" for="inputGroupFile01">Unggah Foto Siswa</label>
-                                            <p class="form-text text-muted"> Silakan Unggah Foto Disini </p>
-                                        </div>
-                                        <?= form_error('foto_siswa', '<small class="text-form text-danger mt-2 ml-2">', '</small>'); ?>
+                                        <label> Foto Siswa </label>
+                                        <input type="file" name="foto_siswa" class="form-control" >
+                                        
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
@@ -90,7 +87,7 @@
                                             </div>
                                         </div>
                                     </div>
-                            </form>
+                            <?php echo form_close(); ?>
                         </div>
                     </div>
                 </div>

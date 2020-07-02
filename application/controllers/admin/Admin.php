@@ -246,7 +246,20 @@ class Admin extends CI_Controller {
         $semester = $this->input->post('semester');
         $username_siswa = $this->input->post('username_siswa');
         $password_siswa= $this->input->post('password_siswa');
-        $foto_siswa = $this->input->post('foto_siswa');
+        $foto_siswa = $_FILES['foto_siswa'];
+
+        if ($foto_siswa=''){}else{
+            $config['upload_path']          = './assets/foto_siswa';
+            $config['allowed_types']        ='jpg|png|jpeg|gif|JPG|JPEG';
+
+            $this->load->library('upload',$config);
+            if(!$this->upload->do_upload('foto_siswa')) {
+                echo "Upload Gagal"; die();
+            }else{
+                $foto_siswa=$this->upload->data('file_name');
+            }
+
+        }
 
         // Membuat validasi form
 		$this->form_validation->set_rules('NIS', 'NIS', 'trim|required|strip_tags');
@@ -257,7 +270,6 @@ class Admin extends CI_Controller {
         $this->form_validation->set_rules('semester', 'Semester', 'trim|required|strip_tags');
         $this->form_validation->set_rules('username_siswa', 'Username', 'trim|required|strip_tags');
         $this->form_validation->set_rules('password_siswa', 'Password', 'trim|required|strip_tags');
-        $this->form_validation->set_rules('foto_siswa', 'Foto', 'trim|required|strip_tags');
 
 		// Membuat pesan validasi error
 		$this->form_validation->set_message('required', 'Kolom %s tidak boleh kosong.');
