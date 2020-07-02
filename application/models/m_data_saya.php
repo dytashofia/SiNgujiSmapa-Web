@@ -69,7 +69,7 @@ class M_data_saya extends CI_Model
                 );
 
                 $this->db->where($where);
-                $update = $this->db->update("nama_siswa", $set);
+                $update = $this->db->update("tb_siswa", $set);
                 if ($update) {
                     $response['status'] = 200;
                     $response['error'] = false;
