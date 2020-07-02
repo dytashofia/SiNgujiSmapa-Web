@@ -95,6 +95,20 @@
                                             </div>
                                         </div>
                                         </div>
+                                        <div class="row">
+                                        <div class="col-sm-12 col-md-6">
+                                            <div class="form-group">
+                                                <tr>
+                                                    <td>
+                                                        <img src="<?php echo base_url(); ?>assets/foto_siswa/<?php echo $row->foto_siswa; ?>
+                                                        " width="90" height="110">
+                                                    </td>
+                                                    <td></td>
+                                                </tr>
+                                            </div>
+                                        </div>
+                                        </div>
+
                                     <div class="row">  
                                     <div class="from-group">
                                         <a href="<?= base_url('admin/Admin/tampilSiswa');?>" class="btn btn-outline-secondary p-2"> Kembali </a>
