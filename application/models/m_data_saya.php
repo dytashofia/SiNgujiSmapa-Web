@@ -42,7 +42,7 @@ class M_data_saya extends CI_Model
     public function updateUser($data, $where)
     {
         $this->db->where($where);
-        $response['data'] = $this->db->update("nama_siswa", $data);
+        $response['data'] = $this->db->update("tb_siswa", $data);
         $response['status'] = 200;
         $response['error'] = false;
         $response['message'] = 'Berhasil memperbarui profil.';
