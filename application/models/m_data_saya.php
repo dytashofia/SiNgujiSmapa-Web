@@ -42,7 +42,7 @@ class M_data_saya extends CI_Model
     public function updateUser($data, $where)
     {
         $this->db->where($where);
-        $response['data'] = $this->db->update("nama_siswa", $data);
+        $response['data'] = $this->db->update("tb_siswa", $data);
         $response['status'] = 200;
         $response['error'] = false;
         $response['message'] = 'Berhasil memperbarui profil.';
@@ -58,7 +58,7 @@ class M_data_saya extends CI_Model
                 basename($_SERVER['SCRIPT_NAME']),
                 "",
                 $_SERVER['SCRIPT_NAME']
-            ) . "assets/files/gambar_customer/" . $id . ".jpeg";
+            ) . "assets/foto_siswa/" . $id . ".jpeg";
             $finalpath = $id . ".jpeg";
             if (file_put_contents($path, base64_decode($foto))) {
                 $where = array(
@@ -69,7 +69,7 @@ class M_data_saya extends CI_Model
                 );
 
                 $this->db->where($where);
-                $update = $this->db->update("nama_siswa", $set);
+                $update = $this->db->update("tb_siswa", $set);
                 if ($update) {
                     $response['status'] = 200;
                     $response['error'] = false;

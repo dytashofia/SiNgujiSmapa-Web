@@ -34,11 +34,11 @@ class Profil extends REST_Controller
 
     function updateProfil_put()
     {
-        $email = $this->db->get_where('nama_siswa', array('NIS' => $this->put('NIS')))->row()->jurusan;
-        if ($this->put('jurusan') == $email) {
+        $email = $this->db->get_where('tb_siswa', array('NIS' => $this->put('NIS')))->row()->id_jurusan;
+        if ($this->put('id_jurusan') == $email) {
             $data = array(
                 'nama_siswa' => $this->put('nama_siswa'),
-                'jurusan' => $this->put('jurusan'),
+                'id_jurusan' => $this->put('id_jurusan'),
                 'jenis_kelamin' => $this->put('jenis_kelamin'),
                 'kelas' => $this->put('kelas'),
                 'semester' => $this->put('semester'),
@@ -48,7 +48,7 @@ class Profil extends REST_Controller
         } else {
             $data = array(
                 'nama_siswa' => $this->put('nama_siswa'),
-                'jurusan' => $this->put('jurusan'),
+                'id_jurusan' => $this->put('id_jurusan'),
                 'jenis_kelamin' => $this->put('jenis_kelamin'),
                 'kelas' => $this->put('kelas'),
                 'semester' => $this->put('semester'),
