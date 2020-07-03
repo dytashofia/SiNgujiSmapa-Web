@@ -95,6 +95,61 @@
 
         }
 
+        public function grade_post()
+        {
+
+            $nis = $this->post('nis');
+            $idUjian = $this->post('idUjian');
+
+            $dataJawaban = array(
+                'tb_jawaban.NIS' => $nis,
+                'tb_jawaban.id_ujian' => $idUjian,
+            );
+
+            $queryJawaban = $this->m_exam->get_jawaban_user($dataJawaban);
+
+            if($queryJawaban->num_rows() > 0)
+            {
+                $resultJawaban = $queryJawaban->result();
+
+                $jawaban_user = [];
+                $kunci_jawaban = [];
+
+                $response['true_count'] = 0;
+
+                foreach($resultJawaban as $row)
+                {
+                    array_push($jawaban_user, $row->jawaban);
+                    array_push($kunci_jawaban, $row->kunci_jawaban);
+                }
+
+                for($i = 0; $i < count($kunci_jawaban); $i++)
+                {
+                    if($jawaban_user[$i] == $kunci_jawaban[$i])
+                    {
+                        $response['true_count'] += 1;
+                    }else
+                    {
+                        $response['true_count'] += 0;
+                    }
+                }
+
+                $response['user_score'] = round((100 / count($jawaban_user) * $response['true_count']));
+                $response['status'] = "202";
+                $response['error'] = false;
+                $response['message'] = "Berhasil mendapatkan data";                
+                $this->response($response);
+
+            }else
+            {
+                $response['status'] = "502";
+                $response['error'] = true;
+                $response['message'] = "Gagal mendapatkan data";
+                $this->response($response);
+            }
+
+        }
+
     }
 
 
