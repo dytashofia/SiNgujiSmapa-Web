@@ -10,13 +10,9 @@
 }
 body{
   
-background: 
+background-color: #43b7bf;
    
 
-  url(<?php echo base_url("gambar/latar.jpg");?>) no-repeat  fixed;
-  width : 100%;
-  height : 100%;
-  background-size:100%;
 
 	
 }

@@ -12,13 +12,7 @@
 }
 body{
   
-background: 
-   
-
-  url(<?php echo base_url("gambar/dasar6.png");?>) no-repeat  fixed;background: 
-width : 100%;
-  height : 100%;
-  background-size:100%;
+background-color: #00576f;
 	
 }
 
