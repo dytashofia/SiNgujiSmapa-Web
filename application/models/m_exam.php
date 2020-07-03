@@ -26,6 +26,24 @@
             $this->db->insert("tb_jawaban", $data);
         }
 
+        public function get_jawaban_user($data)
+        {
+            $this->db->select(
+                'tb_jawaban.id_jawaban,'.
+                'tb_jawaban.NIS,'.
+                'tb_jawaban.id_ujian,'.
+                'tb_jawaban.id_soal,'.
+                'tb_jawaban.jawaban,'.
+                'tb_soal.kunci_jawaban'
+            );
+
+            $this->db->from('tb_jawaban');
+            $this->db->join('tb_soal', 'tb_jawaban.id_soal = tb_soal.id_soal');
+            $this->db->where($data);
+            $query = $this->db->get();
+            return $query;
+        }
+
     }
 
 ?>
